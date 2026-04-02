@@ -791,8 +791,9 @@ function showSection(id) {
       letter-spacing: 0.04em;
     }
 
-    /* Hide SVG cup diagram in print - replaced by text descriptions */
-    #cup-diagram-svg { display: none; }
+    /* Cup diagram SVG — scale for print */
+    #cup-diagram-svg { display: block; }
+    #cup-diagram-svg svg { width: 100%; height: auto; }
 
     /* Strategy grid full width in print */
     .strategy-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
