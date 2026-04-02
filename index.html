@@ -1138,7 +1138,7 @@ function showSection(id) {
 
     <div class="edu-block" style="margin-bottom:20px">
       <h3>Your data and privacy</h3>
-      <p>This tool runs entirely on your device. Your responses are not collected, stored, or transmitted anywhere. Nothing you enter leaves your browser. When you close the file, your answers are gone unless you have printed or saved your worksheet as a PDF.</p>
+      <p>This tool runs entirely on your device. Your responses are not collected, stored, or transmitted anywhere. Nothing you enter leaves your browser. When you close this tab, your answers are gone unless you have downloaded your results and tools as a PDF.</p>
     </div>
 
     <div style="background:var(--linen); border-radius:var(--radius); padding:14px 20px; margin-bottom:32px; border-left:3px solid var(--blue-dust);">
@@ -1273,7 +1273,7 @@ function showSection(id) {
         <div style="font-size:13px; color:var(--ink-mid)"><strong style="color:var(--ink)">Often</strong>: roughly 50 to 75% of the time</div>
         <div style="font-size:13px; color:var(--ink-mid)"><strong style="color:var(--ink)">Almost always</strong>: 75% or more of the time</div>
       </div>
-      <p style="font-size:12px; color:var(--ink-light); margin:8px 0 0">Answer based on how you generally experience life, not just today. If it varies with your hormonal cycle or stress levels, go with your most common experience.</p>
+      <p style="font-size:13px; color:var(--ink-mid); margin:8px 0 0">Answer based on how you generally experience life, not just today. If it varies with your hormonal cycle or stress levels, go with your most common experience.</p>
     </div>
 
     <!-- DOMAIN 1: TACTILE -->
@@ -1997,7 +1997,7 @@ function showSection(id) {
       <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--navy-mid);margin-bottom:8px">Start here this week</div>
       <p style="font-size:13px;color:var(--navy);font-family:'Inter',sans-serif;margin:0 0 12px;line-height:1.6">Based on your results, these are the three tools most likely to make a difference. You do not need to do everything. Start with one.</p>
       <div id="top3-list" style="display:flex;flex-direction:column;gap:8px;"></div>
-      <p style="font-size:12px;color:var(--ink-light);margin:10px 0 0">The full toolkit is below. Come back to it when you are ready.</p>
+      <p style="font-size:12px;color:var(--ink-mid);margin:10px 0 0">The full toolkit is below. Come back to it when you are ready.</p>
     </div>
     
 
@@ -2070,19 +2070,19 @@ function showSection(id) {
       <div class="layer2-grid" style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Environmental design</div>
-          <p style="font-size:12px; color:var(--ink-light); margin:0; line-height:1.5">Lighting, sound, texture, and space — shaped around your sensory preferences</p>
+          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Lighting, sound, texture, and space — shaped around your sensory preferences</p>
         </div>
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Daily nervous system inputs</div>
-          <p style="font-size:12px; color:var(--ink-light); margin:0; line-height:1.5">Movement, nutrition, sleep, sunlight, connection, and community</p>
+          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Movement, nutrition, sleep, sunlight, connection, and community</p>
         </div>
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Beliefs and self-story</div>
-          <p style="font-size:12px; color:var(--ink-light); margin:0; line-height:1.5">Examining the narratives that keep the window narrow and updating them over time</p>
+          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Examining the narratives that keep the window narrow and updating them over time</p>
         </div>
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Executive functioning and routines</div>
-          <p style="font-size:12px; color:var(--ink-light); margin:0; line-height:1.5">Structures that reduce the daily demand on your nervous system</p>
+          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Structures that reduce the daily demand on your nervous system</p>
         </div>
       </div>
     </div>
@@ -2207,7 +2207,7 @@ function showSection(id) {
 
         <div class="ws-section">
           <div class="ws-section-title">My sensory toolkit</div>
-          <p style="font-size:13px;color:var(--ink-light);margin-bottom:16px">List the tools that actually work for you, not the ones you think should work.</p>
+          <p style="font-size:13px;color:var(--ink-mid);margin-bottom:16px">List the tools that actually work for you, not the ones you think should work.</p>
 
           <div class="ws-field">
             <label class="ws-label">When I am in a high-energy, hyperactivated state and want to shift back</label>
@@ -2585,8 +2585,8 @@ function calculateAndShowResults() {
             <span class="score-bar-label">${sensPct}%</span>
           </div>
         </div>
-        <div style="margin-top:4px">
-          <div style="font-size:11px;color:var(--ink-light);margin-bottom:4px;font-style:italic">Your preference:</div>
+        <div style="margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--ink-light);font-style:italic;white-space:nowrap">Your preference:</span>
           <div class="pattern-badge ${patternBadgeClass(r.pattern)}">${patternLabel(r.pattern)}</div>
         </div>
       </div>`;
@@ -2704,7 +2704,7 @@ function renderStrategies(results) {
     <div style="background:${patternBg};border-radius:var(--radius);padding:18px 22px;border:1px solid var(--border);margin-bottom:20px">
       <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:${patternColour};margin-bottom:6px">Matched to your results</div>
       <p style="font-size:14px;color:var(--ink-mid);line-height:1.7;margin:0 0 10px">${patternSummary}</p>
-      <p style="font-size:13px;color:var(--ink-light);margin:0"><strong style="color:var(--ink)">Before you pick a tool:</strong> pause and notice your nervous system state right now. Are you in a high-energy, hyperactivated state or a low-energy, hypoactivated state? Then choose a <strong style="color:#3a5852">up-regulation</strong> or <strong style="color:#7a5548">down-regulation</strong> tool that matches.</p>
+      <p style="font-size:13px;color:var(--ink-mid);margin:0"><strong style="color:var(--ink)">Before you pick a tool:</strong> pause and notice your nervous system state right now. Are you in a high-energy, hyperactivated state or a low-energy, hypoactivated state? Then choose a <strong style="color:#3a5852">up-regulation</strong> or <strong style="color:#7a5548">down-regulation</strong> tool that matches.</p>
     </div>`;
 
   // Helper: render a tool card
@@ -2890,7 +2890,7 @@ function renderStrategies(results) {
         <span class="strat-section-chevron strat-section-chevron-down">▼</span>
       </button>
       <div class="strat-section-body">
-        <p style="font-size:13px;color:var(--ink-light);margin:0 0 12px;font-style:italic">Down-regulation doesn't always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first — move it through — before it can settle. The tools below reflect both: releasing the charge, and then bringing the energy down.</p>
+        <p style="font-size:13px;color:var(--ink-mid);margin:0 0 12px;font-style:italic">Down-regulation doesn't always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first — move it through — before it can settle. The tools below reflect both: releasing the charge, and then bringing the energy down.</p>
         ${downItems.join('')}
       </div>
     </div>`;
@@ -2904,7 +2904,7 @@ function renderStrategies(results) {
         <span class="strat-section-chevron strat-section-chevron-up">▼</span>
       </button>
       <div class="strat-section-body">
-        <p style="font-size:13px;color:var(--ink-light);margin:0 0 12px;font-style:italic">Tap a domain to see tools for building energy and activation.</p>
+        <p style="font-size:13px;color:var(--ink-mid);margin:0 0 12px;font-style:italic">Tap a domain to see tools for building energy and activation.</p>
         ${upItems.join('')}
       </div>
     </div>`;
@@ -3552,6 +3552,7 @@ function downloadPDF() {
       // PAGE 2 — RESULTS
       // ════════════════════════════════
       newPage();
+      y += 8;
 
       // Section heading
       doc.setFillColor(...navy);
@@ -3586,11 +3587,13 @@ function downloadPDF() {
           doc.setLineWidth(0.3);
           doc.roundedRect(margin, y, contentW, 28, 2, 2, 'FD');
 
-          // Icon background circle
-          doc.setFillColor(240, 240, 238);
+          // Icon background circle with domain initial
+          doc.setFillColor(...sage);
           doc.circle(margin + 8, y + 10, 5, 'F');
-          doc.setFontSize(9);
-          doc.text(r.icon, margin + 5.5, y + 12.5);
+          doc.setFontSize(8);
+          doc.setFont('helvetica','bold');
+          doc.setTextColor(...white);
+          doc.text(r.name.charAt(0), margin + 6, y + 12.5);
 
           // Domain name
           doc.setFontSize(10);
@@ -3664,7 +3667,7 @@ function downloadPDF() {
 
       // Render tools from the rendered strategy panels
       const domainNames = { vest:'Vestibular', prop:'Proprioception', intero:'Interoception', aud:'Auditory', vis:'Visual', tact:'Tactile', smell:'Smell & taste', social:'Social & emotional environment' };
-      const domainIcons = { vest:'🌀', prop:'💪', intero:'🫀', aud:'👂', vis:'👁️', tact:'🤝', smell:'👃', social:'🫶' };
+      const domainIcons = { vest:'[Vestibular]', prop:'[Proprioception]', intero:'[Interoception]', aud:'[Auditory]', vis:'[Visual]', tact:'[Tactile]', smell:'[Smell & taste]', social:'[Social]' };
 
       if (userResults) {
         const flagged = userResults.filter(r => r.pattern !== 'balanced');
@@ -3678,7 +3681,7 @@ function downloadPDF() {
             doc.setFontSize(9.5);
             doc.setFont('helvetica','bold');
             doc.setTextColor(...navy);
-            doc.text((domainIcons[r.id] || '') + '  ' + (domainNames[r.id] || r.name), margin, y);
+            doc.text(domainNames[r.id] || r.name, margin, y);
             y += 6;
 
             const downToolsMap = {
@@ -3757,7 +3760,7 @@ function downloadPDF() {
             doc.setFontSize(9.5);
             doc.setFont('helvetica','bold');
             doc.setTextColor(...navy);
-            doc.text((domainIcons[r.id] || '') + '  ' + (domainNames[r.id] || r.name), margin, y);
+            doc.text(domainNames[r.id] || r.name, margin, y);
             y += 6;
 
             const upToolsMap = {
