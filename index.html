@@ -887,8 +887,8 @@ function showSection(id) {
     /* Edu tab bar — tighten on very small screens */
     .edu-tab { font-size: 11px; padding: 8px 4px; }
 
-    /* Cup diagram SVG — text becomes unreadable below 400px, hide it */
-    #cup-diagram-svg { display: none; }
+    /* Cup diagram SVG — scale down on small screens */
+    #cup-diagram-svg svg { width: 100%; height: auto; }
   }
 
   /* iOS Safari sticky fix */
@@ -2290,8 +2290,7 @@ function showSection(id) {
     </div>
 
     <div class="print-bar">
-      <p>Download your completed results and toolkit to keep somewhere useful and to share with the people who support you.</p>
-      <button class="btn-print" onclick="downloadPDF()">Download my results & tools</button>
+      <p>You can download your completed results and toolkit at the end. Your download will open in a new tab so you don't lose your results.</p>
     </div>
 
     <!-- CALL TO ACTION -->
@@ -2339,6 +2338,14 @@ function showSection(id) {
     </div>
 
 
+
+    <!-- Download card -->
+    <div style="background:var(--navy); border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:32px; text-align:center;">
+      <p style="font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--blue-light); margin-bottom:12px">Save your results</p>
+      <p style="font-size:17px; font-family:'Abel',sans-serif; color:var(--cream); line-height:1.4; margin:0 0 8px">Download your results and tools as a PDF.</p>
+      <p style="font-size:13px; color:rgba(250,249,247,0.65); margin:0 0 20px; line-height:1.6">Opens in a new tab so you keep your place here. Save or print from there.</p>
+      <button onclick="downloadPDF()" style="background:var(--sage); color:var(--navy); border:none; padding:14px 36px; border-radius:100px; font-family:'Inter',sans-serif; font-size:15px; font-weight:500; cursor:pointer; transition:all 0.2s;" id="download-btn">Download my results & tools</button>
+    </div>
 
     <!-- Instagram / next steps card -->
     <div style="background:var(--sage-pale); border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:32px; border:1.5px solid var(--sage);">
@@ -3332,9 +3339,8 @@ function showEduTab(n) {
 // PDF DOWNLOAD
 // ══════════════════════════════════════
 function downloadPDF() {
-  const btn = document.querySelector('.btn-print');
-  btn.textContent = 'Generating...';
-  btn.disabled = true;
+  const btn = document.getElementById('download-btn');
+  if (btn) { btn.textContent = 'Generating...'; btn.disabled = true; }
 
   setTimeout(() => {
     try {
@@ -3356,7 +3362,7 @@ function downloadPDF() {
 
       const pageW = 210;
       const pageH = 297;
-      const margin = 18;
+      const margin = 14;
       const contentW = pageW - margin * 2;
       let y = 0;
 
@@ -3674,7 +3680,7 @@ function downloadPDF() {
 
         if (flagged.length > 0) {
           // Down-regulation
-          sectionDivider('↓ When I need to down-regulate', blushPale);
+          sectionDivider('v  WHEN I NEED TO DOWN-REGULATE', blushPale);
 
           flagged.forEach(r => {
             checkY(12);
@@ -3753,7 +3759,7 @@ function downloadPDF() {
           y += 4;
 
           // Up-regulation
-          sectionDivider('↑ When I need to up-regulate', bluePale);
+          sectionDivider('^  WHEN I NEED TO UP-REGULATE', bluePale);
 
           flagged.forEach(r => {
             checkY(12);
@@ -3852,6 +3858,7 @@ function downloadPDF() {
       // Auto results
       const autoResults = document.getElementById('ws-auto-results');
       if (autoResults && autoResults.textContent.trim()) {
+        const cleanResults = autoResults.textContent.trim().replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27FF}]/gu, '').replace(/\s+/g, ' ').trim();
         doc.setFontSize(8.5);
         doc.setFont('helvetica','bold');
         doc.setTextColor(...navy);
@@ -3859,7 +3866,7 @@ function downloadPDF() {
         y += 5;
         doc.setFont('helvetica','normal');
         doc.setTextColor(...ink);
-        const arLines = doc.splitTextToSize(autoResults.textContent.trim(), contentW);
+        const arLines = doc.splitTextToSize(cleanResults, contentW);
         doc.text(arLines, margin, y);
         y += arLines.length * 4.5 + 6;
       }
@@ -3941,16 +3948,16 @@ function downloadPDF() {
       sectionDivider('One thing I am taking away from this', blushPale);
       fieldValue(vals[wi++], 3);
 
-      // ── Save ──
-      doc.save('My-Sensory-Preferences-ADHD-and-Her.pdf');
+      // Open in new tab so user stays in app
+      const pdfOutput = doc.output('bloburl');
+      window.open(pdfOutput, '_blank');
 
     } catch(e) {
       console.error('PDF error:', e);
       alert('Sorry, something went wrong generating your PDF. Please try again.');
     }
 
-    btn.textContent = 'Download my results & tools';
-    btn.disabled = false;
+    if (btn) { btn.textContent = 'Download my results & tools'; btn.disabled = false; }
   }, 100);
 }
 </script>
