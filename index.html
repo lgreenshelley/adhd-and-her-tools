@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>My Sensory Preferences | ADHD and Her — v2.0</title>
+<title>My Sensory Preferences | ADHD and Her  -  v2.0</title>
 <script>
-// Defined early so it is available before full page load — required for email app browsers
+// Defined early so it is available before full page load  -  required for email app browsers
 function showSection(id) {
   document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
   var el = document.getElementById(id);
@@ -791,7 +791,7 @@ function showSection(id) {
       letter-spacing: 0.04em;
     }
 
-    /* Cup diagram SVG — scale for print */
+    /* Cup diagram SVG  -  scale for print */
     #cup-diagram-svg { display: block; }
     #cup-diagram-svg svg { width: 100%; height: auto; }
 
@@ -824,25 +824,25 @@ function showSection(id) {
     .cover h1 { font-size: 2.4rem; }
     .cover-sub { font-size: 15px; margin-bottom: 36px; }
 
-    /* Questionnaire answer guide — stack to single column */
+    /* Questionnaire answer guide  -  stack to single column */
     .answer-guide-grid { grid-template-columns: 1fr !important; }
 
-    /* Q-row options — stack on very small screens */
+    /* Q-row options  -  stack on very small screens */
     .q-options { flex-wrap: wrap; gap: 6px; }
     .q-option label { font-size: 13px; padding: 8px 12px; }
 
-    /* Results grid — allow badge to wrap below on mobile */
-    .domain-result { grid-template-columns: 40px 1fr; gap: 10px; }
-    .domain-result .pattern-badge { grid-column: 2; justify-self: start; margin-top: 4px; }
+    /* Results grid  -  stack preference below bars on mobile */
+    .domain-result { grid-template-columns: 44px 1fr; gap: 12px; }
+    .domain-result > div:last-child { grid-column: 2; flex-direction: row; align-items: center; gap: 6px; }
 
-    /* Strategy tabs — horizontal scroll */
+    /* Strategy tabs  -  horizontal scroll */
     .strategy-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; padding-bottom: 4px; }
     .stab { white-space: nowrap; }
 
-    /* Two-column grids — stack to single column */
+    /* Two-column grids  -  stack to single column */
     .mobile-stack { grid-template-columns: 1fr !important; }
 
-    /* Toolkit rows — stack label columns */
+    /* Toolkit rows  -  stack label columns */
     .toolkit-row { grid-template-columns: 24px 1fr !important; }
     .toolkit-row input:last-child { grid-column: 2; }
 
@@ -885,10 +885,10 @@ function showSection(id) {
     .toolkit-row { grid-template-columns: 1fr !important; }
     .toolkit-row .toolkit-num { display: none; }
 
-    /* Edu tab bar — tighten on very small screens */
+    /* Edu tab bar  -  tighten on very small screens */
     .edu-tab { font-size: 11px; padding: 8px 4px; }
 
-    /* Cup diagram SVG — scale down on small screens */
+    /* Cup diagram SVG  -  scale down on small screens */
     #cup-diagram-svg svg { width: 100%; height: auto; }
   }
 
@@ -1111,6 +1111,11 @@ function showSection(id) {
     <button class="btn-primary" onclick="(function(){document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.getElementById('sec-disclosure').classList.add('active');window.scrollTo(0,0)})()">Begin &rarr;</button>
     <p class="cover-note">For women and gender diverse individuals 18+ · ADHD diagnosed, exploring, or simply curious about how your nervous system works</p>
     <p class="cover-copyright">© 2026 ADHD and Her · Personal use only · Not for redistribution</p>
+    <!-- Welcome back banner  -  shown only if saved session exists -->
+    <div id="welcome-back-banner" style="display:none; position:relative; z-index:10; margin-top:24px; background:rgba(255,255,255,0.12); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.2); border-radius:var(--radius-lg); padding:16px 24px; text-align:center;">
+      <p style="font-size:14px; color:rgba(250,249,247,0.9); margin:0 0 12px; line-height:1.5;">Welcome back. Want to continue where you left off?</p>
+      <button onclick="restoreFromStorage()" style="background:var(--sage); color:var(--navy); border:none; padding:10px 24px; border-radius:100px; font-family:'Inter',sans-serif; font-size:13px; font-weight:500; cursor:pointer;">Yes, restore my results →</button>
+    </div>
   </div>
 </div>
 
@@ -1244,7 +1249,7 @@ function showSection(id) {
     <div class="section-eyebrow">Before you begin</div>
     <h2>Everyone has sensory <em>preferences</em></h2>
     <p class="lead">This is an invitation to explore how your nervous system works, with curiosity, not judgment. There are no right or wrong answers here. Everything you notice is useful information.</p>
-    <p style="font-size:14px; color:var(--ink-mid); line-height:1.75; margin-bottom:32px;">If you have ever felt too much, not enough, or just wired differently to the people around you, you are not imagining it. Research consistently shows that people with ADHD experience the sensory world differently than average. This can show up as being more easily overwhelmed by sensory input, needing more of it to feel alert and focused, or both at the same time. Understanding how your nervous system takes in and responds to sensory input is genuinely useful — and it is one of the most accessible places to start. It is not the whole picture. Sleep, stress, relationships, hormones, and emotional load all shape your nervous system too. But sensory input is something you can actually do something about, day to day. This questionnaire is a starting point.</p>
+    <p style="font-size:14px; color:var(--ink-mid); line-height:1.75; margin-bottom:32px;">If you have ever felt too much, not enough, or just wired differently to the people around you, you are not imagining it. Research consistently shows that people with ADHD experience the sensory world differently than average. This can show up as being more easily overwhelmed by sensory input, needing more of it to feel alert and focused, or both at the same time. Understanding how your nervous system takes in and responds to sensory input is genuinely useful  -  and it is one of the most accessible places to start. It is not the whole picture. Sleep, stress, relationships, hormones, and emotional load all shape your nervous system too. But sensory input is something you can actually do something about, day to day. This questionnaire is a starting point.</p>
 
     <div class="nav-row">
       <button class="btn-back" onclick="showSection('sec-video')">← Back</button>
@@ -1434,7 +1439,7 @@ function showSection(id) {
         <div class="domain-header-text">
           <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-light); margin-bottom:4px">Domain 4 of 8</div>
           <h3>Smell and taste</h3>
-          <p class="domain-desc">Smell and taste are closely linked sensory systems that affect appetite, food choices, social comfort, and how safe an environment feels. Both are deeply connected to emotion and memory — which is why a particular smell can shift how your body feels almost instantly.</p>
+          <p class="domain-desc">Smell and taste are closely linked sensory systems that affect appetite, food choices, social comfort, and how safe an environment feels. Both are deeply connected to emotion and memory  -  which is why a particular smell can shift how your body feels almost instantly.</p>
         </div>
       </div>
       <div class="domain-questions">
@@ -1659,7 +1664,7 @@ function showSection(id) {
           </div>
         </div>
         <div class="q-row">
-          <p class="q-text">Being around other people — even casually, in the background — helps me feel more alert, engaged, or energised. Solitude for long periods leaves me flat or unsettled.</p>
+          <p class="q-text">Being around other people  -  even casually, in the background  -  helps me feel more alert, engaged, or energised. Solitude for long periods leaves me flat or unsettled.</p>
           <div class="q-options">
             <div class="q-option"><input type="radio" name="se3" value="1" id="se3a"><label for="se3a">Almost never</label></div>
             <div class="q-option"><input type="radio" name="se3" value="2" id="se3b"><label for="se3b">Sometimes</label></div>
@@ -1668,7 +1673,7 @@ function showSection(id) {
           </div>
         </div>
         <div class="q-row">
-          <p class="q-text">I naturally gravitate toward busy or social environments — cafés, shared spaces, being around others — rather than quiet or solitary ones.</p>
+          <p class="q-text">I naturally gravitate toward busy or social environments  -  cafés, shared spaces, being around others  -  rather than quiet or solitary ones.</p>
           <div class="q-options">
             <div class="q-option"><input type="radio" name="se4" value="1" id="se4a"><label for="se4a">Almost never</label></div>
             <div class="q-option"><input type="radio" name="se4" value="2" id="se4b"><label for="se4b">Sometimes</label></div>
@@ -1713,22 +1718,22 @@ function showSection(id) {
     <!-- ── PART 1: WINDOW OF CAPACITY ── -->
     <div class="edu-block">
       <h3>Your window of capacity</h3>
-      <p>Most of us have felt it. That agitated, can't-settle feeling when everything is too loud and too much. Or the heaviness that makes getting off the couch feel genuinely impossible — not lazy, just completely flat. Your nervous system was doing something specific in both of those moments. This framework puts words to it.</p>
+      <p>Most of us have felt it. That agitated, can't-settle feeling when everything is too loud and too much. Or the heaviness that makes getting off the couch feel genuinely impossible  -  not lazy, just completely flat. Your nervous system was doing something specific in both of those moments. This framework puts words to it.</p>
 
       <p>Your nervous system moves between three energy states throughout the day. This is not dysregulation. It is how the nervous system is designed.</p>
 
-      <p>The first is your <strong>optimal energy zone</strong> — inside your window of capacity. You feel like yourself here. Present, grounded, focused, connected, and safe. Able to think and respond without everything feeling like effort.</p>
+      <p>The first is your <strong>optimal energy zone</strong>  -  inside your window of capacity. You feel like yourself here. Present, grounded, focused, connected, and safe. Able to think and respond without everything feeling like effort.</p>
 
-      <p>The second is a <strong>high-energy, hyperactivated state</strong> — above your window. Your body is on alert. Chest tight, jaw clenched, thoughts running fast. Your nervous system is mobilising for action. It has sensed demand or threat and is preparing you to meet it.</p>
+      <p>The second is a <strong>high-energy, hyperactivated state</strong>  -  above your window. Your body is on alert. Chest tight, jaw clenched, thoughts running fast. Your nervous system is mobilising for action. It has sensed demand or threat and is preparing you to meet it.</p>
 
-      <p>The third is a <strong>low-energy, hypoactivated state</strong> — below your window. Your body is pulling back. Numb, flat, foggy, fatigued, and disconnected. Conserving energy as protection. Your system does this for a reason.</p>
+      <p>The third is a <strong>low-energy, hypoactivated state</strong>  -  below your window. Your body is pulling back. Numb, flat, foggy, fatigued, and disconnected. Conserving energy as protection. Your system does this for a reason.</p>
 
       <div style="margin:20px 0 24px;">
           <div style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
             <div style="background:var(--blush-pale); padding:16px 20px; border-bottom:1px solid var(--border);">
               <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#7a5548; margin-bottom:4px">Above your window</div>
-              <div style="font-size:14px; font-weight:500; color:#6a3838; margin-bottom:2px">Hyperactivated — high energy state</div>
-              <div style="font-size:13px; color:#7a5548">Racing, restless, reactive, on edge, overwhelmed. Useful for urgency and performance — difficult when stuck here.</div>
+              <div style="font-size:14px; font-weight:500; color:#6a3838; margin-bottom:2px">Hyperactivated  -  high energy state</div>
+              <div style="font-size:13px; color:#7a5548">Racing, restless, reactive, on edge, overwhelmed. Useful for urgency and performance  -  difficult when stuck here.</div>
             </div>
             <div style="background:var(--sage-pale); padding:20px 20px; border-bottom:1px solid var(--border);">
               <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#3a5852; margin-bottom:4px">Inside your window</div>
@@ -1737,17 +1742,17 @@ function showSection(id) {
             </div>
             <div style="background:var(--blue-pale); padding:16px 20px;">
               <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#2e4b62; margin-bottom:4px">Below your window</div>
-              <div style="font-size:14px; font-weight:500; color:#1f3040; margin-bottom:2px">Hypoactivated — low energy state</div>
-              <div style="font-size:13px; color:#2e4b62">Heavy, flat, foggy, withdrawn, numb. Useful for rest and recovery — difficult when stuck here.</div>
+              <div style="font-size:14px; font-weight:500; color:#1f3040; margin-bottom:2px">Hypoactivated  -  low energy state</div>
+              <div style="font-size:13px; color:#2e4b62">Heavy, flat, foggy, withdrawn, numb. Useful for rest and recovery  -  difficult when stuck here.</div>
             </div>
           </div>
         </div>
 
-      <p>Moving between all three states is normal — multiple times a day. The problem is not the states themselves. It is getting stuck outside your window for too long, or finding yourself tipping outside it more quickly and more often than feels manageable. Staying activated long after the threat or demand has passed. Or dropping into that low, flat place and not being able to climb back out.</p>
+      <p>Moving between all three states is normal  -  multiple times a day. The problem is not the states themselves. It is getting stuck outside your window for too long, or finding yourself tipping outside it more quickly and more often than feels manageable. Staying activated long after the threat or demand has passed. Or dropping into that low, flat place and not being able to climb back out.</p>
 
-      <p>Regulation is not about staying inside your window all the time. It is the ability to move between states with more awareness — and to notice when you have been stuck somewhere longer than you would like.</p>
+      <p>Regulation is not about staying inside your window all the time. It is the ability to move between states with more awareness  -  and to notice when you have been stuck somewhere longer than you would like.</p>
 
-      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7; margin-top:4px"><em>Note: fawn responses — appeasing, people-pleasing, or over-accommodating to reduce perceived threat — can appear in either state. They are the nervous system trying to create safety through behaviour rather than fight, flight, or shutdown.</em></p>
+      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7; margin-top:4px"><em>Note: fawn responses  -  appeasing, people-pleasing, or over-accommodating to reduce perceived threat  -  can appear in either state. They are the nervous system trying to create safety through behaviour rather than fight, flight, or shutdown.</em></p>
     </div>
 
     <!-- ── ADHD + HORMONES BRIDGE ── -->
@@ -1756,10 +1761,10 @@ function showSection(id) {
       <p>For women with ADHD, moving between states and finding the way back is often more pronounced. The ADHD nervous system is not broken, but it is wired differently. The same neurological differences that affect attention and executive function also affect how quickly sensory and emotional input shifts the system outside its window.</p>
       <p>Hormones compound this further. Oestrogen supports dopamine availability in the brain. For women with ADHD, whose dopamine regulation is already different, a drop in oestrogen means a drop in dopamine too. This is why the week before menstruation and perimenopause can feel so significant: it is not just one system under strain, it is two. Sensory sensitivity increases, the window narrows, and executive function becomes harder still. What feels manageable on a Tuesday in the first half of your cycle can feel genuinely overwhelming on the same Tuesday the week before your period. This is not fragility. It is physiology. The tools and tips section covers cycle-specific supports in detail.</p>
 
-      <p>This is also why understanding your sensory preferences is not just interesting — it is practical.</p>
+      <p>This is also why understanding your sensory preferences is not just interesting  -  it is practical.</p>
     </div>
 
-    <p style="font-size:11px; color:var(--ink-light); font-style:italic; margin-top:32px; margin-bottom:8px; padding:10px 14px; border-left:2px solid var(--border); line-height:1.6"><sup>1</sup> This tool uses the term "window of capacity," adapted by Linda Thai from Dan Siegel's window of tolerance concept. Capacity feels more accurate for this context — it is dynamic, not fixed. See lindathai.com</p>
+    <p style="font-size:11px; color:var(--ink-light); font-style:italic; margin-top:32px; margin-bottom:8px; padding:10px 14px; border-left:2px solid var(--border); line-height:1.6"><sup>1</sup> This tool uses the term "window of capacity," adapted by Linda Thai from Dan Siegel's window of tolerance concept. Capacity feels more accurate for this context  -  it is dynamic, not fixed. See lindathai.com</p>
       <div class="nav-row" style="margin-top:32px;">
         <button class="btn-back" onclick="showSection('sec-results')">← Back to results</button>
         <button class="btn-next" onclick="showEduTab(2)">Next: Sensory →</button>
@@ -1772,13 +1777,13 @@ function showSection(id) {
     <div class="edu-block" style="margin-top:20px">
       <h3>Your sensory preferences</h3>
 
-      <p style="font-size:15px; color:var(--ink); line-height:1.75; margin-bottom:20px">So your nervous system shifts between states. Now here is what shapes that shifting — and why sensory input is so central to it.</p>
+      <p style="font-size:15px; color:var(--ink); line-height:1.75; margin-bottom:20px">So your nervous system shifts between states. Now here is what shapes that shifting  -  and why sensory input is so central to it.</p>
 
       <div style="background:var(--sage-pale); border-radius:var(--radius); padding:16px 20px; margin-bottom:16px; border-left:3px solid var(--sage);">
         <p style="font-size:14px; color:var(--ink-mid); margin:0; line-height:1.75">Everyone has sensory preferences. They are not a sign that something is wrong with you. They are simply information about how your nervous system is wired, and understanding them is one of the most practical things you can do for your own wellbeing.</p>
       </div>
 
-      <p>Your sensory system and your nervous system state are not two separate things. The same neural pathways that process sensory input also regulate how activated or calm you feel. When your sensory environment does not match what your nervous system needs — too much, too little, or the wrong kind for where you are right now — it adds to the activation load your system is already managing. It is worth saying clearly: sensory input is not the only thing that shifts your nervous system. Sleep, stress, emotional load, relationships, and hormones all play a role. This tool focuses on the sensory piece because it has a significant impact on nervous system regulation and is often underrecognised.</p>
+      <p>Your sensory system and your nervous system state are not two separate things. The same neural pathways that process sensory input also regulate how activated or calm you feel. When your sensory environment does not match what your nervous system needs  -  too much, too little, or the wrong kind for where you are right now  -  it adds to the activation load your system is already managing. It is worth saying clearly: sensory input is not the only thing that shifts your nervous system. Sleep, stress, emotional load, relationships, and hormones all play a role. This tool focuses on the sensory piece because it has a significant impact on nervous system regulation and is often underrecognised.</p>
 
       <p>This is where the two frameworks meet. Your sensory preferences tell you something useful in both directions: what tends to shift your nervous system outside your window and keep it there, and what can help you shift back.</p>
     </div>
@@ -1786,7 +1791,7 @@ function showSection(id) {
     <!-- ── CUP ANALOGY ── -->
     <div class="edu-block">
       <h3>The Sensory Cup Analogy</h3>
-      <p>Think of each of your sensory systems as having its own cup. The size of that cup is your sensory threshold — how much input that sensory system needs before it feels satisfied, or before it overflows. A large cup means you need a lot of input to feel settled (sensory seeking). A small cup means your system fills quickly and overflows easily (sensory sensitive). It is common for women with ADHD to have a mix of both across different systems — which is why you might crave movement and noise in one context and be easily overwhelmed by sound or light in another. Both are real. Both make sense.</p>
+      <p>Think of each of your sensory systems as having its own cup. The size of that cup is your sensory threshold  -  how much input that sensory system needs before it feels satisfied, or before it overflows. A large cup means you need a lot of input to feel settled (sensory seeking). A small cup means your system fills quickly and overflows easily (sensory sensitive). It is common for women with ADHD to have a mix of both across different systems  -  which is why you might crave movement and noise in one context and be easily overwhelmed by sound or light in another. Both are real. Both make sense.</p>
 
       <div id="cup-diagram-svg" style="margin: 28px 0;">
           <svg width="100%" viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg">
@@ -1860,7 +1865,7 @@ function showSection(id) {
           </svg>
         </div>
 
-      <p>Your cup size also shifts day to day. Masking, poor sleep, hormonal changes, or emotional stress can all temporarily lower your threshold — meaning sensory input that usually feels manageable can suddenly feel like too much. This is not inconsistency. It is your nervous system communicating its current capacity.</p>
+      <p>Your cup size also shifts day to day. Masking, poor sleep, hormonal changes, or emotional stress can all temporarily lower your threshold  -  meaning sensory input that usually feels manageable can suddenly feel like too much. This is not inconsistency. It is your nervous system communicating its current capacity.</p>
     </div>
 
     <div class="edu-block">
@@ -1871,35 +1876,35 @@ function showSection(id) {
 
       <p>Sensory input that does not match what your nervous system needs can add to the activation load your system is already managing, and is often part of what keeps you stuck outside your window.</p>
 
-      <p>Your sensory preferences can also point you toward the inputs and strategies that help your nervous system shift — down from a high-energy state, or up from a low-energy one.</p>
+      <p>Your sensory preferences can also point you toward the inputs and strategies that help your nervous system shift  -  down from a high-energy state, or up from a low-energy one.</p>
 
       <p style="margin-bottom:20px">The direction matters. In a high-energy state, you are looking to discharge and then settle. In a low-energy state, you are looking to build activation and re-engage. Knowing your state first helps you choose a tool that actually matches what your nervous system needs in that moment.</p>
 
       <div style="margin-bottom:20px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
 
-        <!-- Above window — blush -->
+        <!-- Above window  -  blush -->
         <div style="background:var(--blush-pale); padding:16px 20px; border-bottom:1px solid var(--border);">
           <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#7a5548; margin-bottom:6px">↓ Down-regulate &nbsp;·&nbsp; Above your window</div>
-          <div style="font-size:14px; font-weight:600; color:#6a4840; margin-bottom:4px">Hyperactivated — high energy state</div>
-          <p style="font-size:13px; color:#7a5548; margin:0; line-height:1.6">Your nervous system sometimes needs to discharge that high energy before it can settle — not go straight to calm.</p>
+          <div style="font-size:14px; font-weight:600; color:#6a4840; margin-bottom:4px">Hyperactivated  -  high energy state</div>
+          <p style="font-size:13px; color:#7a5548; margin:0; line-height:1.6">Your nervous system sometimes needs to discharge that high energy before it can settle  -  not go straight to calm.</p>
         </div>
 
-        <!-- Inside window — sage -->
+        <!-- Inside window  -  sage -->
         <div style="background:var(--sage-pale); padding:16px 20px; border-bottom:1px solid var(--border);">
           <div style="font-size:14px; font-weight:600; color:#2a4840; margin-bottom:6px">Inside your window</div>
           <p style="font-size:13px; color:#3a5852; margin:0; line-height:1.6">Present, connected, able to think and respond. This is where the tools are aiming to bring you.</p>
         </div>
 
-        <!-- Below window — blue -->
+        <!-- Below window  -  blue -->
         <div style="background:var(--blue-pale); padding:16px 20px;">
           <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--navy-mid); margin-bottom:6px">↑ Up-regulate &nbsp;·&nbsp; Below your window</div>
-          <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:4px">Hypoactivated — low energy state</div>
+          <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:4px">Hypoactivated  -  low energy state</div>
           <p style="font-size:13px; color:var(--navy-mid); margin:0; line-height:1.6">Gently build activation and re-engage.</p>
         </div>
 
       </div>
 
-      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7">Choose based on where you are right now. A tool that works for someone else may not work for you — which is exactly why understanding your own sensory preferences matters.</p>
+      <p style="font-size:13px; color:var(--ink-mid); line-height:1.7">Choose based on where you are right now. A tool that works for someone else may not work for you  -  which is exactly why understanding your own sensory preferences matters.</p>
     </div>
 
       <div class="nav-row" style="margin-top:32px;">
@@ -1924,7 +1929,7 @@ function showSection(id) {
 
         <p>On a typical workday, Jane sits through four hours of back-to-back meetings in a bright open-plan office. She has had limited opportunity to move her body, no deep pressure input, and has been managing constant auditory and visual stimulation that is difficult for her to filter. By mid-afternoon, Jane notices she feels irritable, unsettled, anxious, and fidgety. She cannot sit still and is snapping at small things.</p>
 
-        <p>She pauses and checks in with herself. Using her interoceptive awareness — her ability to notice sensations inside her body — she notices: racing thoughts, extra fidgeting, easily frustrated, a tight chest, and a tense jaw. She recognises these as signs that her nervous system has shifted into a <strong>hyperactivated state</strong> — a high-energy place. She needs to down-regulate. Using her sensory toolkit as a guide, she chooses:</p>
+        <p>She pauses and checks in with herself. Using her interoceptive awareness  -  her ability to notice sensations inside her body  -  she notices: racing thoughts, extra fidgeting, easily frustrated, a tight chest, and a tense jaw. She recognises these as signs that her nervous system has shifted into a <strong>hyperactivated state</strong>  -  a high-energy place. She needs to down-regulate. Using her sensory toolkit as a guide, she chooses:</p>
 
         <div style="background:var(--blush-pale); border-radius:var(--radius); padding:16px 20px; margin:16px 0; border:1px solid var(--blush);">
           <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#7a5548; margin-bottom:10px">Jane's down-regulation tools</div>
@@ -1938,7 +1943,7 @@ function showSection(id) {
 
         <p>By the time Jane arrives home, she can feel her nervous system beginning to shift. She is not fully back inside her window yet, but she is no longer stuck in that high-energy place. That small shift is enough to arrive differently.</p>
 
-        <p style="font-size:13px; color:var(--ink-light); font-style:italic">Jane did not need to do everything. She noticed her state, identified what her nervous system was responding to, chose a few tools that matched, and felt the shift begin. That is what regulation looks like in practice — and it started with knowing herself a little better.</p>
+        <p style="font-size:13px; color:var(--ink-light); font-style:italic">Jane did not need to do everything. She noticed her state, identified what her nervous system was responding to, chose a few tools that matched, and felt the shift begin. That is what regulation looks like in practice  -  and it started with knowing herself a little better.</p>
       </div>
 
       <div class="nav-row" style="margin-top:32px;">
@@ -1970,16 +1975,7 @@ function showSection(id) {
 
     <div id="pattern-narrative" style="margin-top: 32px;"></div>
 
-    <!-- Bookmark button -->
-    <div id="bookmark-bar" style="margin-top:24px; background:var(--linen); border-radius:var(--radius-lg); padding:20px 24px; border:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-      <div>
-        <div style="font-size:13px; font-weight:500; color:var(--navy); margin-bottom:4px;">Save your place</div>
-        <div style="font-size:13px; color:var(--ink-mid); line-height:1.5;">Copy a link to your results so you can return to them from any device.</div>
-      </div>
-      <button onclick="bookmarkResults()" id="bookmark-btn" style="background:var(--navy-mid); color:var(--off-white); border:none; padding:12px 24px; border-radius:100px; font-family:'Inter',sans-serif; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; flex-shrink:0;">Bookmark this for later</button>
-    </div>
-
-    <p style="font-size:15px; color:var(--ink-mid); line-height:1.75; margin-top:32px;">Before your tools, there are a few short pages worth reading. They will help your results make sense — and make it much easier to know which tools to reach for, and when.</p>
+    <p style="font-size:15px; color:var(--ink-mid); line-height:1.75; margin-top:32px;">Before your tools, there are a few short pages worth reading. They will help your results make sense  -  and make it much easier to know which tools to reach for, and when.</p>
 
         <div class="nav-row">
       <button class="btn-back" onclick="showSection('sec-assess')">← Back to questionnaire</button>
@@ -2054,7 +2050,7 @@ function showSection(id) {
     <div class="edu-block" style="border-top:3px solid var(--blue-dust)">
       <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--navy-mid); margin-bottom:10px">Way 1: in the moment</div>
       <h3>Noticing and responding to state shifts</h3>
-      <p>When you notice your nervous system has shifted — or is starting to shift — your sensory environment may be part of what contributed to that. It may not be the only factor, and sometimes it will not be the main one. But it is often a thread worth pulling. Your sensory preferences can also point you toward what might help you shift back. This is not a formula. Your interoceptive signals, the context you are in, and how much energy, time, and practical access you have in the moment all matter too.</p>
+      <p>When you notice your nervous system has shifted  -  or is starting to shift  -  your sensory environment may be part of what contributed to that. It may not be the only factor, and sometimes it will not be the main one. But it is often a thread worth pulling. Your sensory preferences can also point you toward what might help you shift back. This is not a formula. Your interoceptive signals, the context you are in, and how much energy, time, and practical access you have in the moment all matter too.</p>
       <p>The tools and tips in the previous section serve both layers. Some are in-the-moment tools you can reach for when you notice a state shift. Others are proactive practices and environmental adjustments that reduce the load your nervous system carries day to day. Both matter.</p>
       <div class="layer-cards-grid" style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
         <div style="padding:14px 16px; background:var(--blush-pale); border-radius:var(--radius); border:1px solid var(--blush);">
@@ -2078,7 +2074,7 @@ function showSection(id) {
       <div class="layer2-grid" style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Environmental design</div>
-          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Lighting, sound, texture, and space — shaped around your sensory preferences</p>
+          <p style="font-size:12px; color:var(--ink-mid); margin:0; line-height:1.5">Lighting, sound, texture, and space  -  shaped around your sensory preferences</p>
         </div>
         <div style="padding:12px 14px; background:var(--cream); border:1px solid var(--border); border-radius:var(--radius);">
           <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px">Daily nervous system inputs</div>
@@ -2096,7 +2092,7 @@ function showSection(id) {
     </div>
 
     <div style="margin-top:24px; padding:20px 24px; background:var(--blue-pale); border-radius:var(--radius); border:1px solid var(--blue-light);">
-      <p style="font-size:14px; color:var(--navy); line-height:1.75; margin:0 0 14px">An occupational therapist who understands ADHD and sensory processing can help you go deeper — exploring your results in the context of your actual life, environment, relationships, and daily demands.</p>
+      <p style="font-size:14px; color:var(--navy); line-height:1.75; margin:0 0 14px">An occupational therapist who understands ADHD and sensory processing can help you go deeper  -  exploring your results in the context of your actual life, environment, relationships, and daily demands.</p>
     </div>
 
     <p style="font-size:14px; color:var(--ink-light); text-align:center; margin-top:28px; font-style:italic;">In the next section, you'll see what some of these tools look like in real life.</p>
@@ -2119,7 +2115,7 @@ function showSection(id) {
   <div class="page-wrap" style="max-width:680px">
     <div class="section-eyebrow">Shelley's toolkit in action</div>
     <h2>Seeing what regulation <em>actually looks like</em></h2>
-    <p class="lead" style="margin-bottom:24px">You've just mapped the theory. Now here's what it looks like in real life. In this video, I share my own go-to tools for both up-regulation and down-regulation — grounded in my specific sensory preferences. Not a prescription for you, just a real example of what it can look like when you are getting to know your sensory preferences and exploring shifting nervous system states.</p>
+    <p class="lead" style="margin-bottom:24px">You've just mapped the theory. Now here's what it looks like in real life. In this video, I share my own go-to tools for both up-regulation and down-regulation  -  grounded in my specific sensory preferences. Not a prescription for you, just a real example of what it can look like when you are getting to know your sensory preferences and exploring shifting nervous system states.</p>
 
     <!-- ── VIDEO PLACEHOLDER ──
          To add your video: replace the src below with your Vimeo embed URL.
@@ -2173,7 +2169,7 @@ function showSection(id) {
         <p>Completed on <span id="ws-date"></span></p>
       </div>
       <div class="worksheet-body">
-        <p style="font-size:14px; font-weight:600; color:#5a3830; margin-bottom:20px; padding:12px 16px; background:var(--blush-pale); border-radius:8px; border-left:3px solid var(--blush);">💾 Fill in your answers below, then download your full results and toolkit as a PDF from the final page. Your answers are not stored anywhere — download before closing this tab.</p>
+        <p style="font-size:14px; font-weight:600; color:#5a3830; margin-bottom:20px; padding:12px 16px; background:var(--blush-pale); border-radius:8px; border-left:3px solid var(--blush);">💾 Fill in your answers below, then download your full results and toolkit as a PDF from the final page. Your answers are not stored anywhere  -  download before closing this tab.</p>
 
         <div class="ws-section">
           <div class="ws-section-title">My sensory patterns</div>
@@ -2195,7 +2191,7 @@ function showSection(id) {
         <div class="ws-section">
           <div class="ws-section-title">My window of capacity: what I notice</div>
           <div style="background:var(--linen); border-radius:var(--radius); padding:14px 20px; margin-bottom:16px; border:1px solid var(--border);">
-            <p style="font-size:13px; color:var(--ink-mid); margin:0; line-height:1.6"><strong style="color:var(--ink)">Tip:</strong> To identify your state, pause and notice your feelings, thoughts, behaviours, and sensations in the moment. High energy, activated, reactive, or overwhelmed — you are likely in a hyperactivated state, above your window. Low energy, flat, numb, or foggy — you are likely in a hypoactivated state, below your window.</p>
+            <p style="font-size:13px; color:var(--ink-mid); margin:0; line-height:1.6"><strong style="color:var(--ink)">Tip:</strong> To identify your state, pause and notice your feelings, thoughts, behaviours, and sensations in the moment. High energy, activated, reactive, or overwhelmed  -  you are likely in a hyperactivated state, above your window. Low energy, flat, numb, or foggy  -  you are likely in a hypoactivated state, below your window.</p>
           </div>
           <div class="ws-window-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
             <div class="ws-field" style="margin-bottom:0">
@@ -2298,7 +2294,7 @@ function showSection(id) {
     </div>
 
     <div class="print-bar">
-      <p>You can download your completed results and toolkit at the end. Your download will open in a new tab so you don't lose your results.</p>
+      <p>Download your completed results and toolkit at the end. Your download will open in a new tab so you don't lose your results.</p>
     </div>
 
     <!-- CALL TO ACTION -->
@@ -2336,7 +2332,7 @@ function showSection(id) {
         </div>
         <div style="display:flex; gap:12px; align-items:flex-start;">
           <span style="color:var(--sage); font-size:18px; flex-shrink:0;">✓</span>
-          <p style="font-size:14px; color:var(--ink-mid); margin:0; line-height:1.6">An understanding of how your sensory preferences affect your nervous system state — and what to do when it shifts</p>
+          <p style="font-size:14px; color:var(--ink-mid); margin:0; line-height:1.6">An understanding of how your sensory preferences affect your nervous system state  -  and what to do when it shifts</p>
         </div>
         <div style="display:flex; gap:12px; align-items:flex-start;">
           <span style="color:var(--sage); font-size:18px; flex-shrink:0;">✓</span>
@@ -2349,17 +2345,17 @@ function showSection(id) {
 
     <!-- Download card -->
     <div style="background:var(--navy); border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:32px; text-align:center;">
-      <p style="font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--blue-light); margin-bottom:12px">Save your results</p>
-      <p style="font-size:17px; font-family:'Abel',sans-serif; color:var(--cream); line-height:1.4; margin:0 0 8px">Download your results and tools as a PDF.</p>
-      <p style="font-size:13px; color:rgba(250,249,247,0.65); margin:0 0 20px; line-height:1.6">Opens in a new tab so you keep your place here. Save or print from there.</p>
-      <button onclick="downloadPDF()" style="background:var(--sage); color:var(--navy); border:none; padding:14px 36px; border-radius:100px; font-family:'Inter',sans-serif; font-size:15px; font-weight:500; cursor:pointer; transition:all 0.2s;" id="download-btn">Download my results & tools</button>
+      <p style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.12em; color:var(--blue-light); margin-bottom:12px;">Save your results</p>
+      <p style="font-size:17px; font-family:'Abel',sans-serif; color:var(--cream); line-height:1.4; margin:0 0 8px;">Download your full results, tools and toolkit as a PDF.</p>
+      <p style="font-size:13px; color:rgba(250,249,247,0.65); margin:0 0 20px; line-height:1.6;">Your complete personalised guide  -  results, education, tools and worksheet. Best saved on desktop.</p>
+      <button onclick="downloadPDF()" id="download-btn" style="background:var(--sage); color:var(--navy); border:none; padding:14px 36px; border-radius:100px; font-family:'Inter',sans-serif; font-size:15px; font-weight:500; cursor:pointer; transition:all 0.2s;">Download my results & tools</button>
     </div>
 
     <!-- Instagram / next steps card -->
     <div style="background:var(--sage-pale); border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:32px; border:1.5px solid var(--sage);">
       <div style="font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--navy-mid, #2e4b62); margin-bottom:12px">What's next for you</div>
       <p style="font-size:22px; font-family:'Abel',sans-serif; color:var(--navy); line-height:1.3; margin:0 0 14px">This is just the beginning.</p>
-      <p style="font-size:15px; color:var(--navy); font-family:'Inter',sans-serif; line-height:1.7; margin:0 0 20px">This tool is one part of a growing library of resources for women with ADHD who want to understand their nervous system — and actually use that understanding in everyday life. New tools, guides, and resources are on the way. The best place to stay across what's coming is Instagram.</p>
+      <p style="font-size:15px; color:var(--navy); font-family:'Inter',sans-serif; line-height:1.7; margin:0 0 20px">This tool is one part of a growing library of resources for women with ADHD who want to understand their nervous system  -  and actually use that understanding in everyday life. New tools, guides, and resources are on the way. The best place to stay across what's coming is Instagram.</p>
       <a href="https://www.instagram.com/adhd.and.her/" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:var(--navy-mid, #2e4b62); color:white; padding:13px 28px; border-radius:100px; font-size:14px; font-weight:500; text-decoration:none; font-family:'Inter',sans-serif;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
         Follow @adhd.and.her →
@@ -2488,6 +2484,12 @@ function showSection(id) {
   if (id === 'sec-strategies' && typeof userResults !== 'undefined' && userResults) {
     renderStrategies(userResults);
   }
+  if (id === 'sec-closing') {
+    try {
+      const sent = localStorage.getItem('adhd_email_sent');
+      if (typeof updateClosingScreen === 'function') updateClosingScreen(!!sent);
+    } catch(e) {}
+  }
 }
 
 function showStratTab(id) {
@@ -2600,8 +2602,8 @@ function calculateAndShowResults() {
             <span class="score-bar-label">${sensPct}%</span>
           </div>
         </div>
-        <div style="margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-          <span style="font-size:11px;color:var(--ink-light);font-style:italic;white-space:nowrap">Your preference:</span>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+          <span style="font-size:10px;color:var(--ink-light);font-style:italic;">Your preference</span>
           <div class="pattern-badge ${patternBadgeClass(r.pattern)}">${patternLabel(r.pattern)}</div>
         </div>
       </div>`;
@@ -2612,7 +2614,7 @@ function calculateAndShowResults() {
   const highSeeking = results.filter(r => r.pattern === 'seeking' || r.pattern === 'combined');
   const notableResults = results.filter(r => r.pattern !== 'balanced');
 
-  // Build notable names string — handles 1, 2, or more domains gracefully
+  // Build notable names string  -  handles 1, 2, or more domains gracefully
   function buildNotableNames(notable) {
     if (notable.length === 0) return '';
     if (notable.length === 1) return notable[0].name;
@@ -2626,7 +2628,7 @@ function calculateAndShowResults() {
 
   const forwardLine = `<p style="margin-top:10px; font-size:14px; color:var(--ink-light); font-style:italic;">The next few pages will help you make sense of what these results mean in real life.</p>`;
 
-  const lessPronounced = `<p>For the sensory domains that came up as less pronounced, this may mean these senses are having less of an impact on your day-to-day regulation needs right now. Stay curious about them though — they can shift with stress, hormones, sleep, and your environment. You can always return to this tool and redo it over time.</p>`;
+  const lessPronounced = `<p>For the sensory domains that came up as less pronounced, this may mean these senses are having less of an impact on your day-to-day regulation needs right now. Stay curious about them though  -  they can shift with stress, hormones, sleep, and your environment. You can always return to this tool and redo it over time.</p>`;
 
   let narrative = '<div class="pattern-summary-card" style="background:#e8f2f6; border-left:4px solid #2e4b62">';
   narrative += '<h3>Here\'s what we found</h3>';
@@ -2639,13 +2641,13 @@ function calculateAndShowResults() {
 
   if (allLessPronounced) {
     // Scenario 2: everything less pronounced
-    narrative += `<p>Your results came up as less pronounced across most sensory domains — and that's useful information in itself.</p>
-    <p>This may mean your sensory system is more flexible or context-dependent at this stage. That can shift with stress, hormones, sleep, and your environment — so stay curious, and know you can return to this tool and redo it any time.</p>
+    narrative += `<p>Your results came up as less pronounced across most sensory domains  -  and that's useful information in itself.</p>
+    <p>This may mean your sensory system is more flexible or context-dependent at this stage. That can shift with stress, hormones, sleep, and your environment  -  so stay curious, and know you can return to this tool and redo it any time.</p>
     ${forwardLine}`;
   } else if (isCombined) {
     // Scenario 5: mostly combined
     narrative += `${notableLine}
-    <p>Your nervous system appears to be seeking more input in some areas and more sensitive in others — which is actually very common with ADHD.</p>
+    <p>Your nervous system appears to be seeking more input in some areas and more sensitive in others  -  which is actually very common with ADHD.</p>
     ${hasSomeLessPronounced ? lessPronounced : ''}
     ${forwardLine}`;
   } else if (isMostlySeeking) {
@@ -2661,7 +2663,7 @@ function calculateAndShowResults() {
     ${hasSomeLessPronounced ? lessPronounced : ''}
     ${forwardLine}`;
   } else {
-    // Scenario 1: mix — some notable, some less pronounced
+    // Scenario 1: mix  -  some notable, some less pronounced
     narrative += `${notableLine}
     ${hasSomeLessPronounced ? lessPronounced : ''}
     ${forwardLine}`;
@@ -2746,11 +2748,11 @@ function renderStrategies(results) {
   // ── HOME STRATEGIES ──
   // For each flagged domain, provide both a down-regulation and up-regulation
   // domain item. The sensory preference tells us WHICH inputs are effective,
-  // not which direction the person needs to go — both are always relevant.
+  // not which direction the person needs to go  -  both are always relevant.
   const downItems = [];
   const upItems = [];
 
-  // domainItem builds a collapsible domain row (not a card — just title + hidden bullets)
+  // domainItem builds a collapsible domain row (not a card  -  just title + hidden bullets)
   let _domainItemId = 0;
   const domainItem = (icon, title, items) => {
     const id = 'di-' + (++_domainItemId);
@@ -2770,13 +2772,13 @@ function renderStrategies(results) {
   // VESTIBULAR
   if (flagged('vest')) {
     downItems.push(domainItem('🌀','Vestibular',[
-      'Run, dance hard, or shake your whole body first — if the energy feels too big to settle directly, move it through. Then slow it down',
-      'Fast then slow — 10 squats or jumping jacks, then slow it down with gentle arm swings or shoulder rolls. Your nervous system can follow the pace shift down',
-      'Gentle rocking in a chair or while seated — slow, rhythmic vestibular input is one of the most reliable tools for settling once the activation has moved through',
-      'Gentle swaying while standing, or slow walking outdoors — particularly effective after a high-sensory situation to complete the settling',
+      'Run, dance hard, or shake your whole body first  -  if the energy feels too big to settle directly, move it through. Then slow it down',
+      'Fast then slow  -  10 squats or jumping jacks, then slow it down with gentle arm swings or shoulder rolls. Your nervous system can follow the pace shift down',
+      'Gentle rocking in a chair or while seated  -  slow, rhythmic vestibular input is one of the most reliable tools for settling once the activation has moved through',
+      'Gentle swaying while standing, or slow walking outdoors  -  particularly effective after a high-sensory situation to complete the settling',
     ]));
     upItems.push(domainItem('🌀','Vestibular',[
-      'Brisk walk, run, or cycle — alerting vestibular input that shifts a flat or foggy state',
+      'Brisk walk, run, or cycle  -  alerting vestibular input that shifts a flat or foggy state',
       'Mini trampoline or rebounding for 5 to 10 minutes: a highly effective vestibular activator',
       'High-energy yoga flow or gym session in the morning to set your nervous system baseline',
       'Jumping jacks, stair climbing, or dancing to music as a short activation break',
@@ -2786,15 +2788,15 @@ function renderStrategies(results) {
   // PROPRIOCEPTION
   if (flagged('prop')) {
     downItems.push(domainItem('💪','Proprioception',[
-      'Punch a pillow, squeeze a cushion hard, or push both hands firmly against a wall — match the intensity of the high-energy state first, then progressively soften the pressure and slow it down',
-      'Scrunch and wring — squeeze a towel as hard as you can, then slowly release. Repeat until the activation starts to shift',
-      'Weighted blanket during rest or wind-down, or after the activation has discharged — sustained, predictable pressure is organising and settling',
-      'Firm self-massage or a massage roller once the energy has shifted — controlled pressure supports the nervous system to complete the settling',
+      'Punch a pillow, squeeze a cushion hard, or push both hands firmly against a wall  -  match the intensity of the high-energy state first, then progressively soften the pressure and slow it down',
+      'Scrunch and wring  -  squeeze a towel as hard as you can, then slowly release. Repeat until the activation starts to shift',
+      'Weighted blanket during rest or wind-down, or after the activation has discharged  -  sustained, predictable pressure is organising and settling',
+      'Firm self-massage or a massage roller once the energy has shifted  -  controlled pressure supports the nervous system to complete the settling',
     ]));
     upItems.push(domainItem('💪','Proprioception',[
-      'Push, pull, and carry activities — carrying shopping, climbing stairs, resistance exercise all provide organising proprioceptive input',
+      'Push, pull, and carry activities  -  carrying shopping, climbing stairs, resistance exercise all provide organising proprioceptive input',
       'Gym session, bodyweight exercise, or resistance bands to shift a flat or foggy nervous system state',
-      'Crunchy or chewy foods — jaw proprioception is a highly accessible activating input',
+      'Crunchy or chewy foods  -  jaw proprioception is a highly accessible activating input',
       'Wall push-ups, carrying a heavy bag, or deep pressure to self before a demanding task',
     ]));
   }
@@ -2802,29 +2804,29 @@ function renderStrategies(results) {
   // INTEROCEPTION
   if (flagged('intero')) {
     downItems.push(domainItem('🫀','Interoception',[
-      'Extended exhale breathing: breathe in for 4 counts, out for 6 to 8 — slows the nervous system reliably',
+      'Extended exhale breathing: breathe in for 4 counts, out for 6 to 8  -  slows the nervous system reliably',
       'Body scan practice: lying down, slowly bringing attention to each area without judgment',
-      'Name sensations before emotions — notice "tightness in my chest" before deciding what it means',
+      'Name sensations before emotions  -  notice "tightness in my chest" before deciding what it means',
       'Grounding: feet flat on the floor, hands on something solid, when internal signals feel overwhelming',
     ]));
     upItems.push(domainItem('🫀','Interoception',[
       'Set timed reminders to check in: "Am I hungry? Thirsty? Too hot? Tired?" Noticing subtle signals early prevents crashing later',
-      'Strong physical sensations — a cold splash of water, walking barefoot, firm self-massage — can bring body awareness online when you feel flat or disconnected',
+      'Strong physical sensations  -  a cold splash of water, walking barefoot, firm self-massage  -  can bring body awareness online when you feel flat or disconnected',
       'Keep easy, preferred foods visible and accessible. Eating regularly supports a regulated energy state',
-      'Morning temperature ritual — warm shower or cool cloth — to orient your body to the day and build activation',
+      'Morning temperature ritual  -  warm shower or cool cloth  -  to orient your body to the day and build activation',
     ]));
   }
 
   // AUDITORY
   if (flagged('aud')) {
     downItems.push(domainItem('👂','Auditory',[
-      'Hum a slow, low tone — humming activates the vagus nerve directly through vibration in the throat and chest, which signals safety to your nervous system and supports it to settle. Even 60 seconds makes a difference',
-      'Scream-sing in the car or put on something loud and let yourself feel it fully first — then transition to something quieter once the activation has moved through',
-      'Noise-cancelling headphones, earplugs, or ear defenders — creating a quieter sensory environment is one of the most accessible nervous system supports you can build into your day, not just for focus tasks',
+      'Hum a slow, low tone  -  humming activates the vagus nerve directly through vibration in the throat and chest, which signals safety to your nervous system and supports it to settle. Even 60 seconds makes a difference',
+      'Scream-sing in the car or put on something loud and let yourself feel it fully first  -  then transition to something quieter once the activation has moved through',
+      'Noise-cancelling headphones, earplugs, or ear defenders  -  creating a quieter sensory environment is one of the most accessible nervous system supports you can build into your day, not just for focus tasks',
       'Designate at least one low-sound zone in your home that is consistently quiet and predictable',
     ]));
     upItems.push(domainItem('👂','Auditory',[
-      'High-tempo music for activation — your nervous system uses preferred sound to shift out of a flat state',
+      'High-tempo music for activation  -  your nervous system uses preferred sound to shift out of a flat state',
       'Podcasts or audiobooks while doing routine tasks to provide engaging auditory input',
       'Voice calls or conversations to add auditory and social stimulation when energy is low',
       'Intentional soundscapes: design your audio environment rather than defaulting to silence or random noise',
@@ -2834,31 +2836,31 @@ function renderStrategies(results) {
   // VISUAL
   if (flagged('vis')) {
     downItems.push(domainItem('👁️','Visual',[
-      'Soft, warm lighting rather than bright fluorescent or halogen — LED warm white is an accessible swap',
+      'Soft, warm lighting rather than bright fluorescent or halogen  -  LED warm white is an accessible swap',
       'Reduce visual clutter in spaces where you need to focus or feel calm',
       'Dim screens in the evening and during high-load periods to reduce ongoing visual activation',
       'A visually predictable, consistent space at home provides a baseline that does not add to sensory load',
     ]));
     upItems.push(domainItem('👁️','Visual',[
-      'Natural light near a window — both alerting and regulating, more effective than artificial light for shifting a flat state',
+      'Natural light near a window  -  both alerting and regulating, more effective than artificial light for shifting a flat state',
       'Changing your environment or working in a different room provides visual novelty that supports activation',
       'Nature views, art, and gentle movement in your visual field are all effective activation inputs',
-      'A well-lit, visually interesting space helps maintain alert engagement — design it intentionally',
+      'A well-lit, visually interesting space helps maintain alert engagement  -  design it intentionally',
     ]));
   }
 
   // TACTILE
   if (flagged('tact')) {
     downItems.push(domainItem('🤝','Tactile',[
-      'Prioritise clothing comfort — fabric type, seams, tags, and fit affect your nervous system across the whole day',
+      'Prioritise clothing comfort  -  fabric type, seams, tags, and fit affect your nervous system across the whole day',
       'Predictable, firm touch is generally more settling than light or unexpected contact',
       'Weighted blanket, compression clothing, or a firm self-hug during high-load or overwhelming moments',
-      'Keep your sensory environment texturally predictable at home — notice which surfaces and fabrics feel most settling',
+      'Keep your sensory environment texturally predictable at home  -  notice which surfaces and fabrics feel most settling',
     ]));
     upItems.push(domainItem('🤝','Tactile',[
-      'Cold water on hands or face — a fast, accessible tactile input that shifts a flat or foggy state',
+      'Cold water on hands or face  -  a fast, accessible tactile input that shifts a flat or foggy state',
       'Textured objects, kneading, gardening, or tactile fidget tools provide grounding activating input',
-      'Temperature variation — alternating warm and cool — is an effective and low-effort activation tool',
+      'Temperature variation  -  alternating warm and cool  -  is an effective and low-effort activation tool',
       'Strong tactile input before a demanding task: a brisk face wash, rubbing hands together, or a brief cold rinse',
     ]));
   }
@@ -2867,31 +2869,31 @@ function renderStrategies(results) {
   if (flagged('smell')) {
     downItems.push(domainItem('👃','Smell and taste',[
       'Calming scents such as lavender, vanilla, or sandalwood used intentionally during wind-down or high-load periods',
-      'Unscented products to reduce background scent load at home — toiletries, cleaning products, laundry detergent',
-      'Familiar, preferred foods during high-load periods — novelty and strong flavours add sensory demand when stretched',
+      'Unscented products to reduce background scent load at home  -  toiletries, cleaning products, laundry detergent',
+      'Familiar, preferred foods during high-load periods  -  novelty and strong flavours add sensory demand when stretched',
       'Identify your neutral or calming scents and use them deliberately before and during demanding situations',
     ]));
     upItems.push(domainItem('👃','Smell and taste',[
-      'Alerting scents — citrus, peppermint, eucalyptus — are well-researched for supporting alertness and activation',
+      'Alerting scents  -  citrus, peppermint, eucalyptus  -  are well-researched for supporting alertness and activation',
       'Strong preferred flavours: sour, spicy, or crunchy foods provide organising gustatory input throughout the day',
-      'A scent ritual at the start of demanding tasks — a spritz of a preferred energising scent — can support focus and shift a flat state',
-      'Strongly flavoured drinks — sour, bitter, or intensely herbal — used intentionally to shift a flat or low-energy state',
+      'A scent ritual at the start of demanding tasks  -  a spritz of a preferred energising scent  -  can support focus and shift a flat state',
+      'Strongly flavoured drinks  -  sour, bitter, or intensely herbal  -  used intentionally to shift a flat or low-energy state',
     ]));
   }
 
   // SOCIAL
   if (flagged('social')) {
     downItems.push(domainItem('🫶','Social & emotional environment',[
-      'Build in transition time after social situations before engaging with the next demand — even 10 minutes changes the landing',
-      'Low-demand connection — a quiet walk with one person, a message rather than a call — meets connection needs without the same activation cost as group environments',
+      'Build in transition time after social situations before engaging with the next demand  -  even 10 minutes changes the landing',
+      'Low-demand connection  -  a quiet walk with one person, a message rather than a call  -  meets connection needs without the same activation cost as group environments',
       'Naming your recovery need clearly reduces the relational cost: "I need about an hour. Then I am very much here"',
-      'Vent to a trusted person before you try to settle — sometimes the nervous system needs to move the activation through words first. A quick call to offload often makes the settling tools far more accessible afterwards',
+      'Vent to a trusted person before you try to settle  -  sometimes the nervous system needs to move the activation through words first. A quick call to offload often makes the settling tools far more accessible afterwards',
     ]));
     upItems.push(domainItem('🫶','Social & emotional environment',[
-      'Being around people — even passively, in a café or shared space — can shift a flat or foggy state when solitude is not working',
-      'A phone or voice call when energy is low often works better than text — the social signal itself is activating',
+      'Being around people  -  even passively, in a café or shared space  -  can shift a flat or foggy state when solitude is not working',
+      'A phone or voice call when energy is low often works better than text  -  the social signal itself is activating',
       'Body doubling: working alongside another person, in person or virtually, supports focus and lifts a low-energy state',
-      'Reaching out rather than withdrawing when dysregulated may be what your nervous system needs — notice whether connection or solitude actually helps more',
+      'Reaching out rather than withdrawing when dysregulated may be what your nervous system needs  -  notice whether connection or solitude actually helps more',
     ]));
   }
 
@@ -2906,7 +2908,7 @@ function renderStrategies(results) {
         <span class="strat-section-chevron strat-section-chevron-down">▼</span>
       </button>
       <div class="strat-section-body">
-        <p style="font-size:13px;color:var(--ink-mid);margin:0 0 12px;font-style:italic">Down-regulation doesn't always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first — move it through — before it can settle. The tools below reflect both: releasing the charge, and then bringing the energy down.</p>
+        <p style="font-size:13px;color:var(--ink-mid);margin:0 0 12px;font-style:italic">Down-regulation doesn't always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first  -  move it through  -  before it can settle. The tools below reflect both: releasing the charge, and then bringing the energy down.</p>
         ${downItems.join('')}
       </div>
     </div>`;
@@ -2928,7 +2930,7 @@ function renderStrategies(results) {
 
   if (downItems.length === 0 && upItems.length === 0) {
     homeHTML = `<div style="padding:20px;background:var(--cream);border-radius:var(--radius);border:1px solid var(--border);">
-      <p style="font-size:14px;color:var(--ink-mid);line-height:1.7;margin:0">Your questionnaire results did not show strong preferences across most sensory systems. Your sensory experience is relatively balanced across domains. The tools in other tabs — particularly movement, breath, and environment design — are still useful for everyday nervous system support.</p>
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.7;margin:0">Your questionnaire results did not show strong preferences across most sensory systems. Your sensory experience is relatively balanced across domains. The tools in other tabs  -  particularly movement, breath, and environment design  -  are still useful for everyday nervous system support.</p>
     </div>`;
   }
 
@@ -2985,9 +2987,9 @@ function renderStrategies(results) {
     ${card('🌿','Recovery after masking and social demand','',[
       'Naming your recovery need clearly is kinder than withdrawing without explanation: "I need about an hour to decompress. Then I am very much here"',
       'Identify your most effective recovery inputs: solitude, movement, preferred media, creative activity, or sensory comfort',
-      'It is worth gently examining the expectation — your own and others\' — that you should be immediately available after high-demand situations',
+      'It is worth gently examining the expectation  -  your own and others\'  -  that you should be immediately available after high-demand situations',
     ], '')}\n    ${seeking.some(r => r.id === 'social') ? card('🫶','Social connection as regulation','',[
-      'Your nervous system uses social input to feel regulated. This is not neediness or dependence — it is how your system is wired',
+      'Your nervous system uses social input to feel regulated. This is not neediness or dependence  -  it is how your system is wired',
       'Body doubling and co-regulation are research-supported strategies: working alongside others, checking in regularly, or simply having someone nearby can support focus and emotional regulation',
       'Communicating this to close people reframes the dynamic: "I actually feel calmer and more focused when I am around people. Can we work together sometimes?"',
       'Notice whether withdrawing when you feel dysregulated helps or makes things harder. For social-seeking nervous systems, connection is often the more effective regulation tool',
@@ -3024,7 +3026,7 @@ function renderStrategies(results) {
     ${card('🧘','Interoception and emotional awareness','',[
       'Practising naming body sensations before naming emotions builds interoceptive literacy over time: "There is tightness in my chest" before "I am anxious"',
       'Expanding your body vocabulary beyond "stressed" and "fine" supports more nuanced self-awareness: activated, contracted, heavy, spacious, buzzy, flat',
-      'Therapy approaches that work with the body and nervous system rather than talk alone — such as somatic therapy, EMDR, Internal Family Systems, and sensorimotor approaches — are particularly well-suited to this work for ADHD adults',
+      'Therapy approaches that work with the body and nervous system rather than talk alone  -  such as somatic therapy, EMDR, Internal Family Systems, and sensorimotor approaches  -  are particularly well-suited to this work for ADHD adults',
     ], '')}
   </div>`;
 
@@ -3085,7 +3087,7 @@ function renderTop3(results) {
       sensitive: 'Try slow rocking or a gentle walk before a high-demand situation to support your energy level.'
     },
     prop: {
-      seeking: 'Add something crunchy or chewy to your next snack. Take the stairs today, or add a few bodyweight exercises before you leave the house — even five minutes counts.',
+      seeking: 'Add something crunchy or chewy to your next snack. Take the stairs today, or add a few bodyweight exercises before you leave the house  -  even five minutes counts.',
       sensitive: 'Use a weighted blanket or firm cushion during your next rest or wind-down period.'
     },
     intero: {
@@ -3109,7 +3111,7 @@ function renderTop3(results) {
       sensitive: 'Swap one scented product at home for an unscented version this week. Notice any difference in your background sensory load.'
     },
     social: {
-      seeking: 'Try body doubling today — work alongside someone in person or virtually, or move to a café or shared space. Notice whether your focus and energy shift.',
+      seeking: 'Try body doubling today  -  work alongside someone in person or virtually, or move to a café or shared space. Notice whether your focus and energy shift.',
       sensitive: 'Build in 20 minutes of genuine solitude after your next high-demand social situation. This is recovery, not avoidance.'
     }
   };
@@ -3336,10 +3338,12 @@ function fallbackCopy(url, btn) {
 
 function showBookmarkSuccess(btn) {
   const bar = document.getElementById('bookmark-bar');
+  const resultsURL = encodeResultsToURL(userResults);
   bar.innerHTML = `
     <div style="width:100%">
-      <div style="font-size:13px; font-weight:500; color:var(--navy); margin-bottom:6px;">✓ Link copied to clipboard</div>
-      <div style="font-size:13px; color:var(--ink-mid); line-height:1.6; margin-bottom:10px;">Paste it somewhere safe — in your Notes app, a text to yourself, or save it as a browser bookmark. Opening this link will restore your results on any device.</div>
+      <div style="font-size:13px; font-weight:500; color:var(--navy); margin-bottom:8px;">✓ Link copied to clipboard</div>
+      <div style="font-size:13px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px;">Long press the link below and tap <strong>Add to Reading List</strong> or <strong>Add Bookmark</strong> to save it in Safari. Opening this link will restore your results on any device.</div>
+      <a href="${resultsURL}" style="font-size:12px; color:var(--navy-mid); word-break:break-all; line-height:1.6; text-decoration:underline;">${resultsURL}</a>
     </div>`;
 }
 
@@ -3400,8 +3404,8 @@ function restoreFromResults(results, source) {
               <span class="score-bar-label">${sensPct}%</span>
             </div>
           </div>
-          <div style="margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--ink-light);font-style:italic;white-space:nowrap">Your preference:</span>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+            <span style="font-size:10px;color:var(--ink-light);font-style:italic;">Your preference</span>
             <div class="pattern-badge ${patternBadgeClass(r.pattern)}">${patternLabel(r.pattern)}</div>
           </div>
         </div>`;
@@ -3423,9 +3427,29 @@ function restoreFromResults(results, source) {
   const notableLine = notableNames ? `<p>Your results show a notable preference in <strong>${notableNames}</strong>.</p>` : '';
   const forwardLine = `<p style="margin-top:10px; font-size:14px; color:var(--ink-light); font-style:italic;">The next few pages will help you make sense of what these results mean in real life.</p>`;
 
+  const highSensitive2 = restored.filter(r => r.pattern === 'sensitive' || r.pattern === 'combined');
+  const highSeeking2 = restored.filter(r => r.pattern === 'seeking' || r.pattern === 'combined');
+  const allLessPronounced2 = notableResults.length === 0;
+  const hasSomeLessPronounced2 = notableResults.length > 0 && notableResults.length < restored.length;
+  const isCombined2 = highSeeking2.length >= 4 && highSensitive2.length >= 4;
+  const isMostlySeeking2 = !isCombined2 && highSeeking2.length > highSensitive2.length;
+  const isMostlySensitive2 = !isCombined2 && highSensitive2.length > highSeeking2.length;
+  const lessPronounced2 = `<p>For the sensory domains that came up as less pronounced, this may mean these senses are having less of an impact on your day-to-day regulation needs right now. Stay curious about them though  -  they can shift with stress, hormones, sleep, and your environment.</p>`;
+  const forwardLine2 = `<p style="margin-top:10px; font-size:14px; color:var(--ink-light); font-style:italic;">The next few pages will help you make sense of what these results mean in real life.</p>`;
+
   let narrative = '<div class="pattern-summary-card" style="background:#e8f2f6; border-left:4px solid #2e4b62">';
   narrative += '<h3>Here\'s what we found</h3>';
-  narrative += `${notableLine}${forwardLine}`;
+  if (allLessPronounced2) {
+    narrative += `<p>Your results came up as less pronounced across most sensory domains  -  and that's useful information in itself.</p><p>This may mean your sensory system is more flexible or context-dependent at this stage. That can shift with stress, hormones, sleep, and your environment  -  so stay curious, and know you can return to this tool and redo it any time.</p>${forwardLine2}`;
+  } else if (isCombined2) {
+    narrative += `${notableLine}<p>Your nervous system appears to be seeking more input in some areas and more sensitive in others  -  which is actually very common with ADHD.</p>${hasSomeLessPronounced2 ? lessPronounced2 : ''}${forwardLine2}`;
+  } else if (isMostlySeeking2) {
+    narrative += `${notableLine}<p>Across most sensory domains, your nervous system appears to be actively looking for more input.</p>${hasSomeLessPronounced2 ? lessPronounced2 : ''}${forwardLine2}`;
+  } else if (isMostlySensitive2) {
+    narrative += `${notableLine}<p>Across most sensory domains, your nervous system appears to be registering and responding to more than others might notice.</p>${hasSomeLessPronounced2 ? lessPronounced2 : ''}${forwardLine2}`;
+  } else {
+    narrative += `${notableLine}${hasSomeLessPronounced2 ? lessPronounced2 : ''}${forwardLine2}`;
+  }
   narrative += '</div>';
 
   const pnEl = document.getElementById('pattern-narrative');
@@ -3462,9 +3486,37 @@ function restoreFromResults(results, source) {
 
 // ── Init on page load ──
 document.addEventListener('DOMContentLoaded', function() {
-  checkForSavedSession();
   initWorksheetAutosave();
+
+  // Only auto-restore if URL has encoded results (deliberate return link)
+  const urlResults = decodeResultsFromURL();
+  if (urlResults) {
+    restoreFromResults(urlResults, 'url');
+    return;
+  }
+
+  // For localStorage  -  show gentle welcome back banner on cover
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (data && data.results && data.results.length) {
+        const banner = document.getElementById('welcome-back-banner');
+        if (banner) banner.style.display = 'block';
+      }
+    }
+  } catch(e) {}
 });
+
+function restoreFromStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    if (!data.results || !data.results.length) return;
+    restoreFromResults(data.results, 'local');
+  } catch(e) { console.warn('Restore failed:', e); }
+}
 
 // Shows all sections before printing, restores after
 // This avoids using CSS display:block !important which breaks local file navigation
@@ -3573,7 +3625,7 @@ function showEduTab(n) {
     if (!tab) return;
     tab.classList.remove('edu-tab-active', 'edu-tab-locked', 'edu-tab-done');
     if (i < n) {
-      // Completed tabs — accessible, styled as done
+      // Completed tabs  -  accessible, styled as done
       tab.classList.add('edu-tab-done');
       tab.disabled = false;
     } else if (i === n) {
@@ -3581,7 +3633,7 @@ function showEduTab(n) {
       tab.classList.add('edu-tab-active');
       tab.disabled = false;
     } else {
-      // Future tabs — still locked
+      // Future tabs  -  still locked
       tab.classList.add('edu-tab-locked');
       tab.disabled = true;
     }
@@ -3668,7 +3720,7 @@ function downloadPDF() {
         doc.setFont('helvetica','bold');
         doc.setTextColor(...white);
         doc.text(title, margin + 4, y + 7.5);
-        y += 16;
+        y += 18;
       }
 
       function subHeading(title, colour) {
@@ -3693,7 +3745,7 @@ function downloadPDF() {
       function highlightBox(text, bgColour, borderColour, labelText) {
         const lines = doc.splitTextToSize(text, contentW - 8);
         const boxH = lines.length * 5 + (labelText ? 14 : 8);
-        checkY(boxH + 4);
+        checkY(boxH + 6);
         doc.setFillColor(...bgColour);
         doc.setDrawColor(...borderColour);
         doc.setLineWidth(0.3);
@@ -3710,7 +3762,7 @@ function downloadPDF() {
         doc.setFont('helvetica','normal');
         doc.setTextColor(...ink);
         doc.text(lines, margin + 4, ty);
-        y += boxH + 4;
+        y += boxH + 6;
       }
 
       function sectionDivider(label, bgColour) {
@@ -3726,15 +3778,15 @@ function downloadPDF() {
 
       function bulletList(items, dotColour) {
         items.forEach(item => {
-          const lines = doc.splitTextToSize(item, contentW - 8);
-          checkY(lines.length * 5 + 2);
+          const lines = doc.splitTextToSize(item, contentW - 10);
+          checkY(lines.length * 5 + 3);
           doc.setFillColor(...(dotColour || sage));
           doc.circle(margin + 2, y - 0.5, 1.2, 'F');
           doc.setFontSize(8.5);
           doc.setFont('helvetica','normal');
           doc.setTextColor(...ink);
           doc.text(lines, margin + 6, y);
-          y += lines.length * 5 + 1;
+          y += lines.length * 5 + 2;
         });
         y += 2;
       }
@@ -3794,7 +3846,7 @@ function downloadPDF() {
       }
 
       // ════════════════════════════════
-      // PAGE 1 — COVER
+      // PAGE 1  -  COVER
       // ════════════════════════════════
       doc.setFillColor(...navy);
       doc.rect(0, 0, pageW, 55, 'F');
@@ -3854,10 +3906,10 @@ function downloadPDF() {
       y += 6;
       const contents = [
         'My sensory preferences results across 8 domains',
-        'Understanding my nervous system — window of capacity and ADHD',
-        'Understanding my sensory preferences — the cup analogy',
-        'Meet Jane — regulation in everyday life',
-        'My personalised tools — at home, at work, relationships, beliefs and hormonal cycle',
+        'Understanding my nervous system  -  window of capacity and ADHD',
+        'Understanding my sensory preferences  -  the cup analogy',
+        'Meet Jane  -  regulation in everyday life',
+        'My personalised tools  -  at home, at work, relationships, beliefs and hormonal cycle',
         'My sensory toolkit worksheet'
       ];
       contents.forEach(item => {
@@ -3874,7 +3926,7 @@ function downloadPDF() {
       pageFooter();
 
       // ════════════════════════════════
-      // PAGE 2 — RESULTS
+      // PAGE 2  -  RESULTS
       // ════════════════════════════════
       newPage();
       y += 4;
@@ -3892,63 +3944,71 @@ function downloadPDF() {
 
       if (userResults) {
         userResults.forEach(r => {
-          checkY(30);
+          checkY(36);
           doc.setFillColor(252, 252, 252);
           doc.setDrawColor(220, 220, 218);
           doc.setLineWidth(0.3);
-          doc.roundedRect(margin, y, contentW, 27, 2, 2, 'FD');
+          doc.roundedRect(margin, y, contentW, 32, 2, 2, 'FD');
 
           // Initial circle
           doc.setFillColor(...sage);
-          doc.circle(margin + 8, y + 9, 5, 'F');
+          doc.circle(margin + 8, y + 10, 5, 'F');
           doc.setFontSize(8);
           doc.setFont('helvetica','bold');
           doc.setTextColor(...white);
-          doc.text(r.name.charAt(0), margin + 6, y + 11.5);
+          doc.text(r.name.charAt(0), margin + 6, y + 12.5);
 
           // Domain name
           doc.setFontSize(10);
           doc.setFont('helvetica','bold');
           doc.setTextColor(...navy);
-          doc.text(r.name, margin + 16, y + 7);
+          doc.text(r.name, margin + 16, y + 8);
 
           const maxSeek = r.seekQ.length * 4;
           const maxSens = (r.qs.length - r.seekQ.length) * 4;
           const seekPct = maxSeek > 0 ? Math.round((r.seekScore / maxSeek) * 100) : 0;
           const sensPct = maxSens > 0 ? Math.round((r.sensitiveScore / maxSens) * 100) : 0;
+
+          // Bar layout: label(16) + track + gap(2) + pct(10)  -  all within contentW - 18
           const barStart = margin + 16;
-          const barTrackW = contentW - 22 - 14;
+          const pctW = 10;
+          const barTrackW = contentW - 18 - 16 - pctW - 2;
 
           doc.setFontSize(7.5);
           doc.setFont('helvetica','normal');
           doc.setTextColor(...inkLight);
-          doc.text('Seeking', barStart, y + 14);
-          doc.setFillColor(220,228,232);
-          doc.roundedRect(barStart + 16, y + 10.5, barTrackW, 3.5, 1, 1, 'F');
+          doc.text('Seeking', barStart, y + 15);
+          doc.setFillColor(220, 228, 232);
+          doc.roundedRect(barStart + 16, y + 11.5, barTrackW, 3.5, 1, 1, 'F');
           doc.setFillColor(143, 169, 181);
-          doc.roundedRect(barStart + 16, y + 10.5, Math.max(1,(barTrackW * seekPct)/100), 3.5, 1, 1, 'F');
+          doc.roundedRect(barStart + 16, y + 11.5, Math.max(1,(barTrackW * seekPct)/100), 3.5, 1, 1, 'F');
           doc.setTextColor(...ink);
-          doc.text(seekPct + '%', barStart + 16 + barTrackW + 2, y + 14);
+          doc.text(seekPct + '%', barStart + 16 + barTrackW + 2, y + 15);
 
           doc.setTextColor(...inkLight);
-          doc.text('Sensitive', barStart, y + 20);
-          doc.setFillColor(220,228,232);
-          doc.roundedRect(barStart + 16, y + 16.5, barTrackW, 3.5, 1, 1, 'F');
+          doc.text('Sensitive', barStart, y + 21);
+          doc.setFillColor(220, 228, 232);
+          doc.roundedRect(barStart + 16, y + 17.5, barTrackW, 3.5, 1, 1, 'F');
           doc.setFillColor(...navyMid);
-          doc.roundedRect(barStart + 16, y + 16.5, Math.max(1,(barTrackW * sensPct)/100), 3.5, 1, 1, 'F');
+          doc.roundedRect(barStart + 16, y + 17.5, Math.max(1,(barTrackW * sensPct)/100), 3.5, 1, 1, 'F');
           doc.setTextColor(...ink);
-          doc.text(sensPct + '%', barStart + 16 + barTrackW + 2, y + 20);
+          doc.text(sensPct + '%', barStart + 16 + barTrackW + 2, y + 21);
 
+          // Preference badge below bars
           const bc = badgeColours[r.pattern] || badgeColours.balanced;
           const badgeLabel = 'Your preference: ' + patternLabel(r.pattern);
+          doc.setFontSize(7);
+          doc.setTextColor(...inkLight);
+          doc.setFont('helvetica','italic');
+          doc.text('Your preference', barStart, y + 27);
           doc.setFillColor(...bc.bg);
-          doc.roundedRect(margin + 2, y + 21.5, 90, 4.5, 1, 1, 'F');
+          doc.roundedRect(barStart + 24, y + 23.5, 70, 4.5, 1, 1, 'F');
           doc.setFontSize(7.5);
           doc.setFont('helvetica','bold');
           doc.setTextColor(...bc.text);
-          doc.text(badgeLabel, margin + 4, y + 24.8);
+          doc.text(patternLabel(r.pattern), barStart + 26, y + 27);
 
-          y += 31;
+          y += 37;
         });
       }
 
@@ -3960,59 +4020,66 @@ function downloadPDF() {
       sectionHeading('Understanding My Nervous System');
 
       subHeading('Your window of capacity');
-      bodyText("Most of us have felt it. That agitated, can't-settle feeling when everything is too loud and too much. Or the heaviness that makes getting off the couch feel genuinely impossible — not lazy, just completely flat. Your nervous system was doing something specific in both of those moments.");
+      bodyText("Most of us have felt it. That agitated, can't-settle feeling when everything is too loud and too much. Or the heaviness that makes getting off the couch feel genuinely impossible  -  not lazy, just completely flat. Your nervous system was doing something specific in both of those moments.");
       bodyText('Your nervous system moves between three energy states throughout the day. This is not dysregulation. It is how the nervous system is designed.');
 
-      // Three states boxes
-      checkY(36);
+      // Three states boxes - visual window diagram
+      checkY(46);
+
+      // Arrow indicator on left side
       doc.setFillColor(...blushPale);
       doc.setDrawColor(216,191,182);
       doc.setLineWidth(0.3);
-      doc.roundedRect(margin, y, contentW, 11, 2, 2, 'FD');
-      doc.setFontSize(8);
+      doc.roundedRect(margin, y, contentW, 13, 2, 2, 'FD');
+      // Down arrow label
+      doc.setFontSize(7.5);
       doc.setFont('helvetica','bold');
       doc.setTextColor(122, 85, 72);
-      doc.text('ABOVE YOUR WINDOW  \u2014  Hyperactivated, high energy state', margin + 4, y + 4.5);
+      doc.text('v  DOWN-REGULATE', margin + 4, y + 5);
+      doc.text('ABOVE YOUR WINDOW  -  Hyperactivated, high energy state', margin + 4, y + 10);
       doc.setFont('helvetica','normal');
       doc.setTextColor(...ink);
-      doc.text('Racing, restless, reactive, on edge, overwhelmed. Useful for urgency — difficult when stuck here.', margin + 4, y + 9);
-      y += 13;
+      y += 15;
 
       doc.setFillColor(...sagePale);
       doc.setDrawColor(159,183,175);
-      doc.roundedRect(margin, y, contentW, 11, 2, 2, 'FD');
-      doc.setFontSize(8);
+      doc.setLineWidth(0.5);
+      doc.roundedRect(margin, y, contentW, 13, 2, 2, 'FD');
+      doc.setFontSize(7.5);
       doc.setFont('helvetica','bold');
       doc.setTextColor(42, 72, 64);
-      doc.text('INSIDE YOUR WINDOW  \u2014  Optimal energy zone', margin + 4, y + 4.5);
+      doc.text('INSIDE YOUR WINDOW  -  Optimal energy zone', margin + 4, y + 5);
       doc.setFont('helvetica','normal');
-      doc.setTextColor(...ink);
-      doc.text('Present, grounded, connected. Able to think, feel, and respond with ease.', margin + 4, y + 9);
-      y += 13;
+      doc.setTextColor(42, 72, 64);
+      doc.text('Present, grounded, connected. Able to think, feel, and respond with ease.', margin + 4, y + 10);
+      y += 15;
 
       doc.setFillColor(...bluePale);
       doc.setDrawColor(143,169,181);
-      doc.roundedRect(margin, y, contentW, 11, 2, 2, 'FD');
-      doc.setFontSize(8);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y, contentW, 13, 2, 2, 'FD');
+      doc.setFontSize(7.5);
       doc.setFont('helvetica','bold');
       doc.setTextColor(46, 75, 98);
-      doc.text('BELOW YOUR WINDOW  \u2014  Hypoactivated, low energy state', margin + 4, y + 4.5);
+      doc.text('^  UP-REGULATE', margin + 4, y + 5);
+      doc.text('BELOW YOUR WINDOW  -  Hypoactivated, low energy state', margin + 4, y + 10);
       doc.setFont('helvetica','normal');
       doc.setTextColor(...ink);
-      doc.text('Heavy, flat, foggy, withdrawn, numb. Useful for rest and recovery — difficult when stuck here.', margin + 4, y + 9);
-      y += 15;
+      y += 17;
 
-      bodyText('Moving between all three states is normal — multiple times a day. Regulation is not about staying inside your window all the time. It is the ability to move between states with more awareness — and to notice when you have been stuck somewhere longer than you would like.');
-      bodyText('Note: fawn responses — appeasing, people-pleasing, or over-accommodating — can appear in either state. They are the nervous system trying to create safety through behaviour.', inkLight, 8.5);
+      bodyText('Moving between all three states is normal  -  multiple times a day. Regulation is not about staying inside your window all the time. It is the ability to move between states with more awareness  -  and to notice when you have been stuck somewhere longer than you would like.');
+      bodyText('Note: fawn responses  -  appeasing, people-pleasing, or over-accommodating  -  can appear in either state. They are the nervous system trying to create safety through behaviour.', inkLight, 8.5);
       y += 2;
 
       // ADHD box
-      checkY(30);
+      const adhdText = 'For women with ADHD, moving between states and finding the way back is often more pronounced. The ADHD nervous system is not broken, but it is wired differently. Oestrogen supports dopamine availability in the brain. For women with ADHD, a drop in oestrogen means a drop in dopamine too. This is why the week before menstruation and perimenopause can feel so significant. Sensory sensitivity increases, the window narrows, and executive function becomes harder. This is not fragility. It is physiology.';
+      const adhdLines = doc.splitTextToSize(adhdText, contentW - 8);
+      const adhdBoxH = adhdLines.length * 5 + 16;
+      checkY(adhdBoxH + 4);
       doc.setFillColor(...bluePale);
       doc.setDrawColor(...navyMid);
       doc.setLineWidth(0.5);
-      doc.rect(margin, y, 3, 0, 'F');
-      doc.roundedRect(margin, y, contentW, 28, 2, 2, 'FD');
+      doc.roundedRect(margin, y, contentW, adhdBoxH, 2, 2, 'FD');
       doc.setFontSize(8);
       doc.setFont('helvetica','bold');
       doc.setTextColor(...navyMid);
@@ -4020,15 +4087,15 @@ function downloadPDF() {
       doc.setFont('helvetica','normal');
       doc.setTextColor(...ink);
       doc.setFontSize(8.5);
-      const adhdLines = doc.splitTextToSize('For women with ADHD, moving between states and finding the way back is often more pronounced. The ADHD nervous system is not broken, but it is wired differently. Oestrogen supports dopamine availability in the brain. For women with ADHD, a drop in oestrogen means a drop in dopamine too. This is why the week before menstruation and perimenopause can feel so significant. Sensory sensitivity increases, the window narrows, and executive function becomes harder. This is not fragility. It is physiology.', contentW - 8);
       doc.text(adhdLines, margin + 4, y + 12);
-      y += adhdLines.length * 5 + 16;
+      y += adhdBoxH + 4;
 
+      const footnoteLines = doc.splitTextToSize("This tool uses the term 'window of capacity,' adapted by Linda Thai from Dan Siegel's window of tolerance concept.", contentW);
       doc.setFontSize(8);
       doc.setTextColor(...inkLight);
       doc.setFont('helvetica','italic');
-      doc.text("This tool uses the term 'window of capacity,' adapted by Linda Thai from Dan Siegel's window of tolerance concept.", margin, y);
-      y += 6;
+      doc.text(footnoteLines, margin, y);
+      y += footnoteLines.length * 4.5 + 4;
 
       // ════════════════════════════════
       // SECTION: SENSORY PREFERENCES
@@ -4040,14 +4107,14 @@ function downloadPDF() {
       subHeading('Your sensory preferences');
       highlightBox('Everyone has sensory preferences. They are not a sign that something is wrong with you. They are simply information about how your nervous system is wired, and understanding them is one of the most practical things you can do for your own wellbeing.', sagePale, sage, null);
 
-      bodyText('Your sensory system and your nervous system state are not two separate things. The same neural pathways that process sensory input also regulate how activated or calm you feel. When your sensory environment does not match what your nervous system needs — too much, too little, or the wrong kind — it adds to the activation load your system is already managing.');
+      bodyText('Your sensory system and your nervous system state are not two separate things. The same neural pathways that process sensory input also regulate how activated or calm you feel. When your sensory environment does not match what your nervous system needs  -  too much, too little, or the wrong kind  -  it adds to the activation load your system is already managing.');
       bodyText('This is where the two frameworks meet. Your sensory preferences tell you something useful in both directions: what tends to shift your nervous system outside your window and keep it there, and what can help you shift back.');
       y += 2;
 
       subHeading('The Sensory Cup Analogy');
-      bodyText('Think of each of your sensory systems as having its own cup. The size of that cup is your sensory threshold — how much input that sensory system needs before it feels satisfied, or before it overflows. A large cup means you need a lot of input to feel settled (sensory seeking). A small cup means your system fills quickly and overflows easily (sensory sensitive).');
-      bodyText('It is common for women with ADHD to have a mix of both across different systems — which is why you might crave movement and noise in one context and be easily overwhelmed by sound or light in another. Both are real. Both make sense.');
-      bodyText('Your cup size also shifts day to day. Masking, poor sleep, hormonal changes, or emotional stress can all temporarily lower your threshold — meaning sensory input that usually feels manageable can suddenly feel like too much. This is not inconsistency. It is your nervous system communicating its current capacity.');
+      bodyText('Think of each of your sensory systems as having its own cup. The size of that cup is your sensory threshold  -  how much input that sensory system needs before it feels satisfied, or before it overflows. A large cup means you need a lot of input to feel settled (sensory seeking). A small cup means your system fills quickly and overflows easily (sensory sensitive).');
+      bodyText('It is common for women with ADHD to have a mix of both across different systems  -  which is why you might crave movement and noise in one context and be easily overwhelmed by sound or light in another. Both are real. Both make sense.');
+      bodyText('Your cup size also shifts day to day. Masking, poor sleep, hormonal changes, or emotional stress can all temporarily lower your threshold  -  meaning sensory input that usually feels manageable can suddenly feel like too much. This is not inconsistency. It is your nervous system communicating its current capacity.');
       y += 2;
 
       // Three cup types summary
@@ -4082,72 +4149,87 @@ function downloadPDF() {
       y += 4;
       sectionHeading('Meet Jane');
 
+      // Jane caption
+      checkY(14);
+      doc.setFillColor(...sagePale);
+      doc.setDrawColor(...sage);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y, contentW, 14, 2, 2, 'FD');
       doc.setFontSize(8.5);
       doc.setFont('helvetica','italic');
       doc.setTextColor(...inkLight);
-      doc.text('Jane is a fictional character created to illustrate how sensory preferences, interoceptive awareness, and the window of capacity work together in everyday life.', margin, y, { maxWidth: contentW });
-      y += 10;
+      const janeCaptionLines = doc.splitTextToSize('Jane is a fictional character created to illustrate how sensory preferences, interoceptive awareness, and the window of capacity work together in everyday life.', contentW - 8);
+      doc.text(janeCaptionLines, margin + 4, y + 5);
+      y += 18;
 
       bodyText('Jane is a sensory seeker in her vestibular and proprioceptive systems. She needs movement and deep pressure as part of her everyday sensory toolkit to support her nervous system. She is also sensitive in her auditory and visual systems, meaning loud, unpredictable sound and bright overhead lighting are genuinely draining for her nervous system.');
       bodyText('On a typical workday, Jane sits through four hours of back-to-back meetings in a bright open-plan office. She has had limited opportunity to move her body, no deep pressure input, and has been managing constant auditory and visual stimulation that is difficult for her to filter. By mid-afternoon, Jane notices she feels irritable, unsettled, anxious, and fidgety. She cannot sit still and is snapping at small things.');
-      bodyText('She pauses and checks in with herself. Using her interoceptive awareness — her ability to notice sensations inside her body — she notices: racing thoughts, extra fidgeting, easily frustrated, a tight chest, and a tense jaw. She recognises these as signs that her nervous system has shifted into a hyperactivated state. She needs to down-regulate. Using her sensory toolkit as a guide, she chooses:');
+      bodyText('She pauses and checks in with herself. Using her interoceptive awareness  -  her ability to notice sensations inside her body  -  she notices: racing thoughts, extra fidgeting, easily frustrated, a tight chest, and a tense jaw. She recognises these as signs that her nervous system has shifted into a hyperactivated state. She needs to down-regulate. Using her sensory toolkit as a guide, she chooses:');
 
       checkY(32);
-      doc.setFillColor(...blushPale);
-      doc.setDrawColor(216,191,182);
-      doc.setLineWidth(0.3);
-      doc.roundedRect(margin, y, contentW, 30, 2, 2, 'FD');
-      doc.setFontSize(8);
-      doc.setFont('helvetica','bold');
-      doc.setTextColor(122, 85, 72);
-      doc.text("JANE'S DOWN-REGULATION TOOLS", margin + 4, y + 6);
       const janeTools = [
         'A walk around the block before heading to her car: vestibular, proprioceptive, and calming visual input',
         'Calming music to hum along to on the drive home: predictable, soothing auditory input',
         'Chewing crunchy crackers: organising proprioceptive input through the jaw',
         'Long, slow exhales: calming the nervous system through slow, controlled breathing'
       ];
+      // Calculate dynamic box height
+      let janeBoxH = 10;
+      janeTools.forEach(t => {
+        const tl = doc.splitTextToSize(t, contentW - 12);
+        janeBoxH += tl.length * 5 + 2;
+      });
+      checkY(janeBoxH + 4);
+      doc.setFillColor(...blushPale);
+      doc.setDrawColor(216,191,182);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y, contentW, janeBoxH, 2, 2, 'FD');
+      doc.setFontSize(8);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(122, 85, 72);
+      doc.text("JANE'S DOWN-REGULATION TOOLS", margin + 4, y + 6);
       let jy = y + 12;
       janeTools.forEach(t => {
+        const tLines = doc.splitTextToSize(t, contentW - 12);
         doc.setFillColor(...blush);
         doc.circle(margin + 4, jy - 0.5, 1, 'F');
         doc.setFontSize(8.5);
         doc.setFont('helvetica','normal');
         doc.setTextColor(...ink);
-        doc.text(t, margin + 8, jy, { maxWidth: contentW - 12 });
-        jy += 5;
+        doc.text(tLines, margin + 8, jy);
+        jy += tLines.length * 5 + 2;
       });
-      y += 34;
+      y += janeBoxH + 6;
 
       bodyText('By the time Jane arrives home, she can feel her nervous system beginning to shift. She is not fully back inside her window yet, but she is no longer stuck in that high-energy place. That small shift is enough to arrive differently.');
-      bodyText("Jane did not need to do everything. She noticed her state, identified what her nervous system was responding to, chose a few tools that matched, and felt the shift begin. That is what regulation looks like in practice — and it started with knowing herself a little better.", inkLight, 8.5);
+      bodyText("Jane did not need to do everything. She noticed her state, identified what her nervous system was responding to, chose a few tools that matched, and felt the shift begin. That is what regulation looks like in practice  -  and it started with knowing herself a little better.", inkLight, 8.5);
 
       // ════════════════════════════════
-      // SECTIONS: TOOLS — all tabs
+      // SECTIONS: TOOLS  -  all tabs
       // ════════════════════════════════
 
       const domainNames = { vest:'Vestibular', prop:'Proprioception', intero:'Interoception', aud:'Auditory', vis:'Visual', tact:'Tactile', smell:'Smell & taste', social:'Social & emotional environment' };
 
       const downToolsMap = {
-        vest: ['Run, dance hard, or shake your whole body first — if the energy feels too big to settle directly, move it through. Then slow it down','Fast then slow — 10 squats or jumping jacks, then slow it down with gentle arm swings or shoulder rolls. Your nervous system can follow the pace shift down','Gentle rocking in a chair or while seated — slow, rhythmic vestibular input is one of the most reliable tools for settling once the activation has moved through','Gentle swaying while standing, or slow walking outdoors — particularly effective after a high-sensory situation to complete the settling'],
-        prop: ['Punch a pillow, squeeze a cushion hard, or push both hands firmly against a wall — match the intensity of the high-energy state first, then progressively soften the pressure and slow it down','Scrunch and wring — squeeze a towel as hard as you can, then slowly release. Repeat until the activation starts to shift','Weighted blanket during rest or wind-down, or after the activation has discharged — sustained, predictable pressure is organising and settling','Firm self-massage or a massage roller once the energy has shifted — controlled pressure supports the nervous system to complete the settling'],
-        intero: ['Extended exhale breathing: breathe in for 4 counts, out for 6 to 8 — slows the nervous system reliably','Body scan practice: lying down, slowly bringing attention to each area without judgment','Name sensations before emotions — notice "tightness in my chest" before deciding what it means','Grounding: feet flat on the floor, hands on something solid, when internal signals feel overwhelming'],
-        aud: ['Hum a slow, low tone — humming activates the vagus nerve directly through vibration in the throat and chest, which signals safety to your nervous system and supports it to settle. Even 60 seconds makes a difference','Scream-sing in the car or put on something loud and let yourself feel it fully first — then transition to something quieter once the activation has moved through','Noise-cancelling headphones, earplugs, or ear defenders — creating a quieter sensory environment is one of the most accessible nervous system supports you can build into your day','Designate at least one low-sound zone in your home that is consistently quiet and predictable'],
-        vis: ['Soft, warm lighting rather than bright fluorescent or halogen — LED warm white is an accessible swap','Reduce visual clutter in spaces where you need to focus or feel calm','Dim screens in the evening and during high-load periods to reduce ongoing visual activation','A visually predictable, consistent space at home provides a baseline that does not add to sensory load'],
-        tact: ['Prioritise clothing comfort — fabric type, seams, tags, and fit affect your nervous system across the whole day','Predictable, firm touch is generally more settling than light or unexpected contact','Weighted blanket, compression clothing, or a firm self-hug during high-load or overwhelming moments','Keep your sensory environment texturally predictable at home — notice which surfaces and fabrics feel most settling'],
-        smell: ['Calming scents such as lavender, vanilla, or sandalwood used intentionally during wind-down or high-load periods','Unscented products to reduce background scent load at home — toiletries, cleaning products, laundry detergent','Familiar, preferred foods during high-load periods — novelty and strong flavours add sensory demand when stretched','Identify your neutral or calming scents and use them deliberately before and during demanding situations'],
-        social: ['Build in transition time after social situations before engaging with the next demand — even 10 minutes changes the landing','Low-demand connection — a quiet walk with one person, a message rather than a call — meets connection needs without the same activation cost','Naming your recovery need clearly reduces the relational cost: "I need about an hour. Then I am very much here"','Vent to a trusted person before you try to settle — sometimes the nervous system needs to move the activation through words first']
+        vest: ['Run, dance hard, or shake your whole body first  -  if the energy feels too big to settle directly, move it through. Then slow it down','Fast then slow  -  10 squats or jumping jacks, then slow it down with gentle arm swings or shoulder rolls. Your nervous system can follow the pace shift down','Gentle rocking in a chair or while seated  -  slow, rhythmic vestibular input is one of the most reliable tools for settling once the activation has moved through','Gentle swaying while standing, or slow walking outdoors  -  particularly effective after a high-sensory situation to complete the settling'],
+        prop: ['Punch a pillow, squeeze a cushion hard, or push both hands firmly against a wall  -  match the intensity of the high-energy state first, then progressively soften the pressure and slow it down','Scrunch and wring  -  squeeze a towel as hard as you can, then slowly release. Repeat until the activation starts to shift','Weighted blanket during rest or wind-down, or after the activation has discharged  -  sustained, predictable pressure is organising and settling','Firm self-massage or a massage roller once the energy has shifted  -  controlled pressure supports the nervous system to complete the settling'],
+        intero: ['Extended exhale breathing: breathe in for 4 counts, out for 6 to 8  -  slows the nervous system reliably','Body scan practice: lying down, slowly bringing attention to each area without judgment','Name sensations before emotions  -  notice "tightness in my chest" before deciding what it means','Grounding: feet flat on the floor, hands on something solid, when internal signals feel overwhelming'],
+        aud: ['Hum a slow, low tone  -  humming activates the vagus nerve directly through vibration in the throat and chest, which signals safety to your nervous system and supports it to settle. Even 60 seconds makes a difference','Scream-sing in the car or put on something loud and let yourself feel it fully first  -  then transition to something quieter once the activation has moved through','Noise-cancelling headphones, earplugs, or ear defenders  -  creating a quieter sensory environment is one of the most accessible nervous system supports you can build into your day','Designate at least one low-sound zone in your home that is consistently quiet and predictable'],
+        vis: ['Soft, warm lighting rather than bright fluorescent or halogen  -  LED warm white is an accessible swap','Reduce visual clutter in spaces where you need to focus or feel calm','Dim screens in the evening and during high-load periods to reduce ongoing visual activation','A visually predictable, consistent space at home provides a baseline that does not add to sensory load'],
+        tact: ['Prioritise clothing comfort  -  fabric type, seams, tags, and fit affect your nervous system across the whole day','Predictable, firm touch is generally more settling than light or unexpected contact','Weighted blanket, compression clothing, or a firm self-hug during high-load or overwhelming moments','Keep your sensory environment texturally predictable at home  -  notice which surfaces and fabrics feel most settling'],
+        smell: ['Calming scents such as lavender, vanilla, or sandalwood used intentionally during wind-down or high-load periods','Unscented products to reduce background scent load at home  -  toiletries, cleaning products, laundry detergent','Familiar, preferred foods during high-load periods  -  novelty and strong flavours add sensory demand when stretched','Identify your neutral or calming scents and use them deliberately before and during demanding situations'],
+        social: ['Build in transition time after social situations before engaging with the next demand  -  even 10 minutes changes the landing','Low-demand connection  -  a quiet walk with one person, a message rather than a call  -  meets connection needs without the same activation cost','Naming your recovery need clearly reduces the relational cost: "I need about an hour. Then I am very much here"','Vent to a trusted person before you try to settle  -  sometimes the nervous system needs to move the activation through words first']
       };
 
       const upToolsMap = {
-        vest: ['Brisk walk, run, or cycle — alerting vestibular input that shifts a flat or foggy state','Mini trampoline or rebounding for 5 to 10 minutes: a highly effective vestibular activator','High-energy yoga flow or gym session in the morning to set your nervous system baseline','Jumping jacks, stair climbing, or dancing to music as a short activation break'],
-        prop: ['Push, pull, and carry activities — carrying shopping, climbing stairs, resistance exercise all provide organising proprioceptive input','Gym session, bodyweight exercise, or resistance bands to shift a flat or foggy nervous system state','Crunchy or chewy foods — jaw proprioception is a highly accessible activating input','Wall push-ups, carrying a heavy bag, or deep pressure to self before a demanding task'],
-        intero: ['Set timed reminders to check in: "Am I hungry? Thirsty? Too hot? Tired?" Noticing subtle signals early prevents crashing later','Strong physical sensations — a cold splash of water, walking barefoot, firm self-massage — can bring body awareness online when you feel flat','Keep easy, preferred foods visible and accessible. Eating regularly supports a regulated energy state','Morning temperature ritual — warm shower or cool cloth — to orient your body to the day and build activation'],
-        aud: ['High-tempo music for activation — your nervous system uses preferred sound to shift out of a flat state','Podcasts or audiobooks while doing routine tasks to provide engaging auditory input','Voice calls or conversations to add auditory and social stimulation when energy is low','Intentional soundscapes: design your audio environment rather than defaulting to silence or random noise'],
-        vis: ['Natural light near a window — both alerting and regulating, more effective than artificial light for shifting a flat state','Changing your environment or working in a different room provides visual novelty that supports activation','Nature views, art, and gentle movement in your visual field are all effective activation inputs','A well-lit, visually interesting space helps maintain alert engagement — design it intentionally'],
-        tact: ['Cold water on hands or face — a fast, accessible tactile input that shifts a flat or foggy state','Textured objects, kneading, gardening, or tactile fidget tools provide grounding activating input','Temperature variation — alternating warm and cool — is an effective and low-effort activation tool','Strong tactile input before a demanding task: a brisk face wash, rubbing hands together, or a brief cold rinse'],
-        smell: ['Alerting scents — citrus, peppermint, eucalyptus — are well-researched for supporting alertness and activation','Strong preferred flavours: sour, spicy, or crunchy foods provide organising gustatory input throughout the day','A scent ritual at the start of demanding tasks — a spritz of a preferred energising scent — can support focus','Strongly flavoured drinks — sour, bitter, or intensely herbal — used intentionally to shift a flat or low-energy state'],
-        social: ['Being around people — even passively, in a cafe or shared space — can shift a flat or foggy state when solitude is not working','A phone or voice call when energy is low often works better than text — the social signal itself is activating','Body doubling: working alongside another person, in person or virtually, supports focus and lifts a low-energy state','Reaching out rather than withdrawing when dysregulated may be what your nervous system needs — notice whether connection or solitude actually helps more']
+        vest: ['Brisk walk, run, or cycle  -  alerting vestibular input that shifts a flat or foggy state','Mini trampoline or rebounding for 5 to 10 minutes: a highly effective vestibular activator','High-energy yoga flow or gym session in the morning to set your nervous system baseline','Jumping jacks, stair climbing, or dancing to music as a short activation break'],
+        prop: ['Push, pull, and carry activities  -  carrying shopping, climbing stairs, resistance exercise all provide organising proprioceptive input','Gym session, bodyweight exercise, or resistance bands to shift a flat or foggy nervous system state','Crunchy or chewy foods  -  jaw proprioception is a highly accessible activating input','Wall push-ups, carrying a heavy bag, or deep pressure to self before a demanding task'],
+        intero: ['Set timed reminders to check in: "Am I hungry? Thirsty? Too hot? Tired?" Noticing subtle signals early prevents crashing later','Strong physical sensations  -  a cold splash of water, walking barefoot, firm self-massage  -  can bring body awareness online when you feel flat','Keep easy, preferred foods visible and accessible. Eating regularly supports a regulated energy state','Morning temperature ritual  -  warm shower or cool cloth  -  to orient your body to the day and build activation'],
+        aud: ['High-tempo music for activation  -  your nervous system uses preferred sound to shift out of a flat state','Podcasts or audiobooks while doing routine tasks to provide engaging auditory input','Voice calls or conversations to add auditory and social stimulation when energy is low','Intentional soundscapes: design your audio environment rather than defaulting to silence or random noise'],
+        vis: ['Natural light near a window  -  both alerting and regulating, more effective than artificial light for shifting a flat state','Changing your environment or working in a different room provides visual novelty that supports activation','Nature views, art, and gentle movement in your visual field are all effective activation inputs','A well-lit, visually interesting space helps maintain alert engagement  -  design it intentionally'],
+        tact: ['Cold water on hands or face  -  a fast, accessible tactile input that shifts a flat or foggy state','Textured objects, kneading, gardening, or tactile fidget tools provide grounding activating input','Temperature variation  -  alternating warm and cool  -  is an effective and low-effort activation tool','Strong tactile input before a demanding task: a brisk face wash, rubbing hands together, or a brief cold rinse'],
+        smell: ['Alerting scents  -  citrus, peppermint, eucalyptus  -  are well-researched for supporting alertness and activation','Strong preferred flavours: sour, spicy, or crunchy foods provide organising gustatory input throughout the day','A scent ritual at the start of demanding tasks  -  a spritz of a preferred energising scent  -  can support focus','Strongly flavoured drinks  -  sour, bitter, or intensely herbal  -  used intentionally to shift a flat or low-energy state'],
+        social: ['Being around people  -  even passively, in a cafe or shared space  -  can shift a flat or foggy state when solitude is not working','A phone or voice call when energy is low often works better than text  -  the social signal itself is activating','Body doubling: working alongside another person, in person or virtually, supports focus and lifts a low-energy state','Reaching out rather than withdrawing when dysregulated may be what your nervous system needs  -  notice whether connection or solitude actually helps more']
       };
 
       if (userResults) {
@@ -4156,12 +4238,12 @@ function downloadPDF() {
         // ── AT HOME ──
         newPage();
         y += 4;
-        sectionHeading('My Personalised Tools — At Home');
+        sectionHeading('My Personalised Tools  -  At Home');
         bodyText('These tools are matched to your sensory preferences. Choose based on your nervous system state in the moment.', inkLight, 8.5);
         y += 2;
 
         sectionDivider('v  WHEN I NEED TO DOWN-REGULATE', blushPale);
-        bodyText('Down-regulation does not always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first — move it through — before it can settle.', inkLight, 8.5);
+        bodyText('Down-regulation does not always mean going straight to calm. When your nervous system is in a high-energy, hyperactivated state, it sometimes needs to discharge that activation first  -  move it through  -  before it can settle.', inkLight, 8.5);
         y += 2;
 
         flagged.forEach(r => {
@@ -4180,28 +4262,28 @@ function downloadPDF() {
         // ── AT WORK ──
         newPage();
         y += 4;
-        sectionHeading('My Tools — At Work');
+        sectionHeading('My Tools  -  At Work');
 
         const workSections = [
-          { title: 'Your workspace — environment design for your nervous system', items: [
+          { title: 'Your workspace  -  environment design for your nervous system', items: [
             userResults.some(r => (r.pattern === 'sensitive' || r.pattern === 'combined') && ['aud','vis','tact'].includes(r.id)) ? 'Request a quieter workspace or permission to use noise-cancelling headphones. This is a reasonable workplace adjustment' : 'Some background activity in your environment helps maintain the activation level your nervous system needs to focus',
             'A desk lamp rather than overhead fluorescent or halogen lighting where possible. Warm, non-flickering light reduces sensory load',
-            'Sitting near a window for natural light — supports alertness and is gentler on the nervous system than artificial light',
+            'Sitting near a window for natural light  -  supports alertness and is gentler on the nervous system than artificial light',
             'Keep a sensory kit at your desk: fidget tool, preferred scent, ear defenders, mints or gum as needed',
           ]},
-          { title: 'Work rhythms — movement and scheduling across the day', items: [
+          { title: 'Work rhythms  -  movement and scheduling across the day', items: [
             'Schedule high-demand cognitive tasks during your naturally highest-capacity time of day',
             'Movement breaks every 45 to 60 minutes: walk the stairs, walk around the block, or stand and move for 5 minutes',
             'A standing desk or sit-stand option supports both vestibular and proprioceptive regulation without leaving your workspace',
             'A core disk or wobble cushion on your chair provides low-level vestibular input that supports attention while seated',
           ]},
-          { title: 'Meetings — managing high-demand interactions', items: [
+          { title: 'Meetings  -  managing high-demand interactions', items: [
             'Request meeting agendas in advance. Predictability reduces activation and supports clearer thinking',
             'Taking notes during meetings is not just for memory. Writing by hand provides proprioceptive input that supports regulation',
             'After high-demand social or sensory work, build in transition time before your next task or returning home',
             'Virtual meetings can carry lower sensory load than in-person. Use this strategically when it is an option',
           ]},
-          { title: 'Sensory load — managing your load across the day', items: [
+          { title: 'Sensory load  -  managing your load across the day', items: [
             'Your sensory budget is finite. High sensory load at work draws on the same resource pool as home and relationships',
             'Identify your highest sensory-cost activities and schedule them alongside intentional lower-load recovery periods',
             'A short end-of-day wind-down before leaving work or arriving home supports transition between environments',
@@ -4216,7 +4298,7 @@ function downloadPDF() {
         // ── RELATIONSHIPS ──
         newPage();
         y += 4;
-        sectionHeading('My Tools — Relationships');
+        sectionHeading('My Tools  -  Relationships');
 
         const relSections = [
           { title: 'Communicating your sensory preferences', items: [
@@ -4232,7 +4314,7 @@ function downloadPDF() {
           { title: 'Recovery after masking and social demand', items: [
             'Naming your recovery need clearly is kinder than withdrawing without explanation: "I need about an hour to decompress. Then I am very much here"',
             'Identify your most effective recovery inputs: solitude, movement, preferred media, creative activity, or sensory comfort',
-            'It is worth gently examining the expectation — your own and others — that you should be immediately available after high-demand situations',
+            'It is worth gently examining the expectation  -  your own and others  -  that you should be immediately available after high-demand situations',
           ]},
           { title: 'Parenting alongside your own sensory system', items: [
             'Your sensory needs do not disappear when parenting. They compound. Attending to your own regulation supports your capacity to be present',
@@ -4248,7 +4330,7 @@ function downloadPDF() {
         // ── THINKING & BELIEFS ──
         newPage();
         y += 4;
-        sectionHeading('My Tools — Thinking & Beliefs');
+        sectionHeading('My Tools  -  Thinking & Beliefs');
 
         highlightBox('When you are inside your window of capacity, this is the best place to work with thinking and beliefs. Sensory tools help get you there first.', linen, navyMid, null);
 
@@ -4272,7 +4354,7 @@ function downloadPDF() {
           { title: 'Interoception and emotional awareness', items: [
             'Practising naming body sensations before naming emotions builds interoceptive literacy over time: "There is tightness in my chest" before "I am anxious"',
             'Expanding your body vocabulary beyond "stressed" and "fine" supports more nuanced self-awareness: activated, contracted, heavy, spacious, buzzy, flat',
-            'Therapy approaches that work with the body and nervous system — somatic therapy, EMDR, Internal Family Systems, sensorimotor approaches — are particularly well-suited to this work',
+            'Therapy approaches that work with the body and nervous system  -  somatic therapy, EMDR, Internal Family Systems, sensorimotor approaches  -  are particularly well-suited to this work',
           ]},
         ];
         cogSections.forEach(cs => {
@@ -4284,7 +4366,7 @@ function downloadPDF() {
         // ── HORMONAL CYCLE ──
         newPage();
         y += 4;
-        sectionHeading('My Tools — Hormonal Cycle');
+        sectionHeading('My Tools  -  Hormonal Cycle');
 
         highlightBox('If you have a menstrual cycle or are in perimenopause, your sensory thresholds shift across the month. Oestrogen and progesterone directly affect how much sensory input the nervous system can tolerate. For women and girls with ADHD, this effect is compounded: oestrogen also influences dopamine availability, and since ADHD is fundamentally a dopamine regulation condition, hormonal fluctuations can amplify ADHD symptoms and narrow your window significantly.', linen, navyMid, null);
 
@@ -4411,6 +4493,73 @@ function downloadPDF() {
       sectionDivider('ONE THING I AM TAKING AWAY FROM THIS', blushPale);
       fieldValue(vals[wi++], 3);
 
+      // ════════════════════════════════
+      // DISCLAIMER PAGE
+      // ════════════════════════════════
+      newPage();
+      y += 4;
+      sectionHeading('Important Information');
+
+      // About this tool
+      const aboutToolLines = doc.splitTextToSize('This document was generated by the My Sensory Preferences tool, created by Shelley L\'Green, Occupational Therapist (AHPRA Registration: OCC0001820052). It is an educational and self-exploration resource designed to support self-awareness and understanding of sensory preferences in the context of ADHD and nervous system regulation.', contentW - 8);
+      checkY(aboutToolLines.length * 5 + 16);
+      doc.setFillColor(...sagePale);
+      doc.setDrawColor(...sage);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y, contentW, aboutToolLines.length * 5 + 14, 2, 2, 'FD');
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(...navy);
+      doc.text('About this tool', margin + 4, y + 6);
+      doc.setFont('helvetica','normal');
+      doc.setTextColor(...ink);
+      doc.text(aboutToolLines, margin + 4, y + 11);
+      y += aboutToolLines.length * 5 + 18;
+
+      // Clinical disclaimer
+      subHeading('Clinical and professional disclaimer', navy);
+      const disclaimers = [
+        'This tool is not a clinical assessment, diagnostic tool, or substitute for professional advice. It does not diagnose, treat, or cure any condition.',
+        'Using this tool and downloading this document does not create a therapeutic relationship between you and Shelley L\'Green or ADHD and Her.',
+        'The results generated by this tool are based on self-reported responses to educational questions. They reflect personal preferences and patterns, not clinical findings.',
+        'This tool is designed for adults aged 18 and over who identify as women or gender diverse, who have a diagnosis of ADHD, are exploring the possibility of ADHD, or who are simply curious about how their sensory system works.',
+        'If you are experiencing significant distress, mental health difficulties, or concerns about your wellbeing, please seek support from a qualified health professional.',
+        'In line with AHPRA advertising guidelines, no claims are made that this tool will diagnose, treat, or cure any condition. The content draws on peer-reviewed research, established occupational therapy frameworks, and the published work of recognised practitioners.',
+      ];
+      disclaimers.forEach(d => {
+        const dLines = doc.splitTextToSize(d, contentW - 8);
+        checkY(dLines.length * 5 + 4);
+        doc.setFillColor(...blush);
+        doc.circle(margin + 2, y - 0.5, 1.2, 'F');
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica','normal');
+        doc.setTextColor(...ink);
+        doc.text(dLines, margin + 6, y);
+        y += dLines.length * 5 + 3;
+      });
+
+      y += 4;
+
+      // Research basis
+      subHeading('Research basis', navy);
+      bodyText('This tool draws on the following established frameworks and bodies of research: Dunn\'s Model of Sensory Processing (1997, 2007); Siegel\'s Window of Tolerance concept as adapted by Linda Thai; Polyvagal Theory (Porges, 2011); interoception research (Craig, 2002; Mahler, 2017); and peer-reviewed research on sensory processing in ADHD populations including Cortese et al. (2025) and Bijlenga et al. (2023).', inkLight, 8.5);
+
+      y += 4;
+
+      // Copyright and terms
+      checkY(20);
+      doc.setFillColor(...linen);
+      doc.setDrawColor(220, 215, 208);
+      doc.setLineWidth(0.3);
+      const copyrightText = '\u00A9 2026 Shelley L\'Green, ADHD and Her (adhdandher.com.au). All rights reserved. This document is licensed for personal use only. It may not be reproduced, distributed, resold, or shared in any form without written permission from the author. For full terms of use, visit adhdandher.com.au.';
+      const copyrightLines = doc.splitTextToSize(copyrightText, contentW - 8);
+      doc.roundedRect(margin, y, contentW, copyrightLines.length * 4.5 + 10, 2, 2, 'FD');
+      doc.setFontSize(8);
+      doc.setFont('helvetica','normal');
+      doc.setTextColor(...inkLight);
+      doc.text(copyrightLines, margin + 4, y + 6);
+      y += copyrightLines.length * 4.5 + 14;
+
       // ── Open in new tab ──
       const pdfOutput = doc.output('bloburl');
       if (newTab) {
@@ -4428,6 +4577,98 @@ function downloadPDF() {
     if (btn) { btn.textContent = 'Download my results & tools'; btn.disabled = false; }
   }, 100);
 }
+</script>
+
+<!-- ── EmailJS ── -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init({ publicKey: 'TmxcG7ZTgEMziSIsr' }); })();
+
+function buildEmailBody(toEmail) {
+  if (!userResults) return null;
+  const domainNames = { vest:'Vestibular', prop:'Proprioception', intero:'Interoception', aud:'Auditory', vis:'Visual', tact:'Tactile', smell:'Smell & taste', social:'Social & emotional environment' };
+  const patternColours = {
+    seeking:   { bg:'#e8f2f6', text:'#2e4b62', label:'Sensory seeking' },
+    sensitive: { bg:'#f8f0ed', text:'#6a4840', label:'Sensory sensitive' },
+    combined:  { bg:'#eaf2f0', text:'#3a5852', label:'Combined: seeking & sensitive' },
+    balanced:  { bg:'#f0f0ee', text:'#5a6870', label:'Less pronounced' }
+  };
+  const downToolsMap = {
+    vest: ['Run, dance hard, or shake your whole body first  -  if the energy feels too big to settle directly, move it through. Then slow it down','Fast then slow  -  10 squats or jumping jacks, then slow it down with gentle arm swings or shoulder rolls','Gentle rocking in a chair or while seated  -  slow, rhythmic vestibular input once the activation has moved through','Gentle swaying while standing, or slow walking outdoors  -  particularly effective after a high-sensory situation'],
+    prop: ['Punch a pillow, squeeze a cushion hard, or push both hands firmly against a wall  -  match the intensity first, then progressively soften','Scrunch and wring  -  squeeze a towel as hard as you can, then slowly release. Repeat until the activation starts to shift','Weighted blanket during rest or wind-down, or after the activation has discharged  -  sustained, predictable pressure is organising','Firm self-massage or a massage roller once the energy has shifted  -  controlled pressure supports the nervous system to settle'],
+    intero: ['Extended exhale breathing: breathe in for 4 counts, out for 6 to 8  -  slows the nervous system reliably','Body scan practice: lying down, slowly bringing attention to each area without judgment','Name sensations before emotions  -  notice "tightness in my chest" before deciding what it means','Grounding: feet flat on the floor, hands on something solid, when internal signals feel overwhelming'],
+    aud: ['Hum a slow, low tone  -  humming activates the vagus nerve through vibration in the throat and chest. Even 60 seconds makes a difference','Scream-sing in the car or put on something loud and let yourself feel it fully  -  then transition to something quieter','Noise-cancelling headphones, earplugs, or ear defenders  -  creating quiet is one of the most accessible nervous system supports','Designate at least one low-sound zone in your home that is consistently quiet and predictable'],
+    vis: ['Soft, warm lighting rather than bright fluorescent or halogen  -  LED warm white is an accessible swap','Reduce visual clutter in spaces where you need to focus or feel calm','Dim screens in the evening and during high-load periods to reduce ongoing visual activation','A visually predictable, consistent space at home provides a baseline that does not add to sensory load'],
+    tact: ['Prioritise clothing comfort  -  fabric type, seams, tags, and fit affect your nervous system across the whole day','Predictable, firm touch is generally more settling than light or unexpected contact','Weighted blanket, compression clothing, or a firm self-hug during high-load or overwhelming moments','Keep your sensory environment texturally predictable at home  -  notice which surfaces and fabrics feel most settling'],
+    smell: ['Calming scents such as lavender, vanilla, or sandalwood used intentionally during wind-down or high-load periods','Unscented products to reduce background scent load at home  -  toiletries, cleaning products, laundry detergent','Familiar, preferred foods during high-load periods  -  novelty and strong flavours add sensory demand when stretched','Identify your neutral or calming scents and use them deliberately before and during demanding situations'],
+    social: ['Build in transition time after social situations before the next demand  -  even 10 minutes changes the landing','Low-demand connection  -  a quiet walk with one person, a message rather than a call','Naming your recovery need clearly: "I need about an hour. Then I am very much here"','Vent to a trusted person before you try to settle  -  a quick call to offload often makes the settling tools more accessible']
+  };
+  const upToolsMap = {
+    vest: ['Brisk walk, run, or cycle  -  alerting vestibular input that shifts a flat or foggy state','Mini trampoline or rebounding for 5 to 10 minutes: a highly effective vestibular activator','High-energy yoga flow or gym session in the morning to set your nervous system baseline','Jumping jacks, stair climbing, or dancing to music as a short activation break'],
+    prop: ['Push, pull, and carry activities  -  carrying shopping, climbing stairs, resistance exercise','Gym session, bodyweight exercise, or resistance bands to shift a flat or foggy state','Crunchy or chewy foods  -  jaw proprioception is a highly accessible activating input','Wall push-ups, carrying a heavy bag, or deep pressure before a demanding task'],
+    intero: ['Set timed reminders to check in: am I hungry? Thirsty? Too hot? Tired? Noticing early prevents crashing','Strong physical sensations  -  a cold splash of water, walking barefoot  -  bring body awareness online when flat','Keep easy, preferred foods visible and accessible. Eating regularly supports a regulated energy state','Morning temperature ritual  -  warm shower or cool cloth  -  to orient your body to the day'],
+    aud: ['High-tempo music for activation  -  your nervous system uses preferred sound to shift out of a flat state','Podcasts or audiobooks while doing routine tasks to provide engaging auditory input','Voice calls or conversations to add auditory and social stimulation when energy is low','Intentional soundscapes: design your audio environment rather than defaulting to silence'],
+    vis: ['Natural light near a window  -  alerting and regulating, more effective than artificial light for shifting flat states','Changing your environment or working in a different room provides visual novelty that supports activation','Nature views, art, and gentle movement in your visual field are all effective activation inputs','A well-lit, visually interesting space helps maintain alert engagement  -  design it intentionally'],
+    tact: ['Cold water on hands or face  -  a fast, accessible tactile input that shifts a flat or foggy state','Textured objects, kneading, gardening, or tactile fidget tools provide grounding activating input','Temperature variation  -  alternating warm and cool  -  is an effective and low-effort activation tool','Strong tactile input before a demanding task: a brisk face wash or rubbing hands together'],
+    smell: ['Alerting scents  -  citrus, peppermint, eucalyptus  -  are well-researched for supporting alertness','Strong preferred flavours: sour, spicy, or crunchy foods provide organising gustatory input','A scent ritual at the start of demanding tasks  -  a spritz of a preferred energising scent  -  can support focus','Strongly flavoured drinks  -  sour, bitter, or intensely herbal  -  used intentionally to shift a flat state'],
+    social: ['Being around people  -  even passively, in a cafe or shared space  -  can shift a flat or foggy state','A phone or voice call when energy is low often works better than text  -  the social signal is activating','Body doubling: working alongside another person, in person or virtually, supports focus and lifts low energy','Reaching out rather than withdrawing  -  notice whether connection or solitude actually helps more']
+  };
+  const flagged = userResults.filter(r => r.pattern !== 'balanced');
+  const date = new Date().toLocaleDateString('en-AU', {day:'numeric', month:'long', year:'numeric'});
+  const resultsRows = userResults.map(r => {
+    const pc = patternColours[r.pattern] || patternColours.balanced;
+    return `<tr><td style="padding:10px 16px;font-size:14px;color:#1f2e3a;font-weight:500;border-bottom:1px solid #efe9e2;">${r.name}</td><td style="padding:10px 16px;border-bottom:1px solid #efe9e2;"><span style="background:${pc.bg};color:${pc.text};padding:4px 12px;border-radius:100px;font-size:12px;font-weight:500;">${pc.label}</span></td></tr>`;
+  }).join('');
+  function toolSection(title, bgColour, borderColour, domains, toolsMap) {
+    if (domains.length === 0) return '';
+    const domainBlocks = domains.map(r => {
+      const tools = toolsMap[r.id] || [];
+      const bullets = tools.map(t => `<li style="margin-bottom:6px;font-size:13px;color:#3d5060;line-height:1.6;">${t}</li>`).join('');
+      return `<div style="margin-bottom:16px;"><div style="font-size:13px;font-weight:600;color:#1f2e3a;margin-bottom:6px;">${domainNames[r.id] || r.name}</div><ul style="margin:0;padding-left:18px;">${bullets}</ul></div>`;
+    }).join('');
+    return `<div style="background:${bgColour};border-left:4px solid ${borderColour};border-radius:8px;padding:20px 24px;margin-bottom:20px;"><div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#1f2e3a;margin-bottom:14px;">${title}</div>${domainBlocks}</div>`;
+  }
+  const downSection = toolSection('When I need to down-regulate', '#f8f0ed', '#d8bfb6', flagged, downToolsMap);
+  const upSection = toolSection('When I need to up-regulate', '#e8f2f6', '#8fa9b5', flagged, upToolsMap);
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#faf9f7;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<div style="max-width:600px;margin:0 auto;background:#ffffff;">
+  <div style="background:#2c3f4a;padding:40px 40px 32px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(159,183,175,0.3);"></div>
+    <div style="position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;border-radius:50%;background:rgba(216,191,182,0.25);"></div>
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#afc3cc;margin-bottom:10px;position:relative;">ADHD AND HER</div>
+    <div style="font-size:28px;font-weight:400;color:#faf9f7;line-height:1.2;margin-bottom:6px;position:relative;">My Sensory Preferences</div>
+    <div style="font-size:13px;color:rgba(250,249,247,0.6);position:relative;">Completed ${date}</div>
+  </div>
+  <div style="padding:28px 40px 20px;">
+    <p style="font-size:15px;color:#3d5060;line-height:1.7;margin:0;">Here are your personalised results and tools from the My Sensory Preferences questionnaire. Save this email  -  it is your personal nervous system guide to refer back to any time.</p>
+  </div>
+  <div style="padding:0 40px 24px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#2e4b62;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #2e4b62;">My Results</div>
+    <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #efe9e2;">${resultsRows}</table>
+  </div>
+  <div style="padding:0 40px 24px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#2e4b62;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #2e4b62;">My Personalised Tools</div>
+    ${downSection}${upSection}
+  </div>
+  <div style="padding:0 40px 32px;">
+    <div style="background:#eaf2f0;border-radius:8px;padding:20px 24px;text-align:center;">
+      <p style="font-size:14px;color:#1f2e3a;margin:0 0 14px;line-height:1.6;">Return to the full tool any time to explore the education, worksheet, and complete strategies.</p>
+      <a href="https://lgreenshelley.github.io/adhd-and-her-tools/" style="display:inline-block;background:#2e4b62;color:#ffffff;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;">Return to my tool</a>
+    </div>
+  </div>
+  <div style="background:#f5f3f0;padding:20px 40px;border-top:1px solid #efe9e2;">
+    <p style="font-size:12px;color:#7a8e98;margin:0 0 4px;line-height:1.6;">Created by <strong style="color:#3d5060;">Shelley L'Green</strong>, Occupational Therapist (AHPRA registered) | ADHD and Her</p>
+    <p style="font-size:11px;color:#9aa8b0;margin:0;line-height:1.6;">This email was sent because you requested a copy of your results. Your email is not stored, shared, or added to any mailing list. &copy; 2026 Shelley L'Green. For personal use only.</p>
+  </div>
+</div>
+</body></html>`;
+}
+
+function skipEmail() {}
+function sendResultsEmail() {}
+function sendResultsEmailClosing() {}
+function updateClosingScreen() {}
 </script>
 
 </body>
