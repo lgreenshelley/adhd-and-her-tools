@@ -8,27 +8,29 @@
 <title>My Sensory Blueprint | ADHD and Her  -  v2.0</title>
 <script>
 // Defined early so it is available before full page load  -  required for email app browsers
-// Store iframe src values so we can restore them when user returns
-var iframeSrcs = {};
+function loadVideo(num, videoId, hash) {
+  var container = document.getElementById('video-container-' + num);
+  if (!container) return;
+  container.innerHTML = '<iframe src="https://player.vimeo.com/video/' + videoId + '?h=' + hash + '&title=0&byline=0&portrait=0&color=2e4b62&autoplay=1&muted=0&loop=0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+}
+
+function resetVideo(num) {
+  var container = document.getElementById('video-container-' + num);
+  if (!container) return;
+  var data = num === 1
+    ? {id: '1183224014', h: 'c2ef55bb91', label: 'Tap to play — A note from Shelley'}
+    : {id: '1183225336', h: '54e59923c7', label: 'Tap to play — Regulation in real life'};
+  container.innerHTML = '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;"><div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid white;margin-left:4px;"></div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:Inter,sans-serif;">' + data.label + '</div></div>';
+  container.onclick = function() { loadVideo(num, data.id, data.h); };
+}
 
 function showSection(id) {
-  // Remove all iframes from DOM to fully stop video/audio on mobile
-  document.querySelectorAll('iframe').forEach(function(iframe) {
-    var iframeId = iframe.id || iframe.title || Math.random().toString(36);
-    if (!iframe.id) { iframe.id = iframeId; }
-    iframeSrcs[iframeId] = iframe.src;
-    iframe.src = '';
-  });
+  // Reset both video containers to stop all playback on mobile
+  resetVideo(1);
+  resetVideo(2);
   document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
   var el = document.getElementById(id);
-  if (el) {
-    el.classList.add('active');
-    // Restore iframes in the newly active section
-    el.querySelectorAll('iframe').forEach(function(iframe) {
-      var storedSrc = iframeSrcs[iframe.id];
-      if (storedSrc) { iframe.src = storedSrc; }
-    });
-  }
+  if (el) { el.classList.add('active'); }
   window.scrollTo(0, 0);
 }
 </script>
@@ -1219,15 +1221,13 @@ function showSection(id) {
          Keep ?title=0&byline=0&portrait=0&color=2e4b62 at the end for clean styling.
          If you don't have a video yet, delete this block if you do not have a video yet.
     ── -->
-    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--radius-lg); background:var(--navy); margin-bottom:28px; border:1px solid var(--border);">
-      <iframe
-        src="https://player.vimeo.com/video/1183224014?h=c2ef55bb91&title=0&byline=0&portrait=0&color=2e4b62&autoplay=0&muted=0&loop=0&api=1"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        title="Welcome video">
-      </iframe>
-
+    <div id="video-container-1" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--radius-lg); background:#2c3f4a; margin-bottom:28px; border:1px solid var(--border); cursor:pointer;" onclick="loadVideo(1, '1183224014', 'c2ef55bb91')">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid white;margin-left:4px;"></div>
+        </div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:Inter,sans-serif;">Tap to play — A note from Shelley</div>
+      </div>
     </div>
 
     <!-- ── CONTENT MAP ── -->
@@ -2153,15 +2153,13 @@ function showSection(id) {
          Format: https://player.vimeo.com/video/YOUR_VIDEO_ID
          Keep ?title=0&byline=0&portrait=0&color=2e4b62 at the end for clean styling.
     ── -->
-    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--radius-lg); background:var(--navy); margin-bottom:28px; border:1px solid var(--border);">
-      <iframe
-        src="https://player.vimeo.com/video/1183225336?h=54e59923c7&title=0&byline=0&portrait=0&color=2e4b62&autoplay=0&muted=0&loop=0&api=1"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        title="Regulation in real life video">
-      </iframe>
-
+    <div id="video-container-2" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--radius-lg); background:#2c3f4a; margin-bottom:28px; border:1px solid var(--border); cursor:pointer;" onclick="loadVideo(2, '1183225336', '54e59923c7')">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid white;margin-left:4px;"></div>
+        </div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:Inter,sans-serif;">Tap to play — Regulation in real life</div>
+      </div>
     </div>
 
     <div class="intro-card">
