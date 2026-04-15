@@ -9,11 +9,11 @@
 <script>
 // Defined early so it is available before full page load  -  required for email app browsers
 function showSection(id) {
-  // Pause all Vimeo iframes before navigating
+  // Stop all iframes by resetting src - works on all browsers including mobile
   document.querySelectorAll('iframe').forEach(function(iframe) {
-    try {
-      iframe.contentWindow.postMessage('{"method":"pause"}', '*');
-    } catch(e) {}
+    var src = iframe.src;
+    iframe.src = '';
+    iframe.src = src;
   });
   document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
   var el = document.getElementById(id);
