@@ -8,16 +8,27 @@
 <title>My Sensory Blueprint | ADHD and Her  -  v2.0</title>
 <script>
 // Defined early so it is available before full page load  -  required for email app browsers
+// Store iframe src values so we can restore them when user returns
+var iframeSrcs = {};
+
 function showSection(id) {
-  // Stop all iframes by resetting src - works on all browsers including mobile
+  // Remove all iframes from DOM to fully stop video/audio on mobile
   document.querySelectorAll('iframe').forEach(function(iframe) {
-    var src = iframe.src;
+    var iframeId = iframe.id || iframe.title || Math.random().toString(36);
+    if (!iframe.id) { iframe.id = iframeId; }
+    iframeSrcs[iframeId] = iframe.src;
     iframe.src = '';
-    iframe.src = src;
   });
   document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
   var el = document.getElementById(id);
-  if (el) { el.classList.add('active'); }
+  if (el) {
+    el.classList.add('active');
+    // Restore iframes in the newly active section
+    el.querySelectorAll('iframe').forEach(function(iframe) {
+      var storedSrc = iframeSrcs[iframe.id];
+      if (storedSrc) { iframe.src = storedSrc; }
+    });
+  }
   window.scrollTo(0, 0);
 }
 </script>
