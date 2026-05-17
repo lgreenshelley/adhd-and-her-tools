@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2436,10 +2435,10 @@ window.onerror = function(msg, src, line, col, err) {
 const DOMAINS = [
   { id:'intero', name:'Interoception', icon:'🫀', bg:'#fef3e8', qs:['i1','i2','i3','i4'], seekQ:[0,1], sensitiveQ:[2,3] },
   { id:'vest',   name:'Vestibular',    icon:'🌀', bg:'#e8f0eb', qs:['v1','v2','v3','v4'], seekQ:[0,1], sensitiveQ:[2,3] },
-  { id:'prop',   name:'Proprioception',icon:'💪', bg:'#ede6ec', qs:['p1','p2','p3','p4'], seekQ:[0,3], sensitiveQ:[1,2] },
+  { id:'prop',   name:'Proprioception',icon:'💪', bg:'#ede6ec', qs:['p1','p2','p3','p4'], seekQ:[0,1,3], sensitiveQ:[2] },
   { id:'aud',    name:'Auditory',      icon:'👂', bg:'#e6f1fb', qs:['a1','a2','a3','a4'], seekQ:[0],   sensitiveQ:[1,2,3] },
-  { id:'vis',    name:'Visual',        icon:'👁️', bg:'#faeeda', qs:['vis1','vis2','vis3','vis4'], seekQ:[1,3], sensitiveQ:[0,2] },
-  { id:'tact',   name:'Tactile',       icon:'🤝', bg:'#faece7', qs:['t1','t2','t3','t4'], seekQ:[0,2], sensitiveQ:[1,3] },
+  { id:'vis',    name:'Visual',        icon:'👁️', bg:'#faeeda', qs:['vis1','vis2','vis3','vis4'], seekQ:[1], sensitiveQ:[0,2,3] },
+  { id:'tact',   name:'Tactile',       icon:'🤝', bg:'#faece7', qs:['t1','t2','t3','t4'], seekQ:[2], sensitiveQ:[0,1,3] },
   { id:'smell', name:'Smell & taste', icon:'👃', bg:'#e8f0eb', qs:['og1','og2','og3','og4'], seekQ:[1,3], sensitiveQ:[0,2] },
   { id:'social', name:'Social & emotional environment', icon:'🫶', bg:'#ede6ec', qs:['se1','se2','se3','se4'], seekQ:[2,3], sensitiveQ:[0,1] }
 ];
