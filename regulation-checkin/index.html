@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulation Check-In | ADHD and Her</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --off-white: #faf9f7;
+  --linen: #efe9e2;
+  --blush: #d8bfb6;
+  --blush-pale: #f8f0ed;
+  --navy: #1f2e3a;
+  --navy-mid: #2e4b62;
+  --blue-dust: #8fa9b5;
+  --blue-pale: #e8f2f6;
+  --sage: #9fb7af;
+  --sage-pale: #eaf2f0;
+  --high-bg: #f8f0ed;
+  --high-text: #6a3838;
+  --high-label: #7a5548;
+  --high-border: #d4a898;
+  --high-selected: #9a5040;
+  --low-bg: #e8f2f6;
+  --low-text: #1f3040;
+  --low-label: #2e4b62;
+  --low-border: #9bbfcc;
+  --low-selected: #2e4b62;
+}
+html, body {
+  background: var(--off-white);
+  color: var(--navy);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 480px; margin: 0 auto; padding: 0 20px 60px; }
+.logo-bar { padding: 20px 0 24px; text-align: center; }
+.logo-bar img { height: 26px; width: auto; }
+.step { display: none; }
+.step.active { display: block; }
+
+/* WHO SCREEN */
+h1 { font-family: 'DM Serif Display', serif; font-size: 1.9rem; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 10px; }
+h1 em { font-style: italic; color: var(--navy-mid); }
+.intro-sub { font-size: 14px; color: #5a6e7c; line-height: 1.65; margin-bottom: 8px; }
+.intro-note { font-size: 12px; color: #8a7e76; line-height: 1.6; margin-bottom: 28px; font-style: italic; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.who-btn {
+  background: #fff;
+  border: 1px solid #e0d8d0;
+  border-radius: 12px;
+  padding: 24px 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  font-family: 'Inter', sans-serif;
+}
+.who-btn:hover { border-color: var(--navy-mid); background: var(--sage-pale); transform: translateY(-1px); }
+.who-icon { font-size: 28px; margin-bottom: 10px; }
+.who-label { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); line-height: 1.25; margin-bottom: 4px; }
+.who-sub { font-size: 12px; color: #8fa9b5; line-height: 1.4; }
+
+/* OBSERVATION SCREEN */
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--blue-dust); cursor: pointer; margin-bottom: 20px; background: none; border: none; padding: 0; font-family: 'Inter', sans-serif; }
+.back-link:hover { color: var(--navy-mid); }
+.back-link svg { width: 14px; height: 14px; }
+.obs-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 8px; }
+.group-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin: 18px 0 10px; padding-bottom: 6px; }
+.group-label.high { color: var(--high-label); border-bottom: 1px solid var(--high-border); }
+.group-label.low { color: var(--low-label); border-bottom: 1px solid var(--low-border); }
+.behaviour-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.b-btn {
+  background: #fff;
+  border: 1px solid #e0d8d0;
+  border-radius: 8px;
+  padding: 11px 12px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+  transition: border-color 0.15s, background 0.15s;
+}
+.b-btn.high-btn { background: var(--high-bg); border-color: var(--high-border); }
+.b-btn.high-btn:hover { border-color: var(--high-selected); background: #f0dcd4; }
+.b-btn.high-btn.selected { border: 2px solid var(--high-selected); background: #edd8d0; color: var(--high-text); font-weight: 500; }
+.b-btn.low-btn { background: var(--low-bg); border-color: var(--low-border); }
+.b-btn.low-btn:hover { border-color: var(--low-selected); background: #c8dce8; }
+.b-btn.low-btn.selected { border: 2px solid var(--low-selected); background: #c0d8e8; color: var(--low-text); font-weight: 500; }
+.count-line { font-size: 12px; color: var(--blue-dust); margin: 12px 0 16px; min-height: 18px; }
+.primary-btn { width: 100%; background: var(--navy-mid); color: #fff; border: none; border-radius: 6px; padding: 16px; font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: opacity 0.15s; }
+.primary-btn:disabled { opacity: 0.3; cursor: default; }
+.primary-btn:hover:not(:disabled) { opacity: 0.88; }
+
+/* RESULT SCREENS */
+.inline-disclaimer {
+  font-size: 11px;
+  color: #8a7e76;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: var(--linen);
+  border-radius: 6px;
+  border-left: 2px solid var(--blush);
+}
+
+/* Window of Capacity visual */
+.woc-diagram { border-radius: 10px; overflow: hidden; border: 1px solid rgba(31,46,58,0.12); margin-bottom: 18px; }
+.woc-state { padding: 13px 16px; }
+.woc-high { background: var(--high-bg); border-bottom: 1px solid rgba(31,46,58,0.08); }
+.woc-in { background: var(--sage-pale); border-bottom: 1px solid rgba(31,46,58,0.08); }
+.woc-low { background: var(--low-bg); }
+.woc-tag { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 2px; }
+.woc-high .woc-tag { color: var(--high-label); }
+.woc-in .woc-tag { color: #3a5852; }
+.woc-low .woc-tag { color: var(--low-label); }
+.woc-title { font-size: 13px; font-weight: 500; margin-bottom: 1px; }
+.woc-high .woc-title { color: var(--high-text); }
+.woc-in .woc-title { color: #2a4840; }
+.woc-low .woc-title { color: var(--low-text); }
+.woc-desc { font-size: 12px; line-height: 1.5; }
+.woc-high .woc-desc { color: var(--high-label); }
+.woc-in .woc-desc { color: #3a5852; }
+.woc-low .woc-desc { color: var(--low-label); }
+.woc-active-indicator { font-size: 13px; line-height: 1; display: inline-block; margin-right: 5px; vertical-align: middle; }
+
+/* State result card */
+.state-card { border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.state-card.high { background: var(--high-bg); border: 1px solid var(--high-border); }
+.state-card.low { background: var(--low-bg); border: 1px solid var(--low-border); }
+.state-card.mixed { background: var(--linen); border: 1px solid var(--blush); }
+.state-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.high .state-tag { color: var(--high-label); }
+.low .state-tag { color: var(--low-label); }
+.mixed .state-tag { color: #7a5a40; }
+.state-heading { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 8px; line-height: 1.25; }
+.high .state-heading { color: var(--high-text); }
+.low .state-heading { color: var(--low-text); }
+.mixed .state-heading { color: var(--navy); }
+.state-body { font-size: 13px; line-height: 1.7; }
+.high .state-body { color: var(--high-label); }
+.low .state-body { color: var(--low-label); }
+.mixed .state-body { color: var(--navy-mid); }
+
+/* Simplified combined guidance card */
+.guidance-card { background: #fff; border: 1px solid #e8e0d8; border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+.guidance-section { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #f0e8e0; }
+.guidance-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.guidance-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 5px; }
+.guidance-body { font-size: 13px; line-height: 1.7; color: var(--navy); }
+
+/* One thing card */
+.one-thing-block { background: var(--navy); border-radius: 12px; padding: 18px 22px; margin-bottom: 18px; }
+.one-thing-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 8px; }
+.one-thing-text { font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 400; color: var(--off-white); line-height: 1.45; }
+
+/* Tools */
+.tools-section-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 10px; }
+.tools-note { font-size: 12px; color: #8a7e76; line-height: 1.6; margin-bottom: 4px; font-style: italic; }
+.tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.tool-chip { background: #fff; border: 1px solid #e0d8d0; border-radius: 8px; padding: 11px 12px; font-size: 12px; line-height: 1.5; color: var(--navy); display: flex; flex-direction: column; gap: 5px; }
+.tool-chip-icon { font-size: 16px; line-height: 1; }
+
+/* Save link */
+.save-link-block { background: var(--sage-pale); border: 1px solid var(--sage); border-radius: 8px; padding: 14px 16px; margin-bottom: 18px; display: flex; gap: 12px; align-items: flex-start; }
+.save-link-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.save-link-text { font-size: 13px; color: var(--navy-mid); line-height: 1.6; }
+.save-link-text strong { color: var(--navy); font-weight: 500; }
+
+/* CTA */
+.cta-block { background: var(--navy); border-radius: 14px; padding: 26px 22px; margin-bottom: 20px; }
+.cta-eyebrow { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 10px; }
+.cta-heading { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 400; color: var(--off-white); line-height: 1.3; margin-bottom: 12px; }
+.cta-heading em { font-style: italic; color: var(--blush); }
+.cta-body { font-size: 13px; line-height: 1.7; color: rgba(250,249,247,0.75); margin-bottom: 18px; }
+.cta-points { list-style: none; padding: 0; margin: 0 0 20px; }
+.cta-points li { font-size: 13px; line-height: 1.6; color: rgba(250,249,247,0.85); padding: 6px 0; border-bottom: 1px solid rgba(250,249,247,0.08); display: flex; gap: 10px; align-items: flex-start; }
+.cta-points li:last-child { border-bottom: none; }
+.cta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; margin-top: 7px; }
+.cta-btn { display: block; width: 100%; background: var(--blush); color: var(--navy); border: none; border-radius: 6px; padding: 15px; font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; text-decoration: none; text-align: center; transition: opacity 0.15s; }
+.cta-btn:hover { opacity: 0.88; }
+.cta-sub { font-size: 12px; color: rgba(250,249,247,0.4); text-align: center; margin-top: 8px; }
+
+/* Disclaimer footer */
+.disclaimer-footer { font-size: 11px; color: #8a7e76; line-height: 1.7; padding-top: 16px; border-top: 1px solid #e0d8d0; }
+.disclaimer-footer a { color: var(--blue-dust); }
+
+@media (max-width: 380px) {
+  h1 { font-size: 1.65rem; }
+  .behaviour-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .who-grid { grid-template-columns: 1fr; }
+}
+
+.woc-intro { font-size: 13px; color: #5a6e7c; line-height: 1.6; margin-bottom: 10px; }
+.safety-note { font-size: 12px; color: var(--low-label); line-height: 1.6; background: var(--blue-pale); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+.coreg-bridge { background: var(--blush-pale); border: 1px solid var(--blush); border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; }
+.coreg-bridge p { font-size: 13.5px; color: var(--navy); line-height: 1.55; margin-bottom: 12px; }
+.coreg-btn { width: 100%; background: #fff; color: var(--navy-mid); border: 1px solid var(--navy-mid); border-radius: 6px; padding: 12px; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; }
+.coreg-btn:hover { background: var(--off-white); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo-bar">
+    <img src="https://images.squarespace-cdn.com/content/6997a75ba066fa780bcd0254/45667be3-4b79-4400-b39a-932e257c4460/ADHD+%26+hER+LOGO+-+Blue.png?content-type=image%2Fpng" alt="ADHD and Her">
+  </div>
+
+  <!-- WHO SCREEN -->
+  <div class="step active" id="step-who">
+    <h1>Regulation <em>check-in</em></h1>
+    <p class="intro-sub">Your nervous system shifts through different states during the day. Sometimes it runs high and fast, sometimes it slows right down. Regulation is what helps it find its way back toward steady. This quick check-in helps you notice which state you, or someone you care for, might be in right now, and what might help.</p>
+    <p class="intro-sub">Two ways to use this check-in.</p>
+    <p class="intro-sub"><strong>In the moment.</strong> You are feeling a shift, or seeing one in someone you care for, and you are not sure what might be going on in the nervous system or how to help. Use it now for a possible starting point.</p>
+    <p class="intro-sub"><strong>Afterwards.</strong> A hard moment has passed. Use it to be curious about what was happening, and what might support things next time.</p>
+    <div class="who-grid">
+      <button class="who-btn" onclick="setJourney('self')">
+        <div class="who-icon">❤️</div>
+        <div class="who-label">My own nervous system</div>
+        <div class="who-sub">Checking in on yourself</div>
+      </button>
+      <button class="who-btn" onclick="setJourney('daughter')">
+        <div class="who-icon">💗</div>
+        <div class="who-label">My child's nervous system</div>
+        <div class="who-sub">Observing what you're seeing in them</div>
+      </button>
+    </div>
+    <p class="intro-note" style="margin-top:24px;margin-bottom:0;">For general educational purposes only. These are general suggestions for awareness and self-exploration, not a clinical assessment or personal advice.</p>
+  </div>
+
+  <!-- OBSERVATION: SELF -->
+  <div class="step" id="step-obs-self">
+    <button class="back-link" onclick="goWho()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again
+    </button>
+
+
+    <p class="obs-label">Checking in on yourself</p>
+    <h1>What are you <em>noticing?</em></h1>
+    <p class="intro-sub">Tap everything that feels familiar right now.</p>
+    <p class="group-label high">Feels activated, reactive, on edge</p>
+    <div class="behaviour-grid">
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Snapping or reacting more than I want to</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Feeling overwhelmed or on edge</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Racing thoughts, hard to slow down</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Restless, can't settle</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Everything feels urgent</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Easily irritated or triggered</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Talking more than usual, hard to stop</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Sensory things feel more intense than usual</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Saying things I don't mean</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'self')">Heart racing or chest tight</button>
+    </div>
+    <p class="group-label low">Feels shut down, flat, withdrawn</p>
+    <div class="behaviour-grid">
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Flat or disconnected</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Can't start anything</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Foggy or hard to think clearly</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Want to withdraw and be alone</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Words gone, hard to find what to say</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Exhausted but rest doesn't help</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">"I don't care" feeling</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Staring at nothing</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Heavy or slowed down, like everything is an effort</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'self')">Saying "I'm fine" but clearly not</button>
+    </div>
+    <p class="count-line" id="count-line-self"></p>
+    <button class="primary-btn" id="next-self" disabled onclick="goResult('self')">Show me what this might mean &rarr;</button>
+    <p class="intro-note" style="margin-top:24px;margin-bottom:0;">For general educational purposes only. This is a starting point for exploration, not a clinical assessment or diagnosis.</p>
+  </div>
+
+  <!-- OBSERVATION: DAUGHTER -->
+  <div class="step" id="step-obs-daughter">
+    <button class="back-link" onclick="goWho()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again
+    </button>
+
+
+    <p class="obs-label">Observing your child</p>
+    <h1>What are you <em>seeing?</em></h1>
+    <p class="intro-sub">Tap everything you are noticing right now.</p>
+    <p class="group-label high">Looks irritated, reactive, activated</p>
+    <div class="behaviour-grid">
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Slamming doors or throwing things</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Crying and worked up, can't be calmed</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Zero to a hundred over something small</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Arguing or snapping at everything</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Picking fights with siblings</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Talking non-stop, can't slow down</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Pacing or can't stay in one place</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Overwhelmed by clothing or sensory input</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Wound up, can't switch off</button>
+      <button class="b-btn high-btn" data-state="high" onclick="toggleB(this,'daughter')">Saying hurtful things</button>
+    </div>
+    <p class="group-label low">Looks shut down, withdrawn, flat</p>
+    <div class="behaviour-grid">
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Gone silent or withdrawn</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Flat or "I don't care"</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Can't start anything</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Slow and heavy, hard to get her moving</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Hiding away, won't come out of her room</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Seems shut down or foggy</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Not responding when you speak to her</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Words gone, can't find what to say</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Staring at nothing</button>
+      <button class="b-btn low-btn" data-state="low" onclick="toggleB(this,'daughter')">Saying "I'm fine" but clearly isn't</button>
+    </div>
+    <p class="count-line" id="count-line-daughter"></p>
+    <button class="primary-btn" id="next-daughter" disabled onclick="goResult('daughter')">Show me what this might mean &rarr;</button>
+    <p class="intro-note" style="margin-top:24px;margin-bottom:0;">For general educational purposes only. This is a starting point for exploration, not a clinical assessment or diagnosis.</p>
+  </div>
+
+  <!-- ===== RESULT: SELF HIGH ===== -->
+  <div class="step" id="result-self-high">
+    <button class="back-link" onclick="goObs('self')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card high">
+      <p class="state-tag">This might suggest a high energy state</p>
+      <h2 class="state-heading">You may be in a high energy state</h2>
+      <p class="state-body">Based on what you are noticing, this could point to a high energy, hyperactivated state. Moving outside the window of capacity happens to everyone, often many times a day. For some people with ADHD, it can be easier to tip outside the window, and harder to find the way back. That is information, not a problem.</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">Two short inhales through the nose, then one long slow exhale out. This may help signal safety to the nervous system.</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-active-indicator" style="color:#9a5040;">★</span>
+        <span class="woc-tag">You might be here right now</span>
+        <div class="woc-title">Above your window, high energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed. Your nervous system may be activated and on alert.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-tag">Below the window</span>
+        <div class="woc-title">Low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">Down-regulating approaches may be worth exploring. These are strategies that could help your nervous system release some of that high energy before trying to settle. In a high energy state, it can be tricky to jump straight to calm. It may help to move with the energy first, then slowly shift it down if the task in front of you allows.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Something to try</p>
+        <p class="guidance-body">Noticing and naming the state quietly before reacting to it may create a small gap. "I might be in a high energy state right now" is enough. You do not need to fix it immediately.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with settling and down-regulation</p>
+    <p class="tools-note">These are possibilities to explore, not instructions. Try them at a calm time first. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🏃</span>Movement, a walk might help shift some of that energy first</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Squeeze something firmly and fully release, pillow, hands, stress ball</div>
+      <div class="tool-chip"><span class="tool-chip-icon">💧</span>Cool water on the face or wrists, if that feels comfortable</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🫂</span>A firm self-hug, crossed arms, steady pressure, if that feels okay</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🎵</span>A familiar song that tends to shift your state</div>
+      <div class="tool-chip"><span class="tool-chip-icon">👀</span>Slowly look around the room and find the horizon out the window, then let your eyes rest on different objects too</div>
+    </div>
+
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it whenever you notice a shift in your nervous system.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
+      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
+        <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
+        <li><span class="cta-dot"></span>OT-led video modules on regulation in real life</li>
+        <li><span class="cta-dot"></span>Tools for high and low energy states</li>
+        <li><span class="cta-dot"></span>ADHD, hormones and your cycle, the connection most women are never told about</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/sensory-blueprint-women" class="cta-btn">See the Sensory Blueprint</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If this feels bigger than a hard moment, or you are ever worried about your safety, please reach out to your GP or a support line such as Lifeline on 13 11 14.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+  <!-- ===== RESULT: SELF LOW ===== -->
+  <div class="step" id="result-self-low">
+    <button class="back-link" onclick="goObs('self')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card low">
+      <p class="state-tag">This might suggest a low energy state</p>
+      <h2 class="state-heading">Your nervous system may be low on capacity and conserving energy</h2>
+      <p class="state-body">Based on what you are noticing, this could point to a low energy, hypoactivated state. It may be a nervous system that has run low on capacity and is conserving energy. ADHD brains can also drop into a low energy state when something feels boring or not motivating, even when you want to engage. Sometimes it is your nervous system not getting the input it needs. Other times it has reached its capacity and has nothing left to give.</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">A crunchy snack or cold drink. Small sensory input that might gently help bring the nervous system back online.</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-tag">Above the window</span>
+        <div class="woc-title">High energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-active-indicator" style="color:#2e4b62;">★</span>
+        <span class="woc-tag">You might be here right now</span>
+        <div class="woc-title">Below your window, low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb. Your system may be pulling back to conserve energy.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">Gently up-regulating approaches may be worth exploring. These are strategies that could help bring some gradual activation. Starting with something familiar and low-demand tends to be more helpful than something intense when the nervous system may be in this state.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Something to try</p>
+        <p class="guidance-body">Noticing without pressure to change it immediately. "I might be in a low energy state right now. That is information." Removing any expectation to perform or push through may help create a little more room to move.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with gentle activation and up-regulation</p>
+    <p class="tools-note">These are possibilities to explore, not instructions. Try them at a calm time first. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🍎</span>A crunchy snack, gentle alerting input if you are comfortable eating</div>
+      <div class="tool-chip"><span class="tool-chip-icon">💧</span>Cool water on the wrists or face, if that feels comfortable</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🚶</span>A slow gentle walk, low demand, light movement, no agenda</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🎵</span>Familiar music playing quietly nearby</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Two short inhales through the nose, one long exhale out</div>
+      <div class="tool-chip"><span class="tool-chip-icon">👀</span>Slowly look around the room, letting your eyes land and rest</div>
+    </div>
+
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it whenever you notice a shift in your nervous system.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
+      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
+        <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
+        <li><span class="cta-dot"></span>OT-led video modules on regulation in real life</li>
+        <li><span class="cta-dot"></span>Tools for high and low energy states</li>
+        <li><span class="cta-dot"></span>ADHD, hormones and your cycle, the connection most women are never told about</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/sensory-blueprint-women" class="cta-btn">See the Sensory Blueprint</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If this feels bigger than a hard moment, or you are ever worried about your safety, please reach out to your GP or a support line such as Lifeline on 13 11 14.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+  <!-- ===== RESULT: SELF MIXED ===== -->
+  <div class="step" id="result-self-mixed">
+    <button class="back-link" onclick="goObs('self')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card mixed">
+      <p class="state-tag">This might be a mixed picture</p>
+      <h2 class="state-heading">It may be hard to tell which state you are in</h2>
+      <p class="state-body">You seem to be noticing signs that point to a high energy state, and signs that point to a low energy state. When it sits on both sides like this, it can be hard to tell which way your nervous system is leaning right now, and that is okay. There may not be one clear pattern yet. A gentle starting point is often something that helps the nervous system settle and organise, without pushing hard in either direction, while you keep noticing what comes up.</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">A firm self-hug, crossed arms, steady pressure, hold it for a moment. This may help organise the nervous system without pushing it in either direction.</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-tag">Above the window</span>
+        <div class="woc-title">High energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-tag">Below the window</span>
+        <div class="woc-title">Low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">When a nervous system may be switching between states, approaches that help organise it without pushing strongly in either direction are often worth exploring first. Steady pressure through the body or slow rhythmic movement may help it find a steadier place.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Something to try</p>
+        <p class="guidance-body">Noticing without pressure to label it. "I might be switching between states right now." Removing demand on yourself to perform or explain may create a little more room.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with organising, without pushing either way</p>
+    <p class="tools-note">These are possibilities to explore, not instructions. Try them at a calm time first. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🫂</span>Firm self-hug, crossed arms, steady pressure, hold it</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Physiological sigh, double inhale, long slow exhale out</div>
+      <div class="tool-chip"><span class="tool-chip-icon">👀</span>Orienting, slowly look around, let eyes land and rest on objects</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Pillow squeeze and release, tense hard, then fully let go</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🚶</span>A steady rhythmic walk, slow and even-paced, no destination</div>
+    </div>
+
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it whenever you notice a shift in your nervous system.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
+      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
+        <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
+        <li><span class="cta-dot"></span>OT-led video modules on regulation in real life</li>
+        <li><span class="cta-dot"></span>Tools for high and low energy states</li>
+        <li><span class="cta-dot"></span>ADHD, hormones and your cycle, the connection most women are never told about</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/sensory-blueprint-women" class="cta-btn">See the Sensory Blueprint</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If this feels bigger than a hard moment, or you are ever worried about your safety, please reach out to your GP or a support line such as Lifeline on 13 11 14.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+  <!-- ===== RESULT: DAUGHTER HIGH ===== -->
+  <div class="step" id="result-daughter-high">
+    <button class="back-link" onclick="goObs('daughter')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card high">
+      <p class="state-tag">This might suggest a high energy state</p>
+      <h2 class="state-heading">Her nervous system may be overloaded</h2>
+      <p class="state-body">Based on what you are observing, this could point to a high energy, hyperactivated state. It may be a nervous system that has tipped outside her window of capacity. ADHD nervous systems can tip outside the window faster and take longer to recover. The brain and body differences that are part of ADHD also affect how quickly she reaches this overwhelmed state, and how hard it can be to come back from it</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">"I'm here. You don't have to explain anything right now."</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-active-indicator" style="color:#9a5040;">★</span>
+        <span class="woc-tag">She might be here right now</span>
+        <div class="woc-title">Above her window, high energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed. Her nervous system may be on alert and activated.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-tag">Below the window</span>
+        <div class="woc-title">Low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">As a parent or carer, your own nervous system state matters here. Lowering your voice, slowing your breath and being present without making demands may help create a calmer environment. You are not trying to fix the moment. You may be the calm she can borrow until she is able to shift her own nervous system state. This is called co-regulation.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Things that may not help right now</p>
+        <p class="guidance-body">Reasoning, explaining or consequences tend to be less effective when a nervous system may be in a high energy state. Her thinking brain is harder to access in these moments. These conversations are worth having later, once she has settled.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with settling and down-regulation</p>
+    <p class="tools-note">Introduce these at a calm time first where possible so she knows what to expect. If anything causes distress, stop. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🏃</span>Movement, a walk might help shift some of that energy first</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🎵</span>A favourite song she can move to or tune into if she wants to</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Squeezing a pillow firmly and fully releasing, if she is comfortable</div>
+      <div class="tool-chip"><span class="tool-chip-icon">💧</span>Cool water on the face or wrists, if she is comfortable with this</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Two short inhales, one long slow exhale out</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🫂</span>A firm self-hug, if that feels okay to her</div>
+    </div>
+
+    <div class="coreg-bridge">
+      <p><strong>A quick check on you, too.</strong> Your steady nervous system is the most powerful tool she has. It is hard to lend calm you do not have, so this works in both directions.</p>
+      <button class="coreg-btn" onclick="setJourney('self')">Check my own nervous system</button>
+    </div>
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it in the hard moments.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
+      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
+        <li><span class="cta-dot"></span>60+ regulation tools demonstrated on video, actually shown, not just described</li>
+        <li><span class="cta-dot"></span>Scripts for the hard moments, the car, the kitchen table, the bedroom doorway</li>
+        <li><span class="cta-dot"></span>13 OT-led modules for every hard moment ( after school, meltdowns, homework, mornings)</li>
+        <li><span class="cta-dot"></span>Bonus: Lily, 14, unscripted Q&A on what actually helps</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/my-regulation-toolkit-teens" class="cta-btn">See the Regulation Toolkit</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If you are worried about her safety, or this feels bigger than a hard moment, please reach out to your GP or a support line such as Lifeline on 13 11 14, or Kids Helpline on 1800 55 1800.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your daughter's health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+  <!-- ===== RESULT: DAUGHTER LOW ===== -->
+  <div class="step" id="result-daughter-low">
+    <button class="back-link" onclick="goObs('daughter')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card low">
+      <p class="state-tag">This might suggest a low energy state</p>
+      <h2 class="state-heading">Her nervous system may feel shut down</h2>
+      <p class="state-body">Based on what you are observing, this could point to a low energy, hypoactivated state. It may be a nervous system that has gone into a protective conservation mode after running low on capacity. The more she has been masking and managing throughout the day, the more likely this is what you are seeing at home. ADHD nervous systems can also drop into a low energy state when something feels boring or not motivating, even when she wants to engage. Sometimes it is not getting the input it needs. Other times it has simply reached capacity and has nothing left to give.</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">"No rush. I'll just be here."</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-tag">Above the window</span>
+        <div class="woc-title">High energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-active-indicator" style="color:#2e4b62;">★</span>
+        <span class="woc-tag">She might be here right now</span>
+        <div class="woc-title">Below her window, low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb. Her nervous system may be pulling back to conserve energy.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">Sitting near her without any expectations, offering something to eat or drink quietly, and allowing silence without pressure may help signal that the environment is safe. The more she feels expected to perform or explain, the harder it may be for her to come back online.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Things that may not help right now</p>
+        <p class="guidance-body">"What's wrong?" "Talk to me." Pushing for action or connection before she is ready tends to deepen withdrawal. Presence without demand tends to be more effective first.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with gentle activation and up-regulation</p>
+    <p class="tools-note">Introduce these at a calm time first so she knows what to expect. If anything causes distress, stop. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🍎</span>A crunchy snack, gentle alerting input if she is comfortable eating</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🎵</span>Familiar calming music playing quietly nearby</div>
+      <div class="tool-chip"><span class="tool-chip-icon">💧</span>A cool drink or cool water on the wrists</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🚶</span>A slow gentle walk, low demand, no conversation required</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🧊</span>A cool pack gently held, only if she is comfortable, and briefly</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Two short inhales through the nose, one long slow exhale out</div>
+    </div>
+
+    <div class="coreg-bridge">
+      <p><strong>A quick check on you, too.</strong> Your steady nervous system is the most powerful tool she has. It is hard to lend calm you do not have, so this works in both directions.</p>
+      <button class="coreg-btn" onclick="setJourney('self')">Check my own nervous system</button>
+    </div>
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it in the hard moments.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
+      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
+        <li><span class="cta-dot"></span>60+ tools demonstrated on video, actually shown, not just described</li>
+        <li><span class="cta-dot"></span>Scripts for the hard moments, the car, the kitchen table, the bedroom doorway</li>
+        <li><span class="cta-dot"></span>13 OT-led modules for every hard moment</li>
+        <li><span class="cta-dot"></span>Bonus: Lily, 14, unscripted Q&A on what actually helps</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/my-regulation-toolkit-teens" class="cta-btn">See the Regulation Toolkit</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If you are worried about her safety, or this feels bigger than a hard moment, please reach out to your GP or a support line such as Lifeline on 13 11 14, or Kids Helpline on 1800 55 1800.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your daughter's health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+  <!-- ===== RESULT: DAUGHTER MIXED ===== -->
+  <div class="step" id="result-daughter-mixed">
+    <button class="back-link" onclick="goObs('daughter')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg> Start again</button>
+
+    <div class="state-card mixed">
+      <p class="state-tag">This might be a mixed picture</p>
+      <h2 class="state-heading">It may be hard to tell which state she is in</h2>
+      <p class="state-body">You seem to be noticing signs that point to a high energy state, and signs that point to a low energy state. When it sits on both sides like this, it can be hard to tell which way her nervous system is leaning right now, and that is okay. There may not be one clear pattern yet. A gentle starting point is often something that helps her nervous system settle and organise, without pushing hard in either direction, while you keep noticing what you are seeing.</p>
+    </div>
+    <div class="one-thing-block">
+      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-text">"I'm not going anywhere. Take all the time you need."</p>
+    </div>
+
+    <p class="woc-intro"><strong>Window of capacity</strong> is the zone where a nervous system feels steady enough to cope and connect. Above it, everything speeds up. Below it, everything slows down.</p>
+    <div class="woc-diagram">
+      <div class="woc-state woc-high">
+        <span class="woc-tag">Above the window</span>
+        <div class="woc-title">High energy state, hyperactivated</div>
+        <div class="woc-desc">Racing, restless, reactive, on edge, overwhelmed.</div>
+      </div>
+      <div class="woc-state woc-in">
+        <span class="woc-tag">The window of capacity</span>
+        <div class="woc-title">Optimal zone</div>
+        <div class="woc-desc">Present, grounded, connected. Able to think, feel and respond with ease.</div>
+      </div>
+      <div class="woc-state woc-low">
+        <span class="woc-tag">Below the window</span>
+        <div class="woc-title">Low energy state, hypoactivated</div>
+        <div class="woc-desc">Heavy, flat, foggy, withdrawn, numb.</div>
+      </div>
+    </div>
+
+    <div class="guidance-card">
+      <div class="guidance-section">
+        <p class="guidance-label">What might help right now</p>
+        <p class="guidance-body">Regulating your own nervous system first may be especially important here. Lowering your voice, slowing your breath and being present without demand or urgency may help create a steadier environment. Your steadiness is often the most useful thing available in these moments.</p>
+      </div>
+      <div class="guidance-section">
+        <p class="guidance-label">Things that may not help right now</p>
+        <p class="guidance-body">Consequences, explanations, reasoning, or matching her energy in either direction. Waiting and being present tends to be more effective than trying to intervene directly when she may be switching states.</p>
+      </div>
+    </div>
+
+
+    <p class="tools-section-label">Other approaches that may help with organising, without pushing either way</p>
+    <p class="tools-note">Introduce these at a calm time first so she knows what to expect. If anything causes distress, stop. Individual needs vary.</p>
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-chip-icon">🫂</span>Firm self-hug, crossed arms, steady pressure, hold it</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Physiological sigh, double inhale, long slow exhale out</div>
+      <div class="tool-chip"><span class="tool-chip-icon">👀</span>Orienting, slowly look around, let eyes land and rest on objects</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Pillow squeeze and release, tense hard, then fully let go</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🚶</span>Walk around the block, rhythmic, steady, no destination</div>
+    </div>
+
+    <div class="coreg-bridge">
+      <p><strong>A quick check on you, too.</strong> Your steady nervous system is the most powerful tool she has. It is hard to lend calm you do not have, so this works in both directions.</p>
+      <button class="coreg-btn" onclick="setJourney('self')">Check my own nervous system</button>
+    </div>
+    <div class="save-link-block">
+      <div class="save-link-icon">🔖</div>
+      <div class="save-link-text"><strong>Save this tool.</strong> Bookmark this link and come back to it in the hard moments.</div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
+      <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
+      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <ul class="cta-points">
+        <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
+        <li><span class="cta-dot"></span>60+ tools demonstrated on video, actually shown, not just described</li>
+        <li><span class="cta-dot"></span>Scripts for the hard moments, the car, the kitchen table, the bedroom doorway</li>
+        <li><span class="cta-dot"></span>13 OT-led modules for every hard moment</li>
+        <li><span class="cta-dot"></span>Bonus: Lily, 14, unscripted Q&A on what actually helps</li>
+      </ul>
+      <a href="https://shop.adhdandher.com.au/my-regulation-toolkit-teens" class="cta-btn">See the Regulation Toolkit</a>
+      <p class="cta-sub">One-time payment · Lifetime access · Start today</p>
+    </div>
+    <p class="safety-note">If you are worried about her safety, or this feels bigger than a hard moment, please reach out to your GP or a support line such as Lifeline on 13 11 14, or Kids Helpline on 1800 55 1800.</p>
+    <p class="disclaimer-footer">For educational purposes only. Not occupational therapy advice or a substitute for professional support. Suggestions are possibilities only, individual needs vary. Shelley L'Green is a registered Occupational Therapist (AHPRA). If you have concerns about your daughter's health or wellbeing, please seek support from a qualified health professional. © ADHD and Her · <a href="https://adhdandher.com.au">adhdandher.com.au</a></p>
+  </div>
+
+</div>
+
+<script>
+var journey = null;
+var selfSelected = [];
+var daughterSelected = [];
+
+function setJourney(j) { journey = j; showStep('step-obs-' + j); }
+
+function goWho() {
+  selfSelected = []; daughterSelected = [];
+  document.querySelectorAll('.b-btn').forEach(function(b){ b.classList.remove('selected'); });
+  document.getElementById('count-line-self').textContent = '';
+  document.getElementById('count-line-daughter').textContent = '';
+  document.getElementById('next-self').disabled = true;
+  document.getElementById('next-daughter').disabled = true;
+  showStep('step-who');
+}
+
+function goObs(j) { showStep('step-obs-' + j); window.scrollTo(0,0); }
+
+function toggleB(btn, j) {
+  var arr = j === 'self' ? selfSelected : daughterSelected;
+  var idx = arr.indexOf(btn);
+  if (idx > -1) { arr.splice(idx, 1); btn.classList.remove('selected'); }
+  else { arr.push(btn); btn.classList.add('selected'); }
+  var n = arr.length;
+  document.getElementById('count-line-' + j).textContent = n === 0 ? '' : n === 1 ? '1 observation selected' : n + ' observations selected';
+  document.getElementById('next-' + j).disabled = n === 0;
+}
+
+function goResult(j) {
+  var arr = j === 'self' ? selfSelected : daughterSelected;
+  var high = arr.filter(function(b){ return b.dataset.state === 'high'; }).length;
+  var low = arr.filter(function(b){ return b.dataset.state === 'low'; }).length;
+  var state = (high >= 2 && low >= 2) ? 'mixed' : high > low ? 'high' : low > high ? 'low' : 'mixed';
+  showStep('result-' + j + '-' + state);
+  window.scrollTo(0,0);
+}
+
+function showStep(id) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+}
+</script>
+</body>
+</html>
