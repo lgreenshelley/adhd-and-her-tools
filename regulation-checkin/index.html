@@ -40,7 +40,7 @@ html, body {
 }
 .wrap { max-width: 480px; margin: 0 auto; padding: 0 20px 60px; }
 .logo-bar { padding: 20px 0 24px; text-align: center; }
-.logo-bar img { height: 26px; width: auto; }
+.logo-bar img { height: 48px; width: auto; }
 .step { display: none; }
 .step.active { display: block; }
 
@@ -49,24 +49,28 @@ h1 { font-family: 'DM Serif Display', serif; font-size: 1.9rem; font-weight: 400
 h1 em { font-style: italic; color: var(--navy-mid); }
 .intro-sub { font-size: 14px; color: #5a6e7c; line-height: 1.65; margin-bottom: 8px; }
 .intro-note { font-size: 12px; color: #8a7e76; line-height: 1.6; margin-bottom: 28px; font-style: italic; }
-.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 6px 0 20px; }
 .who-btn {
   background: #fff;
-  border: 1px solid #e0d8d0;
+  border: 2px solid var(--blush);
   border-radius: 12px;
   padding: 24px 16px;
   cursor: pointer;
   text-align: center;
-  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 1px 3px rgba(31,46,58,0.07);
   font-family: 'Inter', sans-serif;
 }
-.who-btn:hover { border-color: var(--navy-mid); background: var(--sage-pale); transform: translateY(-1px); }
+.who-btn:hover { border-color: var(--navy-mid); background: var(--sage-pale); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(31,46,58,0.10); }
+.who-btn:active { transform: scale(0.985); }
+.who-btn::after { content: "Begin →"; display: block; margin-top: 12px; font-size: 12px; font-weight: 500; color: var(--navy-mid); letter-spacing: 0.02em; }
+.who-prompt { text-align: center; font-size: 15px; font-weight: 500; color: var(--navy); margin: 24px 0 14px; }
 .who-icon { font-size: 28px; margin-bottom: 10px; }
 .who-label { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); line-height: 1.25; margin-bottom: 4px; }
 .who-sub { font-size: 12px; color: #8fa9b5; line-height: 1.4; }
 
 /* OBSERVATION SCREEN */
-.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--blue-dust); cursor: pointer; margin-bottom: 20px; background: none; border: none; padding: 0; font-family: 'Inter', sans-serif; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--blue-dust); cursor: pointer; margin: 0 0 16px -4px; background: none; border: none; padding: 6px 4px; font-family: 'Inter', sans-serif; }
 .back-link:hover { color: var(--navy-mid); }
 .back-link svg { width: 14px; height: 14px; }
 .obs-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-dust); margin-bottom: 8px; }
@@ -85,6 +89,9 @@ h1 em { font-style: italic; color: var(--navy-mid); }
   cursor: pointer;
   text-align: left;
   line-height: 1.4;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   transition: border-color 0.15s, background 0.15s;
 }
 .b-btn.high-btn { background: var(--high-bg); border-color: var(--high-border); }
@@ -219,6 +226,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <p class="intro-sub">Two ways to use this check-in.</p>
     <p class="intro-sub"><strong>In the moment.</strong> You are feeling a shift, or seeing one in someone you care for, and you are not sure what might be going on in the nervous system or how to help. Use it now for a possible starting point.</p>
     <p class="intro-sub"><strong>Afterwards.</strong> A hard moment has passed. Use it to be curious about what was happening, and what might support things next time.</p>
+    <p class="who-prompt">Who would you like to check in on?</p>
     <div class="who-grid">
       <button class="who-btn" onclick="setJourney('self')">
         <div class="who-icon">❤️</div>
@@ -371,6 +379,9 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <div class="tool-chip"><span class="tool-chip-icon">🫂</span>A firm self-hug, crossed arms, steady pressure, if that feels okay</div>
       <div class="tool-chip"><span class="tool-chip-icon">🎵</span>A familiar song that tends to shift your state</div>
       <div class="tool-chip"><span class="tool-chip-icon">👀</span>Slowly look around the room and find the horizon out the window, then let your eyes rest on different objects too</div>
+      <div class="tool-chip"><span class="tool-chip-icon">〰️</span>A low steady hum, something you can feel vibrate in your chest</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤸</span>Shake your hands and arms out, loose and fast, then let them settle</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🧘</span>Child's pose or a forward fold, letting your head drop and your weight settle</div>
     </div>
 
     <div class="save-link-block">
@@ -381,7 +392,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
-      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <p class="cta-body">These tools can help you meet a single moment. The lasting shift comes from understanding your own sensory patterns and building a way to work with them that fits you. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
         <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
@@ -461,7 +472,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
-      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <p class="cta-body">These tools can help you meet a single moment. The lasting shift comes from understanding your own sensory patterns and building a way to work with them that fits you. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
         <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
@@ -512,16 +523,16 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="guidance-card">
       <div class="guidance-section">
         <p class="guidance-label">What might help right now</p>
-        <p class="guidance-body">When a nervous system may be switching between states, approaches that help organise it without pushing strongly in either direction are often worth exploring first. Steady pressure through the body or slow rhythmic movement may help it find a steadier place.</p>
+        <p class="guidance-body">When the signals are mixed like this, approaches that help organise the nervous system without pushing strongly in either direction are often worth exploring first. Steady pressure through the body or slow rhythmic movement may help it find a steadier place.</p>
       </div>
       <div class="guidance-section">
         <p class="guidance-label">Something to try</p>
-        <p class="guidance-body">Noticing without pressure to label it. "I might be switching between states right now." Removing demand on yourself to perform or explain may create a little more room.</p>
+        <p class="guidance-body">Noticing without pressure to label it. "It is hard to tell which way I am leaning right now, and that is okay." Removing demand on yourself to perform or explain may create a little more room.</p>
       </div>
     </div>
 
 
-    <p class="tools-section-label">Other approaches that may help with organising, without pushing either way</p>
+    <p class="tools-section-label">Other approaches that may help with regulation, without pushing either way</p>
     <p class="tools-note">These are possibilities to explore, not instructions. Try them at a calm time first. Individual needs vary.</p>
     <div class="tools-grid">
       <div class="tool-chip"><span class="tool-chip-icon">🫂</span>Firm self-hug, crossed arms, steady pressure, hold it</div>
@@ -529,6 +540,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <div class="tool-chip"><span class="tool-chip-icon">👀</span>Orienting, slowly look around, let eyes land and rest on objects</div>
       <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Pillow squeeze and release, tense hard, then fully let go</div>
       <div class="tool-chip"><span class="tool-chip-icon">🚶</span>A steady rhythmic walk, slow and even-paced, no destination</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🖐️</span>Five things you can see, four you can hear, three you can touch</div>
     </div>
 
     <div class="save-link-block">
@@ -539,7 +551,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Sensory Blueprint, Women's Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for you specifically</h3>
-      <p class="cta-body">This tool gives you a starting point. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
+      <p class="cta-body">These tools can help you meet a single moment. The lasting shift comes from understanding your own sensory patterns and building a way to work with them that fits you. The Sensory Blueprint goes deeper, mapping your sensory preferences across 8 domains and building a regulation toolkit matched to how your nervous system is actually wired. Not generic. Yours.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Interactive sensory questionnaire across 8 domains</li>
         <li><span class="cta-dot"></span>Personalised results matched to your specific patterns</li>
@@ -564,7 +576,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <p class="state-body">Based on what you are observing, this could point to a high energy, hyperactivated state. It may be a nervous system that has tipped outside her window of capacity. ADHD nervous systems can tip outside the window faster and take longer to recover. The brain and body differences that are part of ADHD also affect how quickly she reaches this overwhelmed state, and how hard it can be to come back from it</p>
     </div>
     <div class="one-thing-block">
-      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-label">A co-regulation script you might say</p>
       <p class="one-thing-text">"I'm here. You don't have to explain anything right now."</p>
     </div>
 
@@ -609,6 +621,9 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <div class="tool-chip"><span class="tool-chip-icon">💧</span>Cool water on the face or wrists, if she is comfortable with this</div>
       <div class="tool-chip"><span class="tool-chip-icon">🌬️</span>Two short inhales, one long slow exhale out</div>
       <div class="tool-chip"><span class="tool-chip-icon">🫂</span>A firm self-hug, if that feels okay to her</div>
+      <div class="tool-chip"><span class="tool-chip-icon">〰️</span>A low steady hum she can feel in her chest, if she is up for it</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🤸</span>Shaking it out, hands and arms loose, then letting them settle, if she wants to</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🧘</span>Child's pose or a forward fold, letting her head drop and her weight settle, if it feels okay</div>
     </div>
 
     <div class="coreg-bridge">
@@ -623,7 +638,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
-      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <p class="cta-body">These tools can help her through a single moment. The lasting shift comes from understanding her sensory patterns and building a shared way to regulate that actually fits her. In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
         <li><span class="cta-dot"></span>60+ regulation tools demonstrated on video, actually shown, not just described</li>
@@ -648,7 +663,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <p class="state-body">Based on what you are observing, this could point to a low energy, hypoactivated state. It may be a nervous system that has gone into a protective conservation mode after running low on capacity. The more she has been masking and managing throughout the day, the more likely this is what you are seeing at home. ADHD nervous systems can also drop into a low energy state when something feels boring or not motivating, even when she wants to engage. Sometimes it is not getting the input it needs. Other times it has simply reached capacity and has nothing left to give.</p>
     </div>
     <div class="one-thing-block">
-      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-label">A co-regulation script you might say</p>
       <p class="one-thing-text">"No rush. I'll just be here."</p>
     </div>
 
@@ -707,7 +722,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
-      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <p class="cta-body">These tools can help her through a single moment. The lasting shift comes from understanding her sensory patterns and building a shared way to regulate that actually fits her. In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
         <li><span class="cta-dot"></span>60+ tools demonstrated on video, actually shown, not just described</li>
@@ -732,7 +747,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <p class="state-body">You seem to be noticing signs that point to a high energy state, and signs that point to a low energy state. When it sits on both sides like this, it can be hard to tell which way her nervous system is leaning right now, and that is okay. There may not be one clear pattern yet. A gentle starting point is often something that helps her nervous system settle and organise, without pushing hard in either direction, while you keep noticing what you are seeing.</p>
     </div>
     <div class="one-thing-block">
-      <p class="one-thing-label">One regulation tool to try right now</p>
+      <p class="one-thing-label">A co-regulation script you might say</p>
       <p class="one-thing-text">"I'm not going anywhere. Take all the time you need."</p>
     </div>
 
@@ -762,12 +777,12 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       </div>
       <div class="guidance-section">
         <p class="guidance-label">Things that may not help right now</p>
-        <p class="guidance-body">Consequences, explanations, reasoning, or matching her energy in either direction. Waiting and being present tends to be more effective than trying to intervene directly when she may be switching states.</p>
+        <p class="guidance-body">Consequences, explanations, reasoning, or matching her energy in either direction. Waiting and being present tends to be more effective than trying to intervene directly when her signals are mixed like this.</p>
       </div>
     </div>
 
 
-    <p class="tools-section-label">Other approaches that may help with organising, without pushing either way</p>
+    <p class="tools-section-label">Other approaches that may help with regulation, without pushing either way</p>
     <p class="tools-note">Introduce these at a calm time first so she knows what to expect. If anything causes distress, stop. Individual needs vary.</p>
     <div class="tools-grid">
       <div class="tool-chip"><span class="tool-chip-icon">🫂</span>Firm self-hug, crossed arms, steady pressure, hold it</div>
@@ -775,6 +790,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
       <div class="tool-chip"><span class="tool-chip-icon">👀</span>Orienting, slowly look around, let eyes land and rest on objects</div>
       <div class="tool-chip"><span class="tool-chip-icon">🤲</span>Pillow squeeze and release, tense hard, then fully let go</div>
       <div class="tool-chip"><span class="tool-chip-icon">🚶</span>Walk around the block, rhythmic, steady, no destination</div>
+      <div class="tool-chip"><span class="tool-chip-icon">🖐️</span>Five things she can see, four she can hear, three she can touch</div>
     </div>
 
     <div class="coreg-bridge">
@@ -789,7 +805,7 @@ h1 em { font-style: italic; color: var(--navy-mid); }
     <div class="cta-block">
       <p class="cta-eyebrow">My Regulation Toolkit, Teen Girls Edition</p>
       <h3 class="cta-heading">Understand <em>why</em> this keeps happening for her specifically</h3>
-      <p class="cta-body">In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
+      <p class="cta-body">These tools can help her through a single moment. The lasting shift comes from understanding her sensory patterns and building a shared way to regulate that actually fits her. In one sitting, the Regulation Toolkit takes you from not understanding why your daughter keeps melting down or shutting down, to knowing exactly what her nervous system needs. Tools for both of you. Ones she carries for life.</p>
       <ul class="cta-points">
         <li><span class="cta-dot"></span>Personalised sensory questionnaire across 8 domains, matched to her, not a generic teen</li>
         <li><span class="cta-dot"></span>60+ tools demonstrated on video, actually shown, not just described</li>
@@ -839,7 +855,7 @@ function goResult(j) {
   var arr = j === 'self' ? selfSelected : daughterSelected;
   var high = arr.filter(function(b){ return b.dataset.state === 'high'; }).length;
   var low = arr.filter(function(b){ return b.dataset.state === 'low'; }).length;
-  var state = (high >= 2 && low >= 2) ? 'mixed' : high > low ? 'high' : low > high ? 'low' : 'mixed';
+  var state = high > low ? 'high' : low > high ? 'low' : 'mixed';
   showStep('result-' + j + '-' + state);
   window.scrollTo(0,0);
 }
