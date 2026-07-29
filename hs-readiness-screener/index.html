@@ -24,7 +24,7 @@
   .eyebrow{font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#B98A3E; margin-bottom:8px;}
   .lede{font-family:'Fraunces',Georgia,serif; font-size:19px; color:var(--slate); margin-bottom:14px;}
   .chip{display:inline-block; background:var(--sand); border-radius:99px; padding:7px 16px; font-size:14px; font-weight:600; color:var(--slate); margin-bottom:18px;}
-  .panel-gold{background:var(--accent); border-radius:16px; padding:22px 24px; margin:18px 0;}
+  .panel-gold{background:#fff; border:1px solid var(--sand); border-left:5px solid var(--accent); border-radius:14px; padding:22px 24px; margin:18px 0; box-shadow:0 1px 3px rgba(31,46,58,.06);}
   .panel-gold h3{color:var(--ink);}
   .panel-gold ul{list-style:none; margin-top:8px;}
   .panel-gold li{padding:6px 0 6px 30px; position:relative; font-size:15.5px; line-height:1.45;}
@@ -76,6 +76,23 @@
   .area-acc[open] summary{border-bottom:1px solid var(--sand);}
   .area-acc .body{padding:4px 16px 14px;}
   .area-acc .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:12px 0 2px;}
+  /* collapsible read-more sections */
+  details.disc{border:1px solid var(--sand); border-radius:14px; background:#fff; margin-bottom:16px; overflow:hidden; box-shadow:0 1px 3px rgba(31,46,58,.06);}
+  details.disc>summary{cursor:pointer; padding:16px 20px; font-family:'Archivo Black','Archivo',Helvetica,sans-serif; text-transform:uppercase; font-size:15px; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  details.disc>summary::-webkit-details-marker{display:none;}
+  details.disc>summary::after{content:"+"; font-size:22px; color:#B98A3E; font-weight:700; line-height:1;}
+  details.disc[open]>summary::after{content:"–";}
+  details.disc .body{padding:0 20px 18px;}
+  details.disc .body p{margin:0 0 8px;}
+  details.disc .body p:last-child{margin-bottom:0;}
+  details.disc .body .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:12px 0 3px;}
+  details.disc .body .lead:first-child{margin-top:0;}
+  details.disc.disc-soft{background:#eaf2f0; border-color:#d3e3df;}
+  details.disc.disc-soft>summary{color:var(--slate);}
+  .snap-summary{font-size:16.5px; font-weight:600; color:var(--ink); background:var(--sand); border-radius:10px; padding:13px 16px; margin:0 0 16px; line-height:1.45;}
+  .focus-acc summary{gap:10px;}
+  .focus-acc summary .fnum{flex:0 0 26px; height:26px; border-radius:50%; background:var(--accent); color:var(--ink); font-weight:bold; display:inline-flex; align-items:center; justify-content:center; font-size:14px;}
+  .focus-acc summary .fname{flex:1;}
   /* results */
   .bar{margin-bottom:14px;}
   .bar .lbl{display:flex; justify-content:space-between; font-size:15px; margin-bottom:4px; gap:8px;}
@@ -133,6 +150,8 @@
       </ul>
       <p class="muted" style="margin:10px 0 0; font-size:13.5px;">These are the same skill areas I map in my 1:1 consultations.</p>
     </div>
+    <button class="btn gold wide noprint" onclick="go('setup')">Start the screener</button>
+    <p class="microlegal noprint">About 10 minutes · your answers stay on your device.</p>
     <div class="minigrid">
       <div class="mini"><b>No diagnosis needed</b>Diagnosed, on a waitlist, or just noticing things and wondering about the jump: this is for you too. Readiness is about skills, and about finding the adjustments and supports that help. It is not about labels.</div>
       <div class="mini"><b>Younger child? Perfect timing</b>Expect plenty of “not yet”: many of these skills are still years from consolidating, and that is developmentally appropriate. ADHD kids are not expected to nail every skill, every day. Come back each term and watch the toolkit grow.</div>
@@ -209,13 +228,20 @@
   <section id="scr-results" class="hidden">
     <div class="stepLabel">Your results</div>
     <h1 id="resTitle"></h1>
-    <div id="resLead"></div>
-
     <div class="card">
       <h2>The Readiness Snapshot</h2>
-      <p class="muted">Each skill area sits in one of three bands. <b>Steady</b> means it is an area of strength right now. <b>Developing</b> means it is coming along with support, which is exactly how skills grow. <b>Focus area</b> means this is where deliberate attention pays off next. Skills ebb and flow with age and load, so every band is a snapshot, not a final word.</p>
+      <div id="snapSummary" class="snap-summary"></div>
       <div id="bars"></div>
+      <details class="disc">
+        <summary>What do the bands mean?</summary>
+        <div class="body"><p class="muted" style="margin:0">Each skill area sits in one of three bands. <b>Steady</b> means it is an area of strength right now. <b>Developing</b> means it is coming along with support, which is exactly how skills grow. <b>Focus area</b> means this is where deliberate attention pays off next. Skills ebb and flow with age and load, so every band is a snapshot, not a final word.</p></div>
+      </details>
     </div>
+
+    <details class="disc disc-soft" id="reassure" style="display:none">
+      <summary>A note before you read on</summary>
+      <div class="body" id="resLead"></div>
+    </details>
 
     <div class="card hidden" id="compareCard">
       <h2>Progress since last time</h2>
@@ -225,32 +251,37 @@
     </div>
 
     <div class="card">
-      <h2>Where to start (in this order)</h2>
+      <h2>Where to start</h2>
       <p class="muted" id="prioIntro"></p>
       <div id="prioList"></div>
-      <p class="note">Why this order? Because skills stack. It is hard for any child to use planners, checklists or study systems while their days still feel overwhelming, so we steady the everyday first, then build the organisational skills on top of that foundation. Nervous system regulation is the base everything else stands on. And because ADHD brains learn through movement, senses, rhythm, connection and play, every starting point above is built that way, not just worksheets. Occupational therapists describe this as working from the foundations up. It is also how I sequence my 1:1 work.</p>
+      <details class="disc">
+        <summary>Why this order?</summary>
+        <div class="body"><p class="muted" style="margin:0">Because skills stack. It is hard for any child to use planners, checklists or study systems while their days still feel overwhelming, so we steady the everyday first, then build the organisational skills on top of that foundation. Nervous system regulation is the base everything else stands on. And because ADHD brains learn through movement, senses, rhythm, connection and play, every starting point above is built that way, not just worksheets. Occupational therapists describe this as working from the foundations up. It is also how I sequence my 1:1 work.</p></div>
+      </details>
     </div>
 
     <div class="card" id="moreCard" style="display:none">
       <h2>Explore the other areas</h2>
-      <p class="muted">Your top areas are above. If you would like, open any of the others to read the same summary: what it is, where it shows up, one place to start, and why it matters for high school.</p>
+      <p class="muted">Your focus areas are above. Open any of the others to read the same summary: what it is, where it shows up, one place to start, and why it matters for high school.</p>
       <div id="moreList"></div>
     </div>
 
-    <div class="card">
-      <h2>Use this again</h2>
-      <p class="muted" style="margin-bottom:0">Readiness is a moving picture, and no single check-in is the final word. Come back each term, or after any big change, and take the screener again: this page will show what has strengthened and what else might need support. Results are remembered only in this browser on this device, so return on the same device to compare, and print or save a copy as your dated record.</p>
-    </div>
+    <details class="disc">
+      <summary>Use this again each term</summary>
+      <div class="body"><p class="muted" style="margin:0">Readiness is a moving picture, and no single check-in is the final word. Come back each term, or after any big change, and take the screener again: this page will show what has strengthened and what else might need support. Results are remembered only in this browser on this device, so return on the same device to compare, and print or save a copy as your dated record.</p></div>
+    </details>
 
-    <div class="card">
-      <h2>Who helps with what</h2>
-      <p class="muted">If you decide to bring in more support, different professionals help with different parts of the picture. And do not overlook the school itself: teachers, year advisors and school counsellors are often the quickest first step for school-day supports. As a guide:</p>
-      <p><b>Your GP or paediatrician</b> is the starting point for assessment, diagnosis, referrals and medication questions, and coordinates the wider team.</p>
-      <p><b>An occupational therapist</b> works on the territory this screener maps: regulation, sensory processing, attention and executive skills, and everyday independence at home and school. That is my field.</p>
-      <p><b>A psychologist</b> can help where anxiety, low mood or intense emotional reactions are a large part of the picture, supports friendships, social skills and rejection sensitivity, and conducts formal assessments, including of learning.</p>
-      <p><b>A speech pathologist</b> helps where language, social communication, following verbal instructions, or reading, writing, comprehension and processing are the bigger challenge.</p>
-      <p class="muted" style="margin-bottom:0">This is a map of who does what, not a referral.</p>
-    </div>
+    <details class="disc">
+      <summary>Who helps with what</summary>
+      <div class="body">
+        <p class="muted">If you decide to bring in more support, different professionals help with different parts of the picture. And do not overlook the school itself: teachers, year advisors and school counsellors are often the quickest first step for school-day supports. As a guide:</p>
+        <p><b>Your GP or paediatrician</b> is the starting point for assessment, diagnosis, referrals and medication questions, and coordinates the wider team.</p>
+        <p><b>An occupational therapist</b> works on the territory this screener maps: regulation, sensory processing, attention and executive skills, and everyday independence at home and school. That is my field.</p>
+        <p><b>A psychologist</b> can help where anxiety, low mood or intense emotional reactions are a large part of the picture, supports friendships, social skills and rejection sensitivity, and conducts formal assessments, including of learning.</p>
+        <p><b>A speech pathologist</b> helps where language, social communication, following verbal instructions, or reading, writing, comprehension and processing are the bigger challenge.</p>
+        <p class="muted" style="margin-bottom:0">This is a map of who does what, not a referral.</p>
+      </div>
+    </details>
 
     <div class="cta-hero" id="ctaHero"></div>
 
@@ -581,12 +612,26 @@ function results(){
   const solid     = scored.filter(x=>x.band==="solid");
   const young = (state.year==="4"||state.year==="5");
 
-  let lead;
+  // Snapshot summary — the first line inside the snapshot card, always visible
+  let summary;
   if(priorities.length===0 && building.length===0){
-    lead = `<p class="lede">Steady across every area right now. This is not a report card, it is a map: a snapshot of the strengths to celebrate and keep warm as the load increases toward high school.</p>`;
+    summary = `Every area is <b>steady</b> right now. This is a map, not a report card: strengths to celebrate and keep warm as the load builds toward high school.`;
   } else {
-    lead = `<p class="lede">${solid.length} area${solid.length===1?"":"s"} steady, ${building.length} developing, and <b>${priorities.length} focus area${priorities.length===1?"":"s"}</b>. This is not a report card. It is a map: now you know which strengths to celebrate and build on, and where to focus your effort first.</p>`;
-    lead += `<div class="callout-soft">`;
+    const parts = [];
+    if(priorities.length) parts.push(`<b>${priorities.length} focus area${priorities.length===1?"":"s"}</b>`);
+    if(building.length) parts.push(`${building.length} developing`);
+    if(solid.length) parts.push(`${solid.length} steady`);
+    summary = `${parts.join(", ")}. This is a map, not a report card: where your child is strong, and where to focus first.`;
+  }
+  document.getElementById("snapSummary").innerHTML = summary;
+
+  // Reassurance — collapsible, closed by default; only shown when there is something to focus on
+  const reassureEl = document.getElementById("reassure");
+  if(priorities.length===0 && building.length===0){
+    reassureEl.style.display = "none";
+    document.getElementById("resLead").innerHTML = "";
+  } else {
+    let lead = "";
     if(young){
       lead += `<div class="lead">“Not yet” is the expected answer at this age</div>
       <p>Most of these skills consolidate between Year 5 and Year 8, so a snapshot with plenty of developing and focus areas is exactly what to expect this early. You are not behind. You are early, and early is the best position to be in.</p>`;
@@ -608,9 +653,9 @@ function results(){
     }
     lead += `<div class="lead">Progress, not perfection</div>
       <p style="margin-bottom:0">No ADHD kid is expected to have every skill consolidated every day. Some days need more support, some days there is capacity for more. This is about working together, celebrating what is growing, and adding support where it helps.</p>`;
-    lead += `</div>`;
+    document.getElementById("resLead").innerHTML = lead;
+    reassureEl.style.display = "";
   }
-  document.getElementById("resLead").innerHTML = lead;
 
   /* bars */
   const bars = document.getElementById("bars");
@@ -642,15 +687,18 @@ function results(){
   if(focus.length===0){
     document.getElementById("prioIntro").textContent = "Nothing needs rescuing. Pick the lowest-scoring area, keep an eye on it, and add small supports where they help.";
   } else {
-    document.getElementById("prioIntro").textContent = focus.length===1 ? "One clear place to put your energy. Here is what it is, and how to begin:" : "Not everything at once. Each area below is explained first, then given one clear starting point:";
+    document.getElementById("prioIntro").textContent = focus.length===1 ? "One clear place to put your energy. Open it to see what it is, and how to begin:" : "Not everything at once. Open each area to see what it is and one clear place to start. The first is already open:";
     focus.forEach((d,i)=>{
-      list.innerHTML += `<div class="focus">
-        <div class="fhead"><div class="num">${i+1}</div><h3>${d.name}</h3><span class="tag ${d.band}">${bandLabel(d.band)}</span></div>
-        <div class="lead">What this is</div><p>${t(d.whatItIs)}</p>
-        <div class="lead">Where it shows up</div><p>${t(d.showsUp)}</p>
-        <div class="lead">One place to start</div><p>${t(d.start)}</p>
-        <div class="lead">Why it matters for high school</div><p>${t(d.builds)}</p>
-      </div>`;
+      const openAttr = i===0 ? " open" : "";
+      list.innerHTML += `<details class="area-acc focus-acc"${openAttr}>
+        <summary><span class="fnum">${i+1}</span><span class="fname">${d.name}</span><span class="tag ${d.band}">${bandLabel(d.band)}</span></summary>
+        <div class="body">
+          <div class="lead">What this is</div><p>${t(d.whatItIs)}</p>
+          <div class="lead">Where it shows up</div><p>${t(d.showsUp)}</p>
+          <div class="lead">One place to start</div><p>${t(d.start)}</p>
+          <div class="lead">Why it matters for high school</div><p>${t(d.builds)}</p>
+        </div>
+      </details>`;
     });
   }
 
