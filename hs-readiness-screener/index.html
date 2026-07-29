@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High School Readiness Screener · ADHD &amp; Her</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Archivo+Black&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+  :root{
+    --ink:#1F2E3A; --navy:#2E4B62; --slate:#2C3F4E; --sage:#9FB7AF;
+    --bluegrey:#8FA9B5; --lightblue:#AFC3CC; --pink:#D8BFB6; --pinklight:#E6CFC7;
+    --sand:#EFE9E2; --paper:#FAF9F7; --accent:#e4c590;
+    --solid:#9FB7AF; --building:#AFC3CC; --priority:#D8BFB6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Archivo',Helvetica,Arial,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; font-size:17px;}
+  .wrap{max-width:640px; margin:0 auto; padding:24px 20px 64px;}
+  header.brand{padding:18px 20px 6px; text-align:center;}
+  header.brand .logo{font-size:14px; letter-spacing:2.5px; text-transform:uppercase; color:var(--navy); font-weight:bold;}
+  header.brand .logo span{color:var(--sage);}
+  h1{font-family:'Archivo Black','Archivo',Helvetica,sans-serif; text-transform:uppercase; letter-spacing:0; font-size:30px; color:var(--navy); line-height:1.08; margin-bottom:10px;}
+  h2{font-family:'Archivo Black','Archivo',Helvetica,sans-serif; text-transform:uppercase; font-size:19px; color:var(--navy); margin-bottom:8px; line-height:1.2;}
+  h3{font-weight:700; font-size:17px; color:var(--slate); margin-bottom:6px;}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#B98A3E; margin-bottom:8px;}
+  .lede{font-family:'Fraunces',Georgia,serif; font-size:19px; color:var(--slate); margin-bottom:14px;}
+  .chip{display:inline-block; background:var(--sand); border-radius:99px; padding:7px 16px; font-size:14px; font-weight:600; color:var(--slate); margin-bottom:18px;}
+  .panel-gold{background:var(--accent); border-radius:16px; padding:22px 24px; margin:18px 0;}
+  .panel-gold h3{color:var(--ink);}
+  .panel-gold ul{list-style:none; margin-top:8px;}
+  .panel-gold li{padding:6px 0 6px 30px; position:relative; font-size:15.5px; line-height:1.45;}
+  .panel-gold li::before{content:"✓"; position:absolute; left:2px; top:5px; font-weight:700; color:var(--navy);}
+  .minigrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 16px;}
+  @media(max-width:520px){.minigrid{grid-template-columns:1fr;}}
+  .mini{background:#fff; border:1px solid var(--sand); border-radius:14px; padding:16px 18px; font-size:14.5px; line-height:1.5; color:var(--slate);}
+  .mini b{display:block; color:var(--navy); margin-bottom:4px; font-size:15px;}
+  details.legal{background:var(--sand); border-radius:14px; padding:0; margin-bottom:16px; overflow:hidden;}
+  details.legal summary{cursor:pointer; padding:15px 18px; font-weight:700; color:var(--slate); font-size:15px; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  details.legal summary::after{content:"+"; font-size:20px; color:#B98A3E; font-weight:700;}
+  details.legal[open] summary::after{content:"–";}
+  details.legal .inner{padding:0 18px 16px;}
+  .btn.gold{background:var(--accent); color:var(--ink);}
+  .btn.gold:hover{background:#d9b57a;}
+  .microlegal{font-size:12.5px; color:var(--slate); opacity:.75; margin:10px 0 0; text-align:center;}
+  p{margin-bottom:12px;}
+  .muted{color:var(--slate); opacity:.85; font-size:15px;}
+  .card{background:#fff; border:1px solid var(--sand); border-radius:14px; padding:22px; margin-bottom:16px; box-shadow:0 1px 3px rgba(31,46,58,.06);}
+  .btn{display:inline-block; background:var(--navy); color:#fff; border:none; border-radius:10px; padding:14px 26px; font-size:17px; font-weight:bold; cursor:pointer; text-decoration:none; text-align:center;}
+  .btn:hover{background:var(--slate);}
+  .btn.secondary{background:#fff; color:var(--navy); border:2px solid var(--navy);}
+  .btn.wide{width:100%;}
+  .btn-row{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;}
+  .progress{height:8px; background:var(--sand); border-radius:99px; margin:10px 0 22px; overflow:hidden;}
+  .progress>div{height:100%; background:var(--sage); border-radius:99px; transition:width .3s;}
+  .stepLabel{font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin-bottom:4px;}
+  .item{padding:16px 0; border-bottom:1px solid var(--sand);}
+  .item:last-of-type{border-bottom:none;}
+  .item p{font-weight:bold; color:var(--slate); margin-bottom:10px;}
+  .opts{display:grid; grid-template-columns:repeat(4,1fr); gap:6px;}
+  .opts label{border:1.5px solid var(--sand); border-radius:9px; padding:9px 4px; text-align:center; font-size:13.5px; cursor:pointer; background:#fff; color:var(--slate);}
+  .opts input{position:absolute; opacity:0;}
+  .opts label.sel{background:var(--navy); color:#fff; border-color:var(--navy); font-weight:bold;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-weight:bold; color:var(--slate); margin-bottom:6px;}
+  .field input[type=text]{width:100%; padding:12px; border:1.5px solid var(--sand); border-radius:9px; font-size:16px; background:#fff; color:var(--ink);}
+  .pillrow{display:flex; gap:8px; flex-wrap:wrap;}
+  .pill{border:1.5px solid var(--sand); border-radius:99px; padding:9px 18px; cursor:pointer; background:#fff; font-size:15px;}
+  .pill.sel{background:var(--navy); color:#fff; border-color:var(--navy); font-weight:bold;}
+  .note{background:var(--sand); border-radius:10px; padding:12px 14px; font-size:14px; color:var(--slate); margin-top:14px;}
+  .callout-soft{background:#eaf2f0; border-radius:12px; padding:16px 20px; margin:14px 0 4px;}
+  .callout-soft .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:12px 0 3px;}
+  .callout-soft .lead:first-child{margin-top:0;}
+  .callout-soft p{margin:0 0 4px;}
+  .area-acc{border:1px solid var(--sand); border-radius:8px; margin-bottom:8px; background:#fff; overflow:hidden;}
+  .area-acc summary{cursor:pointer; padding:14px 16px; font-weight:bold; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:12px; list-style:none;}
+  .area-acc summary::-webkit-details-marker{display:none;}
+  .area-acc[open] summary{border-bottom:1px solid var(--sand);}
+  .area-acc .body{padding:4px 16px 14px;}
+  .area-acc .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:12px 0 2px;}
+  /* results */
+  .bar{margin-bottom:14px;}
+  .bar .lbl{display:flex; justify-content:space-between; font-size:15px; margin-bottom:4px; gap:8px;}
+  .bar .lbl b{color:var(--slate);}
+  .tag{display:inline-block; font-size:12.5px; font-weight:bold; letter-spacing:.5px; padding:3px 12px; border-radius:99px; white-space:nowrap;}
+  .tag.solid{background:var(--solid); color:#fff;}
+  .tag.building{background:var(--building); color:var(--ink);}
+  .tag.priority{background:var(--priority); color:var(--ink);}
+  .bar .track{height:12px; background:var(--sand); border-radius:99px; overflow:hidden;}
+  .bar .fill{height:100%; border-radius:99px;}
+  .focus{padding:16px 0; border-bottom:1px solid var(--sand);}
+  .focus:last-child{border-bottom:none;}
+  .focus .fhead{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .focus .num{flex:0 0 30px; height:30px; border-radius:50%; background:var(--accent); color:var(--ink); font-weight:bold; display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .focus h3{margin:0;}
+  .focus .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:10px 0 2px;}
+  .focus p{margin-bottom:6px;}
+  .phase{border-left:3px solid var(--sage); padding:2px 0 18px 18px; margin-left:8px; position:relative;}
+  .phase:before{content:""; position:absolute; left:-8.5px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--sage); border:3px solid var(--paper);}
+  .phase.now{border-left-color:var(--accent);}
+  .phase.now:before{background:var(--accent);}
+  .phase .when{font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold;}
+  .phase h3{margin:2px 0 4px;}
+  .cta-hero{background:var(--navy); color:#fff; border-radius:14px; padding:24px; margin-bottom:16px;}
+  .cta-hero h2{color:#fff;}
+  .cta-hero .btn{background:var(--accent); color:var(--ink); margin-top:10px;}
+  .disclaimer{font-size:12.5px; color:var(--slate); opacity:.8; margin-top:26px; border-top:1px solid var(--sand); padding-top:14px;}
+  .hidden{display:none;}
+  @media print{
+    .noprint{display:none !important;}
+    body{background:#fff;}
+    .card,.cta-hero{box-shadow:none; break-inside:avoid;}
+  }
+  @media (max-width:420px){ .opts{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+<header class="brand"><div class="logo">ADHD <span>&amp;</span> HER</div></header>
+<div class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section id="scr-intro">
+    <div class="eyebrow">The ADHD &amp; Her parent screener</div>
+    <h1>Is your child ready for high school?</h1>
+    <p class="lede">See the strengths to build on, and the skills that need a little more support, in about 10 minutes.</p>
+    <span class="chip">Built for kids in Year 4 to Year 8</span>
+    <p>High school asks more of an ADHD brain than primary school ever did: six classrooms, six teachers, deadlines in every direction, and a whole new sensory world. This screener looks at the skill areas that carry that load, explains each one in plain language, and shows you what is already going strong and where you could focus first.</p>
+    <div class="panel-gold">
+      <h3>What you'll get</h3>
+      <ul>
+        <li>A High School Readiness Snapshot across the main skill areas</li>
+        <li>Each area that needs attention explained in plain language, with one clear place to start</li>
+        <li>The chance to explore every area, and a guide to which professionals to reach out to if more support is needed</li>
+        <li>Reusable every term: take it again and see what has strengthened and what else might need support</li>
+      </ul>
+      <p class="muted" style="margin:10px 0 0; font-size:13.5px;">These are the same skill areas I map in my 1:1 consultations.</p>
+    </div>
+    <div class="minigrid">
+      <div class="mini"><b>No diagnosis needed</b>Diagnosed, on a waitlist, or just noticing things and wondering about the jump: this is for you too. Readiness is about skills, and about finding the adjustments and supports that help. It is not about labels.</div>
+      <div class="mini"><b>Younger child? Perfect timing</b>Expect plenty of “not yet”: many of these skills are still years from consolidating, and that is developmentally appropriate. ADHD kids are not expected to nail every skill, every day. Come back each term and watch the toolkit grow.</div>
+    </div>
+    <details class="legal">
+      <summary>Who made this? Meet Shelley</summary>
+      <div class="inner">
+        <p class="muted" style="margin-bottom:0">The High School Readiness Screener was written by Shelley L'Green, AHPRA-registered occupational therapist and founder of ADHD &amp; Her. Shelley works with ADHD kids and their parents Australia-wide via telehealth, mapping these same skill areas in her 1:1 consultations, and brings lived experience of ADHD to everything she builds. More at <a href="https://shop.adhdandher.com.au" target="_blank" rel="noopener">adhdandher.com.au</a>.</p>
+      </div>
+    </details>
+    <details class="legal">
+      <summary>Before you begin: what this is (and isn't)</summary>
+      <div class="inner">
+        <p class="muted">This screener is an educational tool for parents and carers. It is not a clinical assessment, screening instrument or diagnosis, and it is not an occupational therapy assessment or report and cannot be used as one. Completing it does not create a therapeutic relationship with ADHD &amp; Her. Results reflect only your own answers and are indicative, not definitive: many of these skills develop across a wide age range, and younger children are not expected to demonstrate them independently yet. Nothing here replaces individualised advice from your child's GP, paediatrician or treating team, and any concern this tool raises is best taken to them.</p>
+        <p class="muted" style="margin-bottom:0">Your answers are processed on this device only. Nothing you enter is sent to or stored by ADHD &amp; Her. If you take the screener again on this device, your previous results are remembered here (and only here) so you can see progress over time.</p>
+      </div>
+    </details>
+    <button class="btn gold wide noprint" onclick="go('setup')">I understand, start the screener</button>
+    <p class="microlegal noprint">Educational tool for parents and carers. Not a clinical assessment or diagnosis: full details above.</p>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section id="scr-setup" class="hidden">
+    <div class="stepLabel">Before we start</div>
+    <h2>Tell me a little about your child</h2>
+    <div class="card">
+      <div class="field">
+        <label>Their first name <span class="muted">(optional, just to personalise your results)</span></label>
+        <input type="text" id="childName" maxlength="20" placeholder="e.g. Maya or Ollie">
+      </div>
+      <div class="field">
+        <label>Their pronouns</label>
+        <div class="pillrow" id="pronRow">
+          <div class="pill" data-v="she">she / her</div>
+          <div class="pill" data-v="he">he / him</div>
+          <div class="pill" data-v="they">they / them</div>
+        </div>
+      </div>
+      <div class="field" id="hormoneAsk">
+        <label>Include the section on periods, hormones and the cycle?</label>
+        <div class="pillrow" id="hormoneRow">
+          <div class="pill" data-v="yes">Include it</div>
+          <div class="pill" data-v="no">Skip it</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Their current year level</label>
+        <div class="pillrow" id="yearRow">
+          <div class="pill" data-v="4">Year 4</div>
+          <div class="pill" data-v="5">Year 5</div>
+          <div class="pill" data-v="6">Year 6</div>
+          <div class="pill" data-v="7">Year 7</div>
+          <div class="pill" data-v="8">Year 8+</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn wide noprint" id="setupNext" onclick="startItems()">Next</button>
+  </section>
+
+  <!-- ============ ITEMS ============ -->
+  <section id="scr-items" class="hidden">
+    <div class="stepLabel" id="domStep"></div>
+    <div class="progress"><div id="pbar" style="width:0%"></div></div>
+    <h2 id="domTitle"></h2>
+    <p class="muted" id="domIntro"></p>
+    <div class="card" id="itemHolder"></div>
+    <div class="btn-row noprint">
+      <button class="btn secondary" id="backBtn" onclick="prevDomain()">Back</button>
+      <button class="btn" style="flex:1" id="nextBtn" onclick="nextDomain()">Next</button>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="scr-results" class="hidden">
+    <div class="stepLabel">Your results</div>
+    <h1 id="resTitle"></h1>
+    <div id="resLead"></div>
+
+    <div class="card">
+      <h2>The Readiness Snapshot</h2>
+      <p class="muted">Each skill area sits in one of three bands. <b>Steady</b> means it is an area of strength right now. <b>Developing</b> means it is coming along with support, which is exactly how skills grow. <b>Focus area</b> means this is where deliberate attention pays off next. Skills ebb and flow with age and load, so every band is a snapshot, not a final word.</p>
+      <div id="bars"></div>
+    </div>
+
+    <div class="card hidden" id="compareCard">
+      <h2>Progress since last time</h2>
+      <p class="muted" id="compareIntro"></p>
+      <div id="compareRows"></div>
+      <p class="note">Skills often wobble when load increases: a new school year, a new term, a big change. A dip straight after a transition usually reflects the bigger load, not lost skills. Watch the trend across two or three check-ins, not any single one.</p>
+    </div>
+
+    <div class="card">
+      <h2>Where to start (in this order)</h2>
+      <p class="muted" id="prioIntro"></p>
+      <div id="prioList"></div>
+      <p class="note">Why this order? Because skills stack. It is hard for any child to use planners, checklists or study systems while their days still feel overwhelming, so we steady the everyday first, then build the organisational skills on top of that foundation. Nervous system regulation is the base everything else stands on. And because ADHD brains learn through movement, senses, rhythm, connection and play, every starting point above is built that way, not just worksheets. Occupational therapists describe this as working from the foundations up. It is also how I sequence my 1:1 work.</p>
+    </div>
+
+    <div class="card" id="moreCard" style="display:none">
+      <h2>Explore the other areas</h2>
+      <p class="muted">Your top areas are above. If you would like, open any of the others to read the same summary: what it is, where it shows up, one place to start, and why it matters for high school.</p>
+      <div id="moreList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Use this again</h2>
+      <p class="muted" style="margin-bottom:0">Readiness is a moving picture, and no single check-in is the final word. Come back each term, or after any big change, and take the screener again: this page will show what has strengthened and what else might need support. Results are remembered only in this browser on this device, so return on the same device to compare, and print or save a copy as your dated record.</p>
+    </div>
+
+    <div class="card">
+      <h2>Who helps with what</h2>
+      <p class="muted">If you decide to bring in more support, different professionals help with different parts of the picture. And do not overlook the school itself: teachers, year advisors and school counsellors are often the quickest first step for school-day supports. As a guide:</p>
+      <p><b>Your GP or paediatrician</b> is the starting point for assessment, diagnosis, referrals and medication questions, and coordinates the wider team.</p>
+      <p><b>An occupational therapist</b> works on the territory this screener maps: regulation, sensory processing, attention and executive skills, and everyday independence at home and school. That is my field.</p>
+      <p><b>A psychologist</b> can help where anxiety, low mood or intense emotional reactions are a large part of the picture, supports friendships, social skills and rejection sensitivity, and conducts formal assessments, including of learning.</p>
+      <p><b>A speech pathologist</b> helps where language, social communication, following verbal instructions, or reading, writing, comprehension and processing are the bigger challenge.</p>
+      <p class="muted" style="margin-bottom:0">This is a map of who does what, not a referral.</p>
+    </div>
+
+    <div class="cta-hero" id="ctaHero"></div>
+
+    <div class="card noprint" id="ctaSecondary"></div>
+
+    <div class="btn-row noprint">
+      <button class="btn secondary wide" onclick="window.print()">Print / save my results</button>
+    </div>
+
+    <p class="disclaimer"><b>Important information.</b> The High School Readiness Screener is an educational self-reflection tool for parents and carers. It is not a clinical assessment, diagnostic instrument or health service, it is not an occupational therapy assessment or report and cannot be used as one, and completing it does not create a therapeutic relationship with Shelley L'Green or ADHD &amp; Her. Results are based solely on your own responses, describe skills rather than conditions, and are indicative only. Skills in this tool develop across a wide age range, and younger children are not expected to demonstrate many of them independently yet. The information and suggestions provided are general education. They are not medical, psychological or therapeutic advice, and they are not a substitute for individualised advice from your child's GP, paediatrician or treating team, who should be consulted before acting on any concern this tool raises. In 1:1 consultations, standardised clinical questionnaires and a full clinical picture are used to map this territory in depth. If you are concerned about your child's development, learning, mental health, wellbeing or cycle-related symptoms, please speak with your GP. If you or your child ever need urgent support, contact your local emergency services or a crisis support service. Your answers are processed on this device, and if you retake the tool they are remembered only in this browser on this device; they are never transmitted to or stored by ADHD &amp; Her, and clearing your browser data removes them. To the extent permitted by law, ADHD &amp; Her accepts no liability for decisions made in reliance on this tool. © ADHD &amp; Her · Shelley L'Green, AHPRA-registered Occupational Therapist.</p>
+  </section>
+
+</div>
+
+<script>
+/* ========= EDIT THESE LINKS BEFORE PUBLISHING ========= */
+const LINKS = {
+  profile:  "https://adhd-and-her.splose.com/online-booking/7c3f293a-6996-458e-ad3d-8db51d86c46c",   /* Splose booking page for 1:1 initial consultations */
+  playbook: "#",    /* School Adjustments Playbook page (when available) */
+  tools:    "#TOOLS_PAGE_URL",        /* Tools and Courses page */
+  contact:  "mailto:support@adhdandher.com.au"
+};
+
+/* ========= PRONOUNS ========= */
+const PRON = {
+  she:  {S:"She", s:"she", o:"her", p:"her", P:"Her", v:"s", has:"has", is:"is", self:"herself", kid:"your child"},
+  he:   {S:"He", s:"he", o:"him", p:"his", P:"His", v:"s", has:"has", is:"is", self:"himself", kid:"your child"},
+  they: {S:"They", s:"they", o:"them", p:"their", P:"Their", v:"", has:"have", is:"are", self:"themself", kid:"your child"}
+};
+function t(str){
+  const g = PRON[state.pron] || PRON.they;
+  return str.replace(/\{(\w+)\}/g, (m,k)=> g[k] !== undefined ? g[k] : m);
+}
+
+/* ========= DOMAINS =========
+   foundation = build order (lower = more foundational; regulation before executive skills)
+   Each domain: items (4), whatItIs (education line), showsUp (recognition line),
+   start (one self-contained action), builds (why it matters). All original content. */
+const DOMAINS = [
+  {key:"start", name:"Getting Started", foundation:6,
+   intro:"Beginning tasks, especially the low-interest ones.",
+   items:[
+     "{S} can begin homework without significant resistance, once the task is clear.",
+     "On an instruction like “time to get ready for school”, {s} can begin without step-by-step verbal prompting.",
+     "{S} can make a start on a task that is of low interest to {o}, not just the ones {s} find{v} most interesting, with reasonable support.",
+     "When a task feels big, {s} {has} a way of taking the first small step."
+   ],
+   whatItIs:"Getting started is a skill of its own, separate from ability or willingness. It has a lot to do with how the ADHD brain is wired: an interest-and-urgency-driven nervous system finds it genuinely hard to switch on for tasks that are not interesting, urgent or rewarding yet, so for many ADHD brains the gap between intending to start and actually starting becomes the hardest part of the task.",
+   showsUp:"Homework that starts with twenty minutes of orbiting the desk. A bedroom that feels too big to start cleaning. A writing task where the first sentence feels like the biggest hurdle. The battle is at the starting line, not in the task itself.",
+   start:"Shrink the start until it is almost easy, and name it out loud: open the book and write the heading. Pick the clothes up off the floor and into one tub. Start the tiny step together, then let momentum do the rest. It helps to remember that for many ADHD brains motivation tends to follow action rather than come first, so the move is one small step to get the ball rolling, not waiting to feel ready.",
+   builds:"High school quietly assumes children can begin work on their own. Built now, this skill eases one of the most common pain points at home."},
+
+  {key:"attention", name:"Attention & Focus", foundation:4,
+   intro:"Staying with a task, at home and in the classroom.",
+   items:[
+     "{S} can stay with homework or reading for an age-appropriate stretch without constant redirection.",
+     "{S} can follow an activity through to the end, even after it stops being novel (the full get-ready-for-bed routine, teeth brushed and shower done, without stalling partway).",
+     "Teacher feedback suggests {s} can stay engaged in class for most of a lesson, and can follow the instructions given, rather than appearing to listen while {p} mind is elsewhere.",
+     "After a distraction, {s} can bring {p} focus back to the task and pick up where {s} left off."
+   ],
+   whatItIs:"Attention in ADHD is often not missing; it is interest-driven, which makes it harder to steer or start on demand. Focus flows more easily toward what is novel, urgent or fascinating, and is hard to summon for what is repetitive or low-interest, no matter how important it is or how many times it has been asked. That is how the brain is wired, not attitude.",
+   showsUp:"Easily distracted and hard to refocus. Needing a lot of teacher support to stay on task. Disrupting others when bored. Appearing to daydream instead of finishing work. Missing instructions that were not interesting, then being unable to start because the instructions never landed.",
+   start:"Make low-interest tasks easier to hold: a visual to-do list or a timer, so {s} can see what is expected, how much is left, and where the finish line is. Pace the effort instead of asking for all of it at once, and weave in a little novelty where you can, like a favourite playlist for tidying or throwing a ball while practising spellings.",
+   builds:"Understanding how {p} attention actually works turns 'not trying' and 'doesn't care' into something you can plan around together: shorter blocks, clearer instructions, and interest woven in wherever it can be."},
+
+  {key:"memory", name:"Holding It All in Their Head", foundation:7,
+   intro:"Holding information, instructions and tasks in their head without dropping them.",
+   items:[
+     "{S} can carry a two or three step instruction (brush your teeth, go to the toilet, pyjamas on) without losing a step.",
+     "{S} can tell you what homework was set, without repeated prompting.",
+     "The night before, {s} can work out what tomorrow needs, organise {p} belongings and lay them out.",
+     "Messages from school (notes, dates, changes) usually make it home."
+   ],
+   whatItIs:"Working memory is the brain's holding space: keeping a teacher's three-part instruction in mind while finding the right page, or carrying a plan from one room to the next. It can be a real challenge for ADHD brains, because the same mental resources are also managing attention, sensory load and filtering distractions, and more. It is not fixed, though: it is a skill area that can be supported, backed up and built.",
+   showsUp:"Getting distracted mid-task. Forgetting the final step of a routine. Missing homework instructions. And because holding it all takes real mental effort, it can spill into exhaustion and frustration that looks like giving up early or avoiding.",
+   start:"Move information out of {p} head and into the world: visual lists, calendars, prompts and reminder systems. The goal is fewer things held in working memory, and a reliable backup system for the tasks and routines that need completing.",
+   builds:"High school assumes a backup system: eight teachers' worth of instructions, due dates and gear. Building the systems now gives them time to become familiar, so they are second nature by the time they are really needed."},
+
+  {key:"plan", name:"Planning the Week", foundation:9,
+   intro:"Deadlines, commitments and breaking big things down.",
+   items:[
+     "{S} {has} a sense of what school work and school tasks are due this week without being told.",
+     "When {s} {is} given an assignment, {s} can plan it out in steps across the time available, rather than leaving it all to the last minute.",
+     "{S} know{v} when {p} regular activities (sport, music, appointments) are on, and what needs to be ready for them.",
+     "{S} can use a planner, calendar or visual system, with support."
+   ],
+   whatItIs:"Planning ahead is the skill of looking at the week before it happens: what is coming, what it needs, and getting organised so you turn up ready. It leans on holding less in your head and trusting a system instead, which is what makes it reliable. It develops late in all children, and often later again when ADHD is part of the picture.",
+   showsUp:"Tense last-minute rushes to find and organise what is needed. Running late, or missed appointments and events. Anxiety when plans change at the last minute. Assignments discovered the night before they are due.",
+   start:"Offer a checklist that answers what is needed, when: a bag list for Thursday (school books plus dance gear), a ten-minute Sunday look at the week ahead on one visible board. One visible list beats ten reminders.",
+   builds:"In high school {s} will be expected to run {p} own timetable: a different class every hour, the right books and materials for each one, sports uniform on the right days, assessments landing from every direction. Planning practised now is what makes that feel familiar."},
+
+  {key:"time", name:"Time & Time Management", foundation:8,
+   intro:"Feeling time passing, estimating it, and switching when it is up.",
+   items:[
+     "{S} {has} a realistic sense of how long everyday tasks take {o} (getting ready for school, the trip from home to school, packing up after dinner).",
+     "{S} can read a watch or clock, and {has} a sense of what “five more minutes” actually feels like.",
+     "{S} respond{v} to timers, alarms and countdown warnings, rather than being caught out by them.",
+     "{S} can finish up and switch tasks when time is up, with fair warning."
+   ],
+   whatItIs:"Time is invisible, and ADHD brains feel it differently: five minutes and fifty can feel the same from the inside. Hyperfocus is the other half of the story: deeply interesting things can swallow hours while the world, and the clock, disappear. Neither is carelessness. The internal clock just needs outside help.",
+   showsUp:"Genuine surprise that an hour has passed, five-minute jobs that take forty, “one more minute” that never ends, rushed exits and missed starts.",
+   start:"Play with time instead of fighting about it: guess how long the toast takes, estimate the dog walk around the block, then time it and compare. A child who laughs at being wildly wrong is calibrating {p} internal clock, and that is the win. It also helps to make time visible: an analogue clock or watch {s} can actually see ticking, and clocks in the rooms where things happen, so {s} {is} reading the time off the wall rather than a phone.",
+   builds:"High school runs on the clock: a transition between classes every hour, task switches inside each lesson, bus timetables, even planning toilet breaks between periods. A child who can feel time roughly is the one who is not always chasing it."},
+
+  {key:"stuff", name:"Keeping Track of Their Things", foundation:10,
+   intro:"Bags, books, equipment and belongings.",
+   items:[
+     "{P} school bag gets packed, by {o} (with a list or without), with what the day needs.",
+     "Books, notes and equipment mostly come home when they are needed.",
+     "{S} can keep {p} bedroom somewhat organised, and can tidy it when asked.",
+     "Belongings (hats, jumpers, lunch boxes, water bottles) are rarely lost or left behind."
+   ],
+   whatItIs:"Keeping track of belongings is really a chain of mental steps: remember what is needed, monitor where it is, manage it through the day, and bring it home again. For an ADHD brain, especially under cognitive and sensory load, any link in that chain can drop. It reads as carelessness when it is really overload.",
+   showsUp:"Items left at home on the day they were needed. Missing an activity because the uniform or equipment was forgotten. Belongings misplaced and lost, and replacing them gets expensive. The daily fatigue of constantly searching for things.",
+   start:"Pick one visual cue and use it consistently: a launch pad by the door, a photo bag-list, a labelled home for the essentials. Systems repeated now can become second nature by high school.",
+   builds:"High school multiplies the load: lockers, laptops, sports gear, extracurricular kit, the right books on the right day. A child with practised systems spends {p} energy on the day, not on the hunt."},
+
+  {key:"basics", name:"Sleep, Food & Movement", foundation:0,
+   intro:"Sleep, meals, movement and downtime: the daily basics every other skill runs on.",
+   items:[
+     "{S} get{v} some real movement most days (sport, play, riding, trampolining), not just screen-based downtime.",
+     "{S} can fall asleep without a long battle, and get{v} enough sleep to run a school day.",
+     "{S} eat{v} something at fairly regular times across a school day (breakfast, recess, lunch), and drink{v} water through the day.",
+     "Downtime actually recharges {o}: there is space in {p} week that leaves {o} calmer, not more wired."
+   ],
+   whatItIs:"Sleep, food, movement and true downtime are not extras; they are the conditions the ADHD brain runs on. Movement steadies attention and mood. Sleep restores regulation and processes the day, and ADHD brains famously fight it. Regular fuel and water keep capacity from crashing mid-afternoon. When these wobble, every other area in this screener wobbles with them.",
+   showsUp:"Bedtimes that stretch for hours. Mornings that start tired. Skipped breakfasts, untouched lunchboxes, and the 3:30pm crash. Restlessness that builds when the week has little movement in it. Downtime that is all screens and somehow leaves everyone scratchier, not restored.",
+   start:"Pick the basic that is wobbling most and make it smaller, together: movement before homework rather than after, one consistent step added to the wind-down routine, a regular breakfast with some protein in it, a water bottle that goes everywhere. One basic, steadied, lifts the whole day.",
+   builds:"High school asks more of the body: earlier starts, longer days, sport and activities carried on top. A child whose basics are steady walks in with capacity to spare, and every other skill in this screener gets easier to build."},
+
+  {key:"feelings", name:"Big Feelings & Bounce-Back", foundation:1,
+   intro:"Regulation and resilience: the big reactions, the overwhelms and shutdowns, and the bounce-back.",
+   items:[
+     "After a school day, {s} can unwind and recover at home without the afternoon regularly ending in meltdowns or shutdowns.",
+     "{S} can adapt to a change of plans without significant distress or overwhelm.",
+     "When something goes wrong or upsets {o}, {s} can recover and move on within a reasonable time, with support if needed.",
+     "{S} can accept a “no” or a correction without it affecting the rest of the afternoon."
+   ],
+   whatItIs:"Big feelings in ADHD are not a character flaw, and not simply a skill gap. The same brain differences that make attention and impulses harder to steer also mean feelings can arrive faster, land bigger and last longer, and for some kids hormones join in too. What we can do is build capacity: skills and supports that steady the nervous system, grow tolerance for daily stresses, and build resilience over time.",
+   showsUp:"Quick, strong emotional reactions. Shutdown or overwhelm more often than peers. Changes and transitions that are hard to tolerate. Flexibility and compromise feeling like big asks. Things that look small to someone else feeling big, and lasting longer.",
+   start:"Go broader than calming strategies: learn about energy and capacity together, help {o} notice the body clues that come before the wave (a racing heart, a tight jaw, going quiet), and build a toolkit with {o}, not for {o}, that works even when you are not in the room.",
+   builds:"These skills are the foundation the others stand on. It is hard to start homework, plan a week or keep track of belongings on a day that already feels like too much."},
+
+  {key:"selfknow", name:"Knowing Themself & Speaking Up", foundation:5,
+   intro:"Noticing limits, asking for help, and self-advocacy.",
+   items:[
+     "{S} can tell you, in words, when {s} {is} reaching {p} capacity ('I'm done', 'this is too much'), even roughly, even afterwards.",
+     "{S} will ask for help when {s} {is} stuck, at least at home.",
+     "{S} could tell a trusted teacher one thing that helps {o} learn.",
+     "{S} know{v} at least one thing that reliably helps when {s} {is} feeling overwhelmed (movement, quiet, music, a shower), and use{v} it."
+   ],
+   whatItIs:"Self-awareness and self-advocacy are the skills of noticing what is happening inside, and being able to say so. In primary school, adults do most of that noticing. Across high school, your child gradually becomes the one who has to.",
+   showsUp:"Running on empty without realising until the crash, struggling in silence rather than asking, not yet having words for what helps, and not yet knowing how to speak up for themselves when they need to.",
+   start:"Make speaking up a tiny daily ritual, three questions with no fixing needed: one thing you loved today, one thing that didn't feel right, one thing that would have made today easier. The answers become {p} first self-advocacy scripts.",
+   builds:"A child who can say 'that didn't feel comfortable today, and this could work for me tomorrow' walks into high school able to ask for what {s} need{v}. That sentence is built at home, one small conversation at a time."},
+
+  {key:"sensory", name:"Sensory Load", foundation:2,
+   intro:"Noise, touch, busy places, long stretches of sitting still, strong smells, and what a full school day costs.",
+   items:[
+     "{S} can manage the noise and busyness of a full school day without becoming overwhelmed or shutting down.",
+     "Uniforms, fabrics and tags are comfortable and not too irritating, with the adjustments you have found.",
+     "{S} can recognise when {s} {is} hot, hungry, thirsty, or needing the toilet, and act on it.",
+     "{S} know{v} which sensations are irritating or overwhelming, and which are calming and grounding."
+   ],
+   whatItIs:"We take in the world through eight senses, not five: sight, sound, touch, taste and smell, plus movement (vestibular), body position (proprioception) and the body's internal signals (interoception). ADHD brains often filter these differently: some input has the volume turned up, some barely registers, and the mix shifts with load.",
+   showsUp:"Avoiding uncomfortable spaces. Fidgeting to the point of distraction. Covering ears, or battles over uniforms, tags and seams. Big reactions after long stretches of sitting still. A child who holds it together all day and unravels the moment {s} walk{v} in the door.",
+   start:"Map it together, without judgement: which sensations and environments feel uncomfortable or overwhelming, and which feel comfortable and calming. That map tells you what to avoid, what to prepare for, and what to reach for on hard days.",
+   builds:"High school is a bigger, louder sensory world. Knowing {p} sensory profile turns hard days into patterns you can predict and plan for."},
+
+  {key:"hormones", name:"Puberty, Hormones & the Cycle", foundation:3, conditional:true,
+   intro:"Body changes, cycles, and what they can do to energy and mood.",
+   items:[
+     "{S} {is} prepared for periods starting, or managing them: {s} know{v} the steps for pads or period underwear, and {has} practised or talked them through.",
+     "{S} know{v} the plan for school: supplies in the bag, how to restock, who to ask for help, and what to do with soiled underwear or clothes.",
+     "You have started noticing whether mood, energy or overwhelm shift across the month.",
+     "{S} know{v} that energy and mood can shift with body changes, and that this is to be expected, and manageable."
+   ],
+   whatItIs:"For many young people with ADHD, the menstrual cycle shifts the picture: attention, mood and overwhelm can change noticeably across the month. Research here is still growing, but the pattern is real for many families, and it is rarely explained to them.",
+   showsUp:"A week each month where everything is harder, mood dips that seem to come from nowhere, and period practicalities, routines and the sensory experience adding stress to school days.",
+   start:"Keep a simple shared calendar across four to six months, noting the tricky days and how they felt, alongside cycle timing once periods begin. Patterns you can see become things you can plan around: lighten the sensory and cognitive load on those days, and nurture and connect a little more if needed. Steep monthly dips are worth raising with your GP. It also helps to teach the practical side early: practise the routines, put together a period pack for the school bag, and make managing it feel familiar well before {s} {has} to do it solo at school.",
+   builds:"A teenager who knows {p} own monthly pattern can plan assessments, downtime and self-care around it instead of being ambushed by it. Taught early and proactively, this becomes a quiet, lifelong self-management skill."},
+
+  {key:"independence", name:"Running Their Own Day", foundation:11,
+   intro:"Mornings, routines, chores, devices, and age-fair independence.",
+   items:[
+     "Mornings run on a routine {s} mostly drive{v} (alarm, dressed, fed, hygiene addressed, out the door).",
+     "{S} can get {self} to and from school, or {is} building toward it, at an age-fair level.",
+     "Screens and devices have agreed limits that hold without nightly conflict.",
+     "{S} can prepare {p} own snacks, help pack {p} school lunch, and pitch in on a regular small chore."
+   ],
+   whatItIs:"Independence is the gradual handover of a day's running: waking, getting ready, self-care and daily hygiene, travelling, remembering. It is built through supported practice, one handed-over piece at a time, not expected all at once. The small jobs count too: contributing to basic chores is one of the habits most linked to resilience and independence later on.",
+   showsUp:"Mornings that run entirely on your energy and prompting, routines that collapse the moment no one is reminding, devices that need constant policing, a reluctance to pitch in around the house, letting friends or teammates down without meaning to, and holding back from trying new things rather than risk getting them wrong.",
+   start:"Hand over one piece this week, fully: the alarm, the bag, or the water bottle. Small, complete ownership now is the practice run for bigger ownership later.",
+   builds:"Independence is where all the other skills point. Handed over gradually through the primary years, it arrives in high school already practised."}
+];
+
+const OPTS = ["Not yet","Sometimes","Often","Almost always"];
+
+/* ========= STATE ========= */
+let state = {pron:null, year:null, name:"", hormones:null, hormonesManual:false, answers:{}, dom:0};
+
+function activeDomains(){
+  return DOMAINS.filter(d=>{
+    if(!d.conditional) return true;
+    return state.hormones===true;
+  });
+}
+
+/* ========= NAV ========= */
+function go(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById("scr-"+id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll("#pronRow .pill").forEach(p=>p.onclick=()=>{
+  document.querySelectorAll("#pronRow .pill").forEach(x=>x.classList.remove("sel"));
+  p.classList.add("sel"); state.pron=p.dataset.v;
+  if(!state.hormonesManual){
+    const def = state.pron==="she" ? true : state.pron==="he" ? false : null;
+    state.hormones = def;
+    document.querySelectorAll("#hormoneRow .pill").forEach(x=> x.classList.toggle("sel", def!==null && x.dataset.v===(def?"yes":"no")));
+  }
+});
+document.querySelectorAll("#hormoneRow .pill").forEach(p=>p.onclick=()=>{
+  document.querySelectorAll("#hormoneRow .pill").forEach(x=>x.classList.remove("sel"));
+  p.classList.add("sel"); state.hormones = (p.dataset.v==="yes"); state.hormonesManual = true;
+});
+document.querySelectorAll("#yearRow .pill").forEach(p=>p.onclick=()=>{
+  document.querySelectorAll("#yearRow .pill").forEach(x=>x.classList.remove("sel"));
+  p.classList.add("sel"); state.year=p.dataset.v;
+});
+
+function startItems(){
+  if(!state.pron || !state.year){ alert("Choose pronouns and a year level to continue."); return; }
+  if(state.hormones===null){ alert("Choose whether to include the periods and hormones section."); return; }
+  state.name = document.getElementById("childName").value.trim();
+  state.dom = 0;
+  renderDomain();
+  go('items');
+}
+
+function renderDomain(){
+  const doms = activeDomains();
+  const d = doms[state.dom];
+  document.getElementById("domStep").textContent = "Area "+(state.dom+1)+" of "+doms.length;
+  document.getElementById("pbar").style.width = ((state.dom)/doms.length*100)+"%";
+  document.getElementById("domTitle").textContent = d.name;
+  document.getElementById("domIntro").textContent = t(d.intro);
+  const holder = document.getElementById("itemHolder");
+  holder.innerHTML = "";
+  d.items.forEach((raw,i)=>{
+    const qid = d.key+"_"+i;
+    const div = document.createElement("div");
+    div.className = "item";
+    let opts = "";
+    OPTS.forEach((o,v)=>{
+      const sel = state.answers[qid]===v ? " sel" : "";
+      opts += `<label class="opt${sel}" data-q="${qid}" data-v="${v}">${o}</label>`;
+    });
+    div.innerHTML = `<p>${t(raw)}</p><div class="opts">${opts}</div>`;
+    holder.appendChild(div);
+  });
+  holder.querySelectorAll("label").forEach(l=>l.onclick=()=>{
+    const q=l.dataset.q;
+    state.answers[q]=parseInt(l.dataset.v);
+    holder.querySelectorAll(`label[data-q="${q}"]`).forEach(x=>x.classList.remove("sel"));
+    l.classList.add("sel");
+  });
+  document.getElementById("backBtn").style.visibility = state.dom===0 ? "hidden":"visible";
+  document.getElementById("nextBtn").textContent = state.dom===doms.length-1 ? "See the results" : "Next";
+}
+
+function nextDomain(){
+  const doms = activeDomains();
+  const d = doms[state.dom];
+  for(let i=0;i<4;i++){ if(state.answers[d.key+"_"+i]===undefined){ alert("Answer all four to continue. “Not yet” is a completely fine answer."); return; } }
+  if(state.dom===doms.length-1){ results(); go('results'); return; }
+  state.dom++; renderDomain(); window.scrollTo(0,0);
+}
+function prevDomain(){ if(state.dom>0){ state.dom--; renderDomain(); window.scrollTo(0,0);} }
+
+/* ========= SCORING & RESULTS ========= */
+function band(score){ return score>=9 ? "solid" : score>=5 ? "building" : "priority"; }
+function bandLabel(b){ return b==="solid"?"Steady":b==="building"?"Developing":"Focus area"; }
+
+/* ========= LOCAL HISTORY (this device only) ========= */
+function loadHistory(){ try{ return JSON.parse(localStorage.getItem("adhdher_hsrs_v1")||"[]"); }catch(e){ return []; } }
+function saveHistory(h){ try{ localStorage.setItem("adhdher_hsrs_v1", JSON.stringify(h.slice(-12))); }catch(e){} }
+function renderComparison(scored){
+  const history = loadHistory();
+  const mine = history.filter(h => (h.name||"").toLowerCase() === (state.name||"").toLowerCase());
+  const prior = mine.length ? mine[mine.length-1] : null;
+  if(prior){
+    const card = document.getElementById("compareCard");
+    const rows = document.getElementById("compareRows");
+    card.classList.remove("hidden");
+    document.getElementById("compareIntro").textContent =
+      "Compared with the check-in saved on this device on "+prior.when+(prior.year && prior.year!==state.year ? " (then Year "+prior.year+")" : "")+":";
+    rows.innerHTML = "";
+    scored.forEach(d=>{
+      if(prior.scores && prior.scores[d.key]!==undefined){
+        const prev = prior.scores[d.key];
+        const diff = d.score - prev;
+        const arrow = diff>=2 ? "▲ strengthened" : diff<=-2 ? "▼ needs a fresh look" : "▶ steady";
+        const cls = diff>=2 ? "solid" : diff<=-2 ? "priority" : "building";
+        rows.innerHTML += `<div class="bar"><div class="lbl"><b>${d.name}</b><span class="tag ${cls}">${arrow}</span></div>
+          <p class="muted" style="margin:2px 0 8px">${bandLabel(band(prev))} then · ${bandLabel(d.band)} now</p></div>`;
+      }
+    });
+  }
+  const snapshot = { when: new Date().toISOString().slice(0,10), name: state.name||"", year: state.year,
+    scores: Object.fromEntries(scored.map(d=>[d.key, d.score])) };
+  history.push(snapshot);
+  saveHistory(history);
+}
+
+function results(){
+  const doms = activeDomains();
+  const scored = doms.map(d=>{
+    let s=0; for(let i=0;i<4;i++) s+=state.answers[d.key+"_"+i];
+    return {...d, score:s, band:band(s)};
+  });
+  document.getElementById("resTitle").textContent = (state.name? state.name+"'s" : "The") + " High School Readiness Snapshot";
+
+  const priorities = scored.filter(x=>x.band==="priority");
+  const building  = scored.filter(x=>x.band==="building");
+  const solid     = scored.filter(x=>x.band==="solid");
+  const young = (state.year==="4"||state.year==="5");
+
+  let lead;
+  if(priorities.length===0 && building.length===0){
+    lead = `<p class="lede">Steady across every area right now. This is not a report card, it is a map: a snapshot of the strengths to celebrate and keep warm as the load increases toward high school.</p>`;
+  } else {
+    lead = `<p class="lede">${solid.length} area${solid.length===1?"":"s"} steady, ${building.length} developing, and <b>${priorities.length} focus area${priorities.length===1?"":"s"}</b>. This is not a report card. It is a map: now you know which strengths to celebrate and build on, and where to focus your effort first.</p>`;
+    lead += `<div class="callout-soft">`;
+    if(young){
+      lead += `<div class="lead">“Not yet” is the expected answer at this age</div>
+      <p>Most of these skills consolidate between Year 5 and Year 8, so a snapshot with plenty of developing and focus areas is exactly what to expect this early. You are not behind. You are early, and early is the best position to be in.</p>`;
+    } else if(state.year==="6"){
+      lead += `<div class="lead">You have real runway</div>
+      <p>There is genuine time between now and high school. This shows where to spend it, and which strengths will help carry the load.</p>`;
+    } else {
+      lead += `<div class="lead">You are catching this at the right time</div>
+      <p>Year 7 and 8 are the settling-in years, when high school routines are still forming and these skills are still consolidating. Seeing where the load is landing now, while everything is still bedding down, means support can go exactly where it counts, with the rest of high school still ahead.</p>`;
+    }
+    if(priorities.length>=4 && !young){
+      if(state.year==="7"||state.year==="8"){
+        lead += `<div class="lead">It is never too late to start small</div>
+        <p>High school has already begun, and that changes nothing about how these skills grow. They build the same way at any age: one small, repeatable habit at a time. When several areas flag at once, that usually reflects how much load ${state.name||t("{kid}")} is carrying right now, not something anyone has done wrong. Pick the one landing heaviest, add a small support for it, and keep guiding it until it feels part of everyday life before adding the next. Small and steady still works, even now that secondary school is underway.</p>`;
+      } else {
+        lead += `<div class="lead">Start with one thing, never everything</div>
+        <p>When several areas flag at once, that usually reflects how much load ${state.name||t("{kid}")} is carrying right now, not something anyone has done wrong. We begin with one thing and build from there.</p>`;
+      }
+    }
+    lead += `<div class="lead">Progress, not perfection</div>
+      <p style="margin-bottom:0">No ADHD kid is expected to have every skill consolidated every day. Some days need more support, some days there is capacity for more. This is about working together, celebrating what is growing, and adding support where it helps.</p>`;
+    lead += `</div>`;
+  }
+  document.getElementById("resLead").innerHTML = lead;
+
+  /* bars */
+  const bars = document.getElementById("bars");
+  bars.innerHTML = "";
+  scored.forEach(d=>{
+    const pct = Math.max(6, d.score/12*100);
+    const color = d.band==="solid"?"var(--solid)":d.band==="building"?"var(--building)":"var(--priority)";
+    bars.innerHTML += `<div class="bar">
+      <div class="lbl"><b>${d.name}</b><span class="tag ${d.band}">${bandLabel(d.band)}</span></div>
+      <div class="track"><div class="fill" style="width:${pct}%;background:${color}"></div></div>
+    </div>`;
+  });
+
+  /* priority order: band severity first, then foundation order */
+  const ranked = [...scored].sort((a,b)=>{
+    const bandRank = x=> x.band==="priority"?0 : x.band==="building"?1 : 2;
+    return bandRank(a)-bandRank(b) || a.foundation-b.foundation;
+  });
+  // Foundation-first: pin Sleep, Food & Movement and Big Feelings & Bounce-Back to the top when they are not steady, then the rest by severity/foundation.
+  const nonSolid = ranked.filter(x=>x.band!=="solid");
+  const pinKeys = ["basics","feelings"];
+  const pinned = pinKeys.map(k=>nonSolid.find(x=>x.key===k)).filter(Boolean);
+  const others = nonSolid.filter(x=>!pinKeys.includes(x.key));
+  const ordered = [...pinned, ...others];
+  const focus = ordered.slice(0,3);
+  const moreAreas = ranked.filter(x=> !focus.includes(x));
+  const list = document.getElementById("prioList");
+  list.innerHTML = "";
+  if(focus.length===0){
+    document.getElementById("prioIntro").textContent = "Nothing needs rescuing. Pick the lowest-scoring area, keep an eye on it, and add small supports where they help.";
+  } else {
+    document.getElementById("prioIntro").textContent = focus.length===1 ? "One clear place to put your energy. Here is what it is, and how to begin:" : "Not everything at once. Each area below is explained first, then given one clear starting point:";
+    focus.forEach((d,i)=>{
+      list.innerHTML += `<div class="focus">
+        <div class="fhead"><div class="num">${i+1}</div><h3>${d.name}</h3><span class="tag ${d.band}">${bandLabel(d.band)}</span></div>
+        <div class="lead">What this is</div><p>${t(d.whatItIs)}</p>
+        <div class="lead">Where it shows up</div><p>${t(d.showsUp)}</p>
+        <div class="lead">One place to start</div><p>${t(d.start)}</p>
+        <div class="lead">Why it matters for high school</div><p>${t(d.builds)}</p>
+      </div>`;
+    });
+  }
+
+  // Explore the other areas (accordion)
+  const more = document.getElementById("moreList");
+  if(more){
+    more.innerHTML = "";
+    moreAreas.forEach(d=>{
+      more.innerHTML += `<details class="area-acc">
+        <summary><span>${d.name}</span><span class="tag ${d.band}">${bandLabel(d.band)}</span></summary>
+        <div class="body">
+          <div class="lead">What this is</div><p>${t(d.whatItIs)}</p>
+          <div class="lead">Where it shows up</div><p>${t(d.showsUp)}</p>
+          <div class="lead">One place to start</div><p>${t(d.start)}</p>
+          <div class="lead">Why it matters for high school</div><p>${t(d.builds)}</p>
+        </div>
+      </details>`;
+    });
+    document.getElementById("moreCard").style.display = moreAreas.length ? "" : "none";
+  }
+
+  renderComparison(scored);
+
+  /* CTA routing */
+  const hero = document.getElementById("ctaHero");
+  const sec  = document.getElementById("ctaSecondary");
+  const sensoryFlag = scored.find(x=>x.key==="sensory" && x.band!=="solid");
+  const nmChild = state.name || t("{kid}");
+  hero.innerHTML = `<h2>Where to from here</h2>
+    <p>You have your snapshot and a first step in each area. Take them at your own pace, and come back each term to see what has grown. That is the work, and it is yours to do.</p>
+    <p>If at any point you would like to go through ${nmChild}'s results together and shape them into a plan for your family, a Parent Strategy Session is there when you want it: 75 minutes, telehealth, for parents and carers in Australia.</p>
+    <a class="btn" href="${LINKS.profile}">Book a Parent Strategy Session</a>`;
+  sec.innerHTML = `<p class="muted">And if you would like to keep building on your own, our OT-designed digital tools and courses put practical strategies for these skill areas within reach of any family, at a fraction of the cost of one-on-one support.</p>
+    <div class="btn-row"><a class="btn secondary" href="${LINKS.tools}">Explore the tools and courses</a></div>`;
+}
+</script>
+</body>
+</html>
