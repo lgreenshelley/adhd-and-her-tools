@@ -155,7 +155,7 @@
     </div>
     <div class="minigrid">
       <div class="mini"><b>No diagnosis needed</b>Diagnosed, on a waitlist, or just noticing things and wondering about the jump: this is for you too. Readiness is about skills, and about finding the adjustments and supports that help. It is not about labels.</div>
-      <div class="mini"><b>Younger child? Perfect timing</b>Expect plenty of “not yet”: many of these skills are still years from consolidating, and that is developmentally appropriate. ADHD kids are not expected to nail every skill, every day. Come back each term and watch the toolkit grow.</div>
+      <div class="mini"><b>Younger child? Perfect timing</b>Expect plenty of “not yet”: many of these skills are still years from consolidating, and that is developmentally appropriate. ADHD kids are not expected to nail every skill, every day. Come back each term and watch how much has strengthened.</div>
     </div>
     <details class="legal">
       <summary>Who made this? Meet Shelley</summary>
@@ -289,10 +289,12 @@
     <div class="card noprint" id="ctaSecondary"></div>
 
     <div class="btn-row noprint">
-      <button class="btn secondary wide" onclick="window.print()">Print / save my results</button>
+      <button class="btn secondary wide" onclick="printResults()">Print / save my results</button>
     </div>
 
-    <p class="disclaimer"><b>Important information.</b> The High School Readiness Screener is an educational self-reflection tool for parents and carers. It is not a clinical assessment, diagnostic instrument or health service, it is not an occupational therapy assessment or report and cannot be used as one, and completing it does not create a therapeutic relationship with Shelley L'Green or ADHD &amp; Her. Results are based solely on your own responses, describe skills rather than conditions, and are indicative only. Skills in this tool develop across a wide age range, and younger children are not expected to demonstrate many of them independently yet. The information and suggestions provided are general education. They are not medical, psychological or therapeutic advice, and they are not a substitute for individualised advice from your child's GP, paediatrician or treating team, who should be consulted before acting on any concern this tool raises. In 1:1 consultations, standardised clinical questionnaires and a full clinical picture are used to map this territory in depth. If you are concerned about your child's development, learning, mental health, wellbeing or cycle-related symptoms, please speak with your GP. If you or your child ever need urgent support, contact your local emergency services or a crisis support service. Your answers are processed on this device, and if you retake the tool they are remembered only in this browser on this device; they are never transmitted to or stored by ADHD &amp; Her, and clearing your browser data removes them. To the extent permitted by law, ADHD &amp; Her accepts no liability for decisions made in reliance on this tool. © ADHD &amp; Her · Shelley L'Green, AHPRA-registered Occupational Therapist.</p>
+    <details class="legal disclaimer-acc" style="margin-top:22px;">
+    <summary>Important information</summary>
+    <div class="inner"><p class="disclaimer" style="margin-top:0; border-top:none; padding-top:0;">The High School Readiness Screener is an educational self-reflection tool for parents and carers. It is not a clinical assessment, diagnostic instrument or health service, it is not an occupational therapy assessment or report and cannot be used as one, and completing it does not create a therapeutic relationship with Shelley L'Green or ADHD &amp; Her. Results are based solely on your own responses, describe skills rather than conditions, and are indicative only. Skills in this tool develop across a wide age range, and younger children are not expected to demonstrate many of them independently yet. The information and suggestions provided are general education. They are not medical, psychological or therapeutic advice, and they are not a substitute for individualised advice from your child's GP, paediatrician or treating team, who should be consulted before acting on any concern this tool raises. In 1:1 consultations, standardised clinical questionnaires and a full clinical picture are used to map this territory in depth. If you are concerned about your child's development, learning, mental health, wellbeing or cycle-related symptoms, please speak with your GP. If you or your child ever need urgent support, contact your local emergency services or a crisis support service. Your answers are processed on this device, and if you retake the tool they are remembered only in this browser on this device; they are never transmitted to or stored by ADHD &amp; Her, and clearing your browser data removes them. To the extent permitted by law, ADHD &amp; Her accepts no liability for decisions made in reliance on this tool. © ADHD &amp; Her · Shelley L'Green, AHPRA-registered Occupational Therapist.</p></div></details>
   </section>
 
 </div>
@@ -724,6 +726,13 @@ function results(){
   renderComparison(scored);
 
   /* CTA routing */
+  window.printResults = function(){
+    const ds = [...document.querySelectorAll("#scr-results details")];
+    const prev = ds.map(d=>d.open);
+    ds.forEach(d=>d.open=true);
+    window.print();
+    ds.forEach((d,i)=>d.open=prev[i]);
+  };
   const hero = document.getElementById("ctaHero");
   const sec  = document.getElementById("ctaSecondary");
   const sensoryFlag = scored.find(x=>x.key==="sensory" && x.band!=="solid");
