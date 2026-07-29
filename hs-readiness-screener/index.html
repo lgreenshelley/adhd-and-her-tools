@@ -24,7 +24,7 @@
   .eyebrow{font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#B98A3E; margin-bottom:8px;}
   .lede{font-family:'Fraunces',Georgia,serif; font-size:19px; color:var(--slate); margin-bottom:14px;}
   .chip{display:inline-block; background:var(--sand); border-radius:99px; padding:7px 16px; font-size:14px; font-weight:600; color:var(--slate); margin-bottom:18px;}
-  .panel-gold{background:#fff; border:1px solid var(--sand); border-left:5px solid var(--accent); border-radius:14px; padding:22px 24px; margin:18px 0; box-shadow:0 1px 3px rgba(31,46,58,.06);}
+  .panel-gold{background:#f6ece7; border:1px solid #ecdcd4; border-left:5px solid var(--accent); border-radius:14px; padding:22px 24px; margin:18px 0; box-shadow:0 1px 3px rgba(31,46,58,.06);}
   .panel-gold h3{color:var(--ink);}
   .panel-gold ul{list-style:none; margin-top:8px;}
   .panel-gold li{padding:6px 0 6px 30px; position:relative; font-size:15.5px; line-height:1.45;}
@@ -73,6 +73,9 @@
   .area-acc{border:1px solid var(--sand); border-radius:8px; margin-bottom:8px; background:#fff; overflow:hidden;}
   .area-acc summary{cursor:pointer; padding:14px 16px; font-weight:bold; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:12px; list-style:none;}
   .area-acc summary::-webkit-details-marker{display:none;}
+  .area-acc summary>.acc-name{flex:1;}
+  .area-acc summary::after{content:"+"; flex:0 0 auto; font-size:20px; color:#B98A3E; font-weight:700; line-height:1; margin-left:2px;}
+  .area-acc[open] summary::after{content:"–";}
   .area-acc[open] summary{border-bottom:1px solid var(--sand);}
   .area-acc .body{padding:4px 16px 14px;}
   .area-acc .lead{font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--bluegrey); font-weight:bold; margin:12px 0 2px;}
@@ -150,8 +153,6 @@
       </ul>
       <p class="muted" style="margin:10px 0 0; font-size:13.5px;">These are the same skill areas I map in my 1:1 consultations.</p>
     </div>
-    <button class="btn gold wide noprint" onclick="go('setup')">Start the screener</button>
-    <p class="microlegal noprint">About 10 minutes · your answers stay on your device.</p>
     <div class="minigrid">
       <div class="mini"><b>No diagnosis needed</b>Diagnosed, on a waitlist, or just noticing things and wondering about the jump: this is for you too. Readiness is about skills, and about finding the adjustments and supports that help. It is not about labels.</div>
       <div class="mini"><b>Younger child? Perfect timing</b>Expect plenty of “not yet”: many of these skills are still years from consolidating, and that is developmentally appropriate. ADHD kids are not expected to nail every skill, every day. Come back each term and watch the toolkit grow.</div>
@@ -231,11 +232,11 @@
     <div class="card">
       <h2>The Readiness Snapshot</h2>
       <div id="snapSummary" class="snap-summary"></div>
-      <div id="bars"></div>
       <details class="disc">
         <summary>What do the bands mean?</summary>
         <div class="body"><p class="muted" style="margin:0">Each skill area sits in one of three bands. <b>Steady</b> means it is an area of strength right now. <b>Developing</b> means it is coming along with support, which is exactly how skills grow. <b>Focus area</b> means this is where deliberate attention pays off next. Skills ebb and flow with age and load, so every band is a snapshot, not a final word.</p></div>
       </details>
+      <div id="bars"></div>
     </div>
 
     <details class="disc disc-soft" id="reassure" style="display:none">
@@ -299,9 +300,9 @@
 <script>
 /* ========= EDIT THESE LINKS BEFORE PUBLISHING ========= */
 const LINKS = {
-  profile:  "https://adhd-and-her.splose.com/online-booking/7c3f293a-6996-458e-ad3d-8db51d86c46c",   /* Splose booking page for 1:1 initial consultations */
+  profile:  "https://www.adhdandher.com.au/work-with-me",   /* Work-with-me info page (softer than direct booking; booking lives on this page) */
   playbook: "#",    /* School Adjustments Playbook page (when available) */
-  tools:    "#TOOLS_PAGE_URL",        /* Tools and Courses page */
+  tools:    "https://www.adhdandher.com.au/tools-and-courses",        /* Tools and Courses page */
   contact:  "mailto:support@adhdandher.com.au"
 };
 
@@ -708,7 +709,7 @@ function results(){
     more.innerHTML = "";
     moreAreas.forEach(d=>{
       more.innerHTML += `<details class="area-acc">
-        <summary><span>${d.name}</span><span class="tag ${d.band}">${bandLabel(d.band)}</span></summary>
+        <summary><span class="acc-name">${d.name}</span><span class="tag ${d.band}">${bandLabel(d.band)}</span></summary>
         <div class="body">
           <div class="lead">What this is</div><p>${t(d.whatItIs)}</p>
           <div class="lead">Where it shows up</div><p>${t(d.showsUp)}</p>
@@ -730,9 +731,9 @@ function results(){
   hero.innerHTML = `<h2>Where to from here</h2>
     <p>You have your snapshot and a first step in each area. Take them at your own pace, and come back each term to see what has grown. That is the work, and it is yours to do.</p>
     <p>If at any point you would like to go through ${nmChild}'s results together and shape them into a plan for your family, a Parent Strategy Session is there when you want it: 75 minutes, telehealth, for parents and carers in Australia.</p>
-    <a class="btn" href="${LINKS.profile}">Book a Parent Strategy Session</a>`;
+    <a class="btn" href="${LINKS.profile}" target="_blank" rel="noopener">Learn about a Parent Strategy Session</a>`;
   sec.innerHTML = `<p class="muted">And if you would like to keep building on your own, our OT-designed digital tools and courses put practical strategies for these skill areas within reach of any family, at a fraction of the cost of one-on-one support.</p>
-    <div class="btn-row"><a class="btn secondary" href="${LINKS.tools}">Explore the tools and courses</a></div>`;
+    <div class="btn-row"><a class="btn secondary" href="${LINKS.tools}" target="_blank" rel="noopener">Explore the tools and courses</a></div>`;
 }
 </script>
 </body>
